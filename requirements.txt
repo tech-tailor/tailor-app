@@ -1,3 +1,4 @@
 Django
-psycopg2
+psycopg; sys_platform == "linux"
+psycopg[binary]; sys_platform != "linux"
 gunicorn
