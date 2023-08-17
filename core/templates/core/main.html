@@ -18,7 +18,7 @@
     {% block navbar%}
     <nav class="navbar bg-primary md-5 fixed-top">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="{% url 'home'%}">
             <img src="static/core/images/white_neeyee_logo.png" alt="neeyee logo" width="40" height="40"> <span>name</span>
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -58,29 +58,25 @@
 
 
     {% block footer%}
-    <nav class="navbar-brand container-fluid bg-primary mt-5 fixed-bottom">
-      <div class="container-fluid col-sm-12">
-        <a class="btn" href="{% url 'home'%}">
-          <button type="button" class="bi bi-justify btn btn-primary btn-md">Home</button>
+    <nav class="navbar-brand bg-primary mt-5 fixed-bottom">
+      <div class=" col-12 container-fluid btn-dark">
+        <a class="btn col-3 bi bi-justify btn-primary btn" href="{% url 'home'%}">Home
         </a>
 
-        <a class="btn" href="{% url 'operation'%}">
-          <button type="button" class="bi bi-justify btn btn-primary btn-md">Operation</button>
+        <a class="btn  col-3 bi bi-justify btn-primary btn" href="{% url 'operation'%}"><span class="text-start">Operation</span>
+        </a>
+        
+        <a class="btn col-3 bi bi-justify  btn btn-primary btn" href="{% url 'myprofile' %}">Profile
+        </a>
+        
+        <a class="btn col-3 bi bi-justif  btn btn-primary btn" href="{% url 'signin'%}">Signin
         </a>
 
-        <a class="btn" href="{% url 'workers'%}">
-          <button type="button" class="bi bi-justify btn btn-primary btn-md">Profile</button>
-        </a>
-
-        <a class="btn" href="{% url 'signin'%}">
-          <button type="button" class="bi bi-justify btn btn-primary btn-md">Signin</button>
-        </a>
 <!--
 
-
-        <a class="btn" href="{% url 'signup'%}">
-          <button type="button" class="bi bi-justify btn btn-primary btn-md">Signup</button>
+        <a class="btn  border col-3 bi bi-justify border  btn btn-primary btn-md" href="{% url 'signin'%}">Signin
         </a>
+      
 
         -->
       </div>

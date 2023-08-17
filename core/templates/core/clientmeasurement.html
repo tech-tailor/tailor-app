@@ -1,0 +1,117 @@
+{% extends 'core/main.html' %}
+{% load static  %}
+{% block title %} details {% endblock %}
+
+
+{% block content %}
+
+<div class="card text-center my-5 py-3">
+    <div class="card-header">
+      <span class="h2">{{clients.title}} {{ clients.name}}</span>
+</div>  
+
+
+
+
+<div class="border bg-light  py-3 mb-5 ">
+    <h2 class="text-center ">measurements</h2>
+    <div class="container border  text-center">
+      <div class="row bg-secondary">
+        <div class="col-6 ">
+          <div class="  text-light bg-secondary"><strong>TOP</strong></div>
+        </div>
+        <div class="col-6 ">
+          <div class=" text-light bg-secondary"><strong>TROUSER</strong></div>
+        </div>
+      <div>
+    </div>
+    </div>
+  
+    <div class="container overflow-hidden text-center">
+      <div class="row gy-3">
+        <div class="col-6 "><span>Top lenght</span>
+          {% if measurement.name_id == clients.name_id %}
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.top_lenght}}</div>
+        </div>
+        <div class="col-6 ">Trouser Lenght
+          <div class="p-2 text-light h5 bg-secondary">{{ measurement.trouser_lenght}}</div>
+        </div>
+        <div class="col-6 ">Shoulder
+          <div class="p-2 h5 text-light bg-secondary ">{{ measurement.trouser_lenght}}</div>
+        </div>
+        <div class="col-6 ">Waist
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.waist}}</div>
+        </div>
+        <div class="col-6 ">Sleeve
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.sleeve_lenght}}</div>
+        </div>
+        <div class="col-6 ">Lap
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.lap}}</div>
+        </div>
+        <div class="col-6 ">Round Chest
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.Round_chest}}</div>
+        </div>
+        <div class="col-6 ">Knee
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.knee}}</div>
+        </div>
+        <div class="col-6 ">Neck
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.neck}}</div>
+        </div>
+        <div class="col-6 ">Calf
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.calf}}</div>
+        </div>
+        <div class="col-6 ">Round Arm
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.round_arm}}</div>
+        </div>
+        <div class="col-6 ">Ankle
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.ankle}}</div>
+        </div>
+        <div class="col-6 ">Front Chest
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.front_chest}}</div>
+        </div>
+        <div class="col-6 ">Body Rise(BR)
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.BR}}</div>
+        </div>
+        <div class="col-6 ">Back Chest
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.back_chest}}</div>
+        </div>
+        <div class="col-6  ">Round Body Rise(RBR)
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.RBR}}</div>
+        </div>
+        <div class="col-6 ">Cuff
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.cuff}}</div>
+        </div>
+        <div class="col-6 ">Waist
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.waist}}</div>
+        </div>
+        <div class="col-6 ">Arm Hole
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.arm_hole}}</div>
+        </div>
+        <div class="col-6 border ">Agbada Lenght
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.arm_hole}}</div>
+        </div>
+        <div class="col-6 ">Short Sleeve Width
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.arm_hole}}</div>
+        </div>
+        <div class="col-6 border ">Agbada Shoulder
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.arm_hole}}</div>
+        </div>
+        <div class="col-6 ">3quarter Sleeve Width
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.arm_hole}}</div>
+        </div>
+        <div class="col-6 border ">Agbada Sleeve
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.arm_hole}}</div>
+        </div>
+        
+        <div class="col-6 ">Long Sleeve Width
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.arm_hole}}</div>
+        </div>
+        <div class="col-6 border ">Cap
+          <div class="p-2 h5 text-light bg-secondary">{{ measurement.arm_hole}}</div>
+        </div>
+        
+      
+    </div>
+    {% endif %}
+  </div>
+  {% endblock content %}

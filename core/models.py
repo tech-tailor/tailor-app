@@ -9,6 +9,11 @@ class Yes_No(models.TextChoices):
     NO = 'NO'
     YES = 'YES'
 
+class Mr_mrs(models.TextChoices):
+    MR = 'Mr'
+    YES = 'Mrs'
+
+
 class Job_Status(models.TextChoices):
     PRODUCT = 'PRODUCT'
     SERVICE = 'SERVICE'
@@ -25,6 +30,7 @@ class ClientSize(models.TextChoices):
 
 
 class ClientMeasurements(models.Model):
+    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=250, null=True)
     top_lenght = models.CharField(max_length=15,null=True, blank=True)
     shoulder = models.CharField(max_length=15, null=True, blank=True)
@@ -45,6 +51,7 @@ class ClientMeasurements(models.Model):
     knee = models.CharField(max_length=15, null=True, blank=True)
     calf = models.CharField(max_length=15, null=True, blank=True)
     ankle = models.CharField(max_length=15, null=True, blank=True)
+    BR = models.CharField(max_length=15, null=True, blank=True)
     RBR = models.CharField(max_length=15, null=True, blank=True)
     agbada_lenght = models.CharField(max_length=15, null=True, blank=True)
     agbada_shoulder = models.CharField(max_length=15, null=True, blank=True)
@@ -57,6 +64,8 @@ class ClientMeasurements(models.Model):
     
 
 class Clients(models.Model):
+    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
+    title = models.CharField(max_length=10, choices=Mr_mrs.choices, default=Mr_mrs.MR)
     name = models.CharField(max_length=250, null=True)
     email = models.CharField(max_length=50, null=True)
     phone_number = models.IntegerField(null=True, blank=True)
@@ -67,11 +76,9 @@ class Clients(models.Model):
     size = models.CharField(max_length=50, choices=ClientSize.choices, default=ClientSize.LARGE)
     measurement = models.OneToOneField(ClientMeasurements, null=True, blank=True, on_delete=models.SET_NULL)
 
-
-
-
     def __str__(self):
         return str(self.name)
+    
     
 class Workers(models.Model):
     user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
@@ -103,9 +110,9 @@ class Jobs(models.Model):
     top_design_note = models.TextField(null=True, blank=True)
     trouser_design_image = models.ImageField(blank=True, null=True, upload_to='trouser_designs')
     trouser_design_note = models.TextField(null=True, blank=True)
-    agbada_design_image = models.ImageField(blank=True, null=True, upload_to='trouser_designs')
+    agbada_design_image = models.ImageField(blank=True, null=True, upload_to='agbada_designs')
     agbada_design_note = models.TextField(null=True, blank=True)
-    cap_design_image= models.ImageField(blank=True, null=True, upload_to='trouser_designs')
+    cap_design_image= models.ImageField(blank=True, null=True, upload_to='cap_designs')
     cap_design_note = models.TextField(null=True, blank=True)
     top_worker = models.ForeignKey(Workers, on_delete=models.SET_NULL, null=True, blank=True)
     """
@@ -115,6 +122,21 @@ class Jobs(models.Model):
     """
     def __str__(self):
         return str(self.name)
+    
+    def imageurl(self):
+        if self.fabric_image_1:
+            return self.fabric_image_1.url
+        else:
+            return '/static/homepage/images/img_placeholder.png'
+    
+
+    
+    def imageurl(self):
+        if self.fabric_image_2:
+            return self.fabric_image_2.url
+        else:
+            return '/static/homepage/images/img_placeholder.png'
+
 
 
 class Job_operation(models.Model):

@@ -1,0 +1,142 @@
+{% extends 'core/main.html' %}
+{% load static  %}
+{% block title %} details {% endblock %}
+
+
+{% block content %}
+
+<div class="card text-center my-5 py-3">
+    <div class="card-header">
+      <span class="h2">{{jobs.title}} {{ jobs.name}}</span>
+</div>
+
+
+<div>
+    <img src="{{ jobs.imageurl }}" class="img" style="height: 150px; width: 150px;" alt="">
+</div>
+<a href="{% url 'operation' %}">
+    <div class="spinner-grow text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</a>
+
+<div class="container overflow-hidden text-center">
+    <div class="row gy-3">
+        <div class="col-6 ">Start Date
+            <div class="p-2 text-light h5 bg-secondary">{{ jobs.start_date}}</div>
+        </div>
+        <div class="col-6 ">Delivery Date
+            <div class="p-2 h5 text-light bg-secondary ">{{ jobs.delivery_date }}</div>
+        </div>
+        <div class="col-6 container overflow-hidden text-center ">Status
+            <div class="p-2 h5 text-light bg-secondary ">{{ jobs.status }}</div>
+        </div>
+        <div class="col-6 container overflow-hidden text-center ">Fabric Yardage
+            <div class="p-2 h5 text-light bg-secondary ">{{ jobs.fabric_yardage }}</div>
+        </div>
+    </div>
+</div>
+
+
+
+<a href="{% url 'clientdetails' jobs.name jobs.measurement_id %}">
+    <div class="col-12 container overflow-hidden text-center ">Measurement
+        <div class="p-2 h5 text-light bg-secondary ">{{ jobs.delivery_date }}</div>
+    </div>
+</a>
+<div class="border border-secondary bg-tertiary">
+    <div class="row ">
+        <div class="col-6">Fabric 1
+            <img src="{{ jobs.fabric_image_1.url }}" class="img " style="height: 150px; width: 150px;" alt=""> 
+        </div>
+        <div class="col-6"> Fabric 2
+            <img src="{{ jobs.fabric_image_2.url }}" class="img " style="height: 150px; width: 150px;" alt="">
+        </div>
+    </div>
+    <div class="border border-secondary"><p> Fabric note:</p>
+    <h6> {{ jobs.fabric_note}}</h6>
+    </div>
+</div>
+
+<div class="border border-secondary bg-tertiary">
+    <div class="row ">
+        <div class="col-6">Top Design Image1
+            <img src="{{ jobs.top_design_image_1.url }}" class="img " style="height: 150px; width: 150px;" alt=""> 
+        </div>
+        <div class="col-6">Top Design Image2
+            <img src="{{ jobs.top_design_image_2.url }}" class="img " style="height: 150px; width: 150px;" alt="">
+        </div>
+    </div>
+    <div class="border border-secondary"><p> Top Design note:</p>
+    <h6> {{ jobs.top_design_note}}</h6>
+    </div>
+</div>
+
+<div class="border border-secondary bg-tertiary">
+    <div class="row ">
+        <div class="col-6">Trouser Design Image
+            <img src="{{ jobs.trouser_design_image.url }}" class="img " style="height: 150px; width: 150px;" alt=""> 
+        </div>
+        <div class="col-6">Agbada Design Image
+            <img src="{{ jobs.agbada_design_image.url }}" class="img " style="height: 150px; width: 150px;" alt="">
+        </div>
+    <div class="row ">
+        </div>
+        <div class="border border-secondary col-6"><p> Trouser Design note:</p>
+        <h6> {{ jobs.trouser_design_note}}</h6>
+        </div>
+        <div class="border border-secondary col-6"><p> Agbada Design note:</p>
+            <h6> {{ jobs.agbada_design_note}}</h6>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="border border-secondary bg-tertiary">
+    <div class="row ">
+        <div class="col-6">cap Fabric Image
+            <img src="{{ jobs.cap_design_image_1.url }}" class="img " style="height: 150px; width: 150px;" alt=""> 
+        </div>
+        <div class="col-6">cap Design Image
+            <img src="{{ jobs.cap_design_image.url }}" class="img " style="height: 150px; width: 150px;" alt="">
+        </div>
+    <div class="row ">
+        </div>
+        <div class="border border-secondary col-6"><p>Cap Fabric note:</p>
+        <h6> {{ jobs.cap_design_note}}</h6>
+        </div>
+        <div class="border border-secondary col-6"><p>Cap Design note:</p>
+            <h6> {{ jobs.cap_design_note}}</h6>
+        </div>
+    </div>
+</div>
+
+<div>
+
+</div>
+
+
+    <div class="row bg-secondary text-light h5 text-center">
+      <div class="col-md-4">Top Worker</div>
+      <div class="col-md-4 offset-md-4">{{ jobs.worker}}</div>
+    </div>
+    
+    <div class="row bg-secondary text-light h5 text-center">
+        <div class="col-md-4">Trouser Worker</div>
+        <div class="col-md-4 offset-md-4">{{ jobs.w}</div>
+      </div>
+
+      <div class="row bg-secondary text-light h5 text-center">
+        <div class="col-md-4">Cap Worker</div>
+        <div class="col-md-4 offset-md-4">{{ jobs.w}</div>
+      </div>
+
+      <div class="row bg-secondary text-light h5 text-center">
+        <div class="col-md-4">Agbada Worker</div>
+        <div class="col-md-4 offset-md-4">{{ jobs.w}</div>
+      </div>
+
+
+
+{% endblock content %}

@@ -6,44 +6,31 @@
 {% block content %}
 
 
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container py-5 my-5">
-<div class="row bootstrap snippets bootdeys"> 
-    <div class="col-md-9 col-sm-7"> 
-        <h2>Jobs</h2> 
-    </div> 
-     
-<div class="member-entry bg-secondary col-12">
-  {%for job in jobs%}
-  <a href="#">
-    <div class="col bg-light my-2">
-      <img src="static/core/images/blue_neeyee_logo.png" style="height: 100px; width: 100px;" class="img-rounded  col-3">
-      <span class="h4 mx-2">{{ job.name}}</span>
-      {%for x in jobdone%}
-      <span class="h4 mx-2 d-flex justify-content-end"> Job done: {{ x.name}}</span> 
-      {% endfor %}
-    </div>
-  </a> 
-
-
-  <img src="top_designs/Agbada_white_neeyee.jpg" alt="">
-  {% endfor %}
-
-
-     
-
-</div>
-
-
-
-<a href="#">
-    <div class="col bg-light my-2">
-      <img src="static/core/images/blue_neeyee_logo.png" style="height: 100px; width: 100px;" class="img-rounded  col-3">
-      <span class="h4 mx-2"> job.name</span>
-      {
-      <span class="h4 mx-2 d-flex justify-content-end"> Job done: { x.note}}</span> 
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <div class="container py-5 my-5">
+  <div class="row bootstrap snippets bootdeys"> 
+      <div class="col-md-9 col-sm-7"> 
+          <h2>Jobs</h2> 
+      </div> 
       
-    </div>
-  </a> 
+  <div class="member-entry bg-secondary col-12">
+    {% for job in jobs %}
+      <a href="{% url 'jobdetails' job.id %}">
+        <div class=" bg-light row d-flex justify-content-start my-2">
+          <img src="{{ job.imageurl}}" style="height: 100px; width: 100px;" class="img-rounded col-4 border">
+          <div class="h4 mx-1 col-4 ">{{ job.name}}</div>
+          {% for x in jobdones %}
+            {% if x.name == job %}
+              <span class="h6 mx-2 d-flex justify-content-end"> Job done: {{ x.job_done }}</span> 
+            {% endif %}
+          {% endfor %}
+        </div>
+      </a> 
+    {% endfor %}
+
+
+      
+
+  </div>
 
 {% endblock content %}
