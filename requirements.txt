@@ -1,8 +1,6 @@
 psycopg; sys_platform == "linux"
 psycopg[binary]; sys_platform != "linux"
 gunicorn
-asgiref==3.7.2
-backports.zoneinfo==0.2.1
 dj-database-url==2.1.0
 Django==4.2.4
 Pillow==10.0.0
