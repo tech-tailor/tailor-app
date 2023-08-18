@@ -34,9 +34,9 @@ if not IS_HEROKU_APP:
     DEBUG = True
 
 if IS_HEROKU_APP:
-    ALLOWED_HOSTS = {"*"}
+    ALLOWED_HOSTS = ["*"]
 else:
-    ALLOWED_HOSTS = {}
+    ALLOWED_HOSTS = []
 
 
 
