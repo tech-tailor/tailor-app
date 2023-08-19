@@ -48,7 +48,6 @@ else:
 
 INSTALLED_APPS = [
     # Use WhiteNoise's runserver implementation instead of the Django default, for dev-prod parity.
-    "whitenoise.runserver_nostatic",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -147,9 +146,9 @@ AWS_S3_REGION_NAME = 'auto'
 
 STORAGES = {"staticfiles": {"BACKEND": "storages.backends.s3boto3.S3StaticStorage"}}
 
-STATIC_URL = '/media/'
+STATIC_URL = '/static/'
 
-MEDIA_URL = '/static/'
+MEDIA_URL = '/media/'
 
 
 
