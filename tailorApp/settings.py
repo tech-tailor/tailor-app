@@ -154,7 +154,7 @@ STORAGES = {
 
 STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.r2.cloudflarestorage.com/static/'
 
-STATIC_ROOT = 'static'
+STATIC_ROOT = 'BASE_DIR / static'
 
 
 
