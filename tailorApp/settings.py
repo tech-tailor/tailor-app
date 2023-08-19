@@ -152,11 +152,7 @@ STORAGES = {
     }
 }
 
-MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.r2.cloudflarestorage.com/media/'
-MEDIA_ROOT = 'media'
 STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.r2.cloudflarestorage.com/static/'
-STATIC_ROOT = 'static'
-
 
 
 
