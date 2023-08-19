@@ -135,7 +135,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 
-
 # Access the credentials from environment variables
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
@@ -157,6 +156,8 @@ MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.r2.cloudflarestorage.com/media/'
 MEDIA_ROOT = f'https://{AWS_STORAGE_BUCKET_NAME}.r2.cloudflarestorage.com/media/'
 STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.r2.cloudflarestorage.com/static/'
 STATIC_ROOT = f'https://{AWS_STORAGE_BUCKET_NAME}.r2.cloudflarestorage.com/static/'
+
+
 
 
 # Default primary key field type
