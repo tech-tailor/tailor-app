@@ -12,7 +12,9 @@
 
 
 <div>
-    <img src="{{ jobs.imageurl }}" class="img" style="height: 150px; width: 150px;" alt="">
+    <a href="{{ jobs.imageurl }}">
+        <img src="{{ jobs.imageurl }}" class="img" style="height: 150px; width: 150px;" alt="">
+    </a>
 </div>
 <a href="{% url 'operation' %}">
     <div class="spinner-grow text-primary" role="status">
@@ -61,7 +63,9 @@
 <div class="border border-secondary bg-tertiary">
     <div class="row ">
         <div class="col-6">Top Design Image1
-            <img src="{{ jobs.top_design_image_1.url }}" class="img " style="height: 150px; width: 150px;" alt=""> 
+            <a href="{{ jobs.top_design_image_1.url }}">
+                <img src="{{ jobs.top_design_image_1.url }}" class="img " style="height: 150px; width: 150px;" alt="">
+             </a>
         </div>
         <div class="col-6">Top Design Image2
             <img src="{{ jobs.top_design_image_2.url }}" class="img " style="height: 150px; width: 150px;" alt="">
