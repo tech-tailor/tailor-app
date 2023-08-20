@@ -11,5 +11,4 @@ urlpatterns = [
     path("signup/", views.signup, name="signup"),
     path("clients/<str:name>/<int:measurement_id>/", views.clientdetails, name="clientdetails"),
     path("jobs/<int:id>", views.jobdetails, name="jobdetails"),
-    path('admin/', admin.site.urls),
 ]
