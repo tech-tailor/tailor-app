@@ -144,9 +144,8 @@ AWS_S3_REGION_NAME = 'auto'
 AWS_DEFAULT_ACL = 'public-read'
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+MEDIA_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
