@@ -2,6 +2,8 @@ from django.urls import path
 from django.contrib import admin
 from . import views
 
+app_name = "core"
+
 urlpatterns = [
     path("", views.home, name="home"),
     path("profile/", views.myprofile, name="myprofile"),
