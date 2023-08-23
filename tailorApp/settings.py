@@ -38,7 +38,12 @@ if not IS_HEROKU_APP:
     DEBUG = True
 
 if IS_HEROKU_APP:
-    ALLOWED_HOSTS = ["*"]
+    ALLOWED_HOSTS = [
+        "www.neeyee.store",
+        "work.neeyee.store",
+        "neeyee.store",
+        
+    ]
 else:
     ALLOWED_HOSTS = []
 
@@ -55,6 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'store',
 
 ]
 
