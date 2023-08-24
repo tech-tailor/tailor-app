@@ -79,8 +79,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'tailorApp.urls'
 
-ROOT_HOSTCONF = 'neeyee.store'
-DEFAULT_HOST = 'www.neeyee.store'
+ROOT_HOSTCONF = 'tailorApp.hosts'
+DEFAULT_HOST = 'default'
 
 TEMPLATES = [
     {
