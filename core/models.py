@@ -137,12 +137,6 @@ class Jobs(models.Model):
         else:
             return 'core/static/core/images/no_image_available.png'
 
-    def imageurl(self):
-        if self.fabric_image_3:
-            return self.fabric_image_3.url
-        else:
-            return 'core/static/core/images/no_image_available.png'
-
 
 class Job_operation(models.Model):
     name = models.ForeignKey(Jobs, max_length=250, null=True, on_delete=models.SET_NULL)
