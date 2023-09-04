@@ -10,14 +10,14 @@
   <div class="container py-5 my-5">
   <div class="row bootstrap snippets bootdeys"> 
       <div class="col-md-9 col-sm-7"> 
-          <h2>Jobs</h2> 
+          <h2>Jobss</h2> 
       </div> 
       
   <div class="member-entry bg-secondary col-12">
     {% for job in jobs %}
       <a href="{% url 'jobdetails' job.id %}">
         <div class=" bg-light row d-flex justify-content-start my-2">
-          <img src="{{ job.imageurl}}" style="height: 100px; width: 100px;" class="img-rounded col-4 border">
+          <img src="{{ job.fabric_image_1 }}" style="height: 100px; width: 100px;" class="img-rounded col-4 border">
           <div class="h4 mx-1 col-4 ">{{ job.name}}</div>
           {% for x in jobdones %}
             {% if x.name == job %}

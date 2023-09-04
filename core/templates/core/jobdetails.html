@@ -12,8 +12,8 @@
 
 
 <div>
-    <a href="{{ jobs.imageurl }}">
-        <img src="{{ jobs.imageurl }}" class="img" style="height: 150px; width: 150px;" alt="">
+    <a href="{{ fabric_image_1_url }}">
+        <img src="{{ fabric_image_1_url }}" class="img" style="height: 150px; width: 150px;" alt="">
     </a>
 </div>
 <a href="{% url 'operation' %}">
@@ -49,10 +49,10 @@
 <div class="border border-secondary bg-tertiary">
     <div class="row ">
         <div class="col-6">Fabric 1
-            <img src="{{ jobs.fabric_image_1.url }}" class="img " style="height: 150px; width: 150px;" alt=""> 
+            <img src="{{ fabric_image_1_url }}" class="img " style="height: 150px; width: 150px;" alt=""> 
         </div>
         <div class="col-6"> Fabric 2
-            <img src="{{ jobs.fabric_image_2.url }}" class="img " style="height: 150px; width: 150px;" alt="">
+            <img src="{{ fabric_image_2_url }}" class="img " style="height: 150px; width: 150px;" alt="">
         </div>
     </div>
     <div class="border border-secondary"><p> Fabric note:</p>
@@ -63,12 +63,14 @@
 <div class="border border-secondary bg-tertiary">
     <div class="row ">
         <div class="col-6">Top Design Image1
-            <a href="{{ jobs.top_design_image_1.url }}">
-                <img src="{{ jobs.top_design_image_1.url }}" class="img " style="height: 150px; width: 150px;" alt="">
-             </a>
+            <a href="{{ top_design_image_1_url }}">
+                <img src="{{ top_design_image_1_url }}" class="img " style="height: 150px; width: 150px;" alt="">
+            </a>
         </div>
         <div class="col-6">Top Design Image2
-            <img src="{{ jobs.top_design_image_2.url }}" class="img " style="height: 150px; width: 150px;" alt="">
+            <a href="{{ top_design_image_2_url }}">
+                <img src="{{ top_design_image_2_url }}" class="img " style="height: 150px; width: 150px;" alt="">
+            </a>
         </div>
     </div>
     <div class="border border-secondary"><p> Top Design note:</p>
@@ -79,10 +81,10 @@
 <div class="border border-secondary bg-tertiary">
     <div class="row ">
         <div class="col-6">Trouser Design Image
-            <img src="{{ jobs.trouser_design_image.url }}" class="img " style="height: 150px; width: 150px;" alt=""> 
+            <img src="{{ trouser_design_image_url }}" class="img " style="height: 150px; width: 150px;" alt=""> 
         </div>
         <div class="col-6">Agbada Design Image
-            <img src="{{ jobs.agbada_design_image.url }}" class="img " style="height: 150px; width: 150px;" alt="">
+            <img src="{{ agbada_design_image_url }}" class="img " style="height: 150px; width: 150px;" alt="">
         </div>
     <div class="row ">
         </div>
@@ -100,10 +102,10 @@
 <div class="border border-secondary bg-tertiary">
     <div class="row ">
         <div class="col-6">cap Fabric Image
-            <img src="{{ jobs.cap_design_image_1.url }}" class="img " style="height: 150px; width: 150px;" alt=""> 
+            <img src="{{ cap_fabric_image_url }}" class="img " style="height: 150px; width: 150px;" alt=""> 
         </div>
         <div class="col-6">cap Design Image
-            <img src="{{ jobs.cap_design_image.url }}" class="img " style="height: 150px; width: 150px;" alt="">
+            <img src="{{ cap_design_image_url }}" class="img " style="height: 150px; width: 150px;" alt="">
         </div>
     <div class="row ">
         </div>

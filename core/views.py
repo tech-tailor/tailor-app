@@ -41,6 +41,24 @@ def clientdetails(request, name, measurement_id):
     return render(request, 'core/clientdetails.html', context)
 
 def jobdetails(request, id):
-    jobs = get_object_or_404(Jobs, id=id)
-    context = {'jobs':jobs}
+    jobs = Jobs.objects.get(id=id)
+    fabric_image_1_url = jobs.image_url('fabric_image_1')
+    fabric_image_2_url = jobs.image_url('fabric_image_2')
+    top_design_image_1_url = jobs.image_url('top_design_image_1')
+    top_design_image_2_url = jobs.image_url('top_design_image_2')
+    trouser_design_image_url = jobs.image_url('trouser_design_image')
+    agbada_design_image_url = jobs.image_url('agbada_design_image')
+    cap_fabric_image_url = jobs.image_url('cap_fabric_image')
+    cap_design_image_url = jobs.image_url('cap_design_image')
+    context = {
+        'jobs':jobs,
+        'fabric_image_1_url':fabric_image_1_url,
+        'fabric_image_2_url':fabric_image_2_url,
+        'top_design_image_1_url':top_design_image_1_url,
+        'top_design_image_2_url':top_design_image_2_url,
+        'trouser_design_image_url':trouser_design_image_url,
+        'agbada_design_image_url':agbada_design_image_url,
+        'cap_fabric_image_url':cap_fabric_image_url,
+        'cap_design_image_url':cap_design_image_url,
+        }
     return render(request, 'core/jobdetails.html', context)

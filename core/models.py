@@ -106,12 +106,12 @@ class Jobs(models.Model):
     fabric_note = models.TextField(null=True, blank=True)
     top_design_image_1 = models.ImageField(blank=True, null=True, upload_to='top_designs')
     top_design_image_2 = models.ImageField(blank=True, null=True, upload_to='top_designs')
-    top_design_image_3 = models.ImageField(blank=True, null=True, upload_to='top_designs')
     top_design_note = models.TextField(null=True, blank=True)
     trouser_design_image = models.ImageField(blank=True, null=True, upload_to='trouser_designs')
     trouser_design_note = models.TextField(null=True, blank=True)
     agbada_design_image = models.ImageField(blank=True, null=True, upload_to='agbada_designs')
     agbada_design_note = models.TextField(null=True, blank=True)
+    cap_fabric_image= models.ImageField(blank=True, null=True, upload_to='cap_fabric')
     cap_design_image= models.ImageField(blank=True, null=True, upload_to='cap_designs')
     cap_design_note = models.TextField(null=True, blank=True)
     top_worker = models.ForeignKey(Workers, on_delete=models.SET_NULL, null=True, blank=True)
@@ -123,19 +123,13 @@ class Jobs(models.Model):
     def __str__(self):
         return str(self.name)
     
-    def imageurl(self):
-        if self.fabric_image_1:
-            return self.fabric_image_1.url
-        else:
-            return 'core/static/core/images/no_image_available.png'
-    
-
-    
-    def imageurl(self):
-        if self.fabric_image_2:
-            return self.fabric_image_2.url
-        else:
-            return 'core/static/core/images/no_image_available.png'
+    '''return a placeholder image when no image is uploaded'''
+    def image_url(self, field_name): 
+        try:
+            image_field = getattr(self, field_name)
+            return image_field.url
+        except (AttributeError, ValueError):
+            return f"static/core/images/no_image_available.png"
 
 
 class Job_operation(models.Model):
@@ -170,19 +164,3 @@ class Job_delivery(models.Model):
 
     def __str__(self):
         return str(self.name)
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
