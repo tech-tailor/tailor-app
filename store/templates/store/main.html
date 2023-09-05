@@ -23,7 +23,7 @@
     />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="store/css/index.css" />
+    <link rel="stylesheet" href="{% static 'store/css/index.css' %}" />
     <link rel="icon" href="./images/logo/favicon.svg" />
   </head>
 
@@ -34,12 +34,10 @@
     <header id="header">
       <nav class="navbar navbar-expand-lg bg-light fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="{% url 'home' %}">
             <img
-              src="{% static 'store/images/blue_neeyee_logo.png' %}"
-              class="img-fluid"
-              width="100%"
-              alt="logo"
+              src="{% static 'store/images/blue_neeyee_logo.png' %}"          
+              width="40" height="40" alt="logo"
             />
           </a>
           <button
@@ -110,7 +108,7 @@
     
     {% endblock footer%}
 
-    <script src="store/script/index.js"></script>
+    <script src="{% static 'store/script/index.js' %}"></script>
 
     <!-- Bootstrap JS -->
     <script
