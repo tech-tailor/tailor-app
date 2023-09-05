@@ -1,2 +1,656 @@
-<h1>Neeyee Store</h1>
-<a href="work.neeyee.store">work app</a>
+
+{% extends 'store/main.html' %}
+{% load static %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+      <!-- Cart Section  -->
+      <div class="shopping-cart">
+        <div class="box">
+          <i class="fa fa-trash"></i>
+          <img
+            src="./images/products/product-1.jpg"
+            alt="product-image"
+            width="25%"
+          />
+          <div class="content">
+            <h3>Smart Watch</h3>
+            <span class="price">$5.99/-</span>
+            <span class="quantity">Qty: 1</span>
+          </div>
+        </div>
+
+        <div class="box">
+          <i class="fa fa-trash"></i>
+          <img
+            src="./images/products/product-2.jpg"
+            alt="product-image"
+            width="25%"
+          />
+          <div class="content">
+            <h3>Speaker</h3>
+            <span class="price">$4.99/-</span>
+            <span class="quantity">Qty: 1</span>
+          </div>
+        </div>
+
+        <div class="box">
+          <i class="fa fa-trash"></i>
+          <img
+            src="./images/products/product-3.jpg"
+            alt="product-image"
+            width="25%"
+          />
+          <div class="content">
+            <h3>Camera</h3>
+            <span class="price">$9.99/-</span>
+            <span class="quantity">Qty: 1</span>
+          </div>
+        </div>
+        <div class="total">total : $21.99/-</div>
+        <a href="" class="btn btn-outline-primary">Checkout</a>
+      </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="home pt-5 overflow-hidden">
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide"
+        data-bs-ride="true"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="home-banner home-banner-1">
+              <div class="home-banner-text">
+                <h1>Students</h1>
+                <h2>52% Discount For This Season</h2>
+                <a href="#" class="btn btn-primary text-uppercase mt-4"
+                  >Our Products</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="home-banner home-banner-2">
+              <div class="home-banner-text">
+                <h1>Women</h1>
+                <h2>Get Best Deals</h2>
+                <a href="#" class="btn btn-primary text-uppercase mt-4"
+                  >Our Products</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true">
+            <span class="ti-angle-left slider-icon"></span>
+          </span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true">
+            <span class="ti-angle-right slider-icon"></span>
+          </span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+      <!-- offer section  -->
+    <section>
+      <div class="offers">
+        <div class="container">
+          <div class="row">
+            <!-- box 1  -->
+            <div class="col-sm-6 col-lg-4 mb-lg-0 mb-4">
+              <a href="#">
+                <div class="offer-box text-center position-relative">
+                  <div class="offer-inner">
+                    <div class="offer-image position-relative overflow-hidden">
+                      <img
+                        src="./images/products/product-3.jpg"
+                        alt="camera"
+                        class="img-fluid"
+                      />
+                      <div class="offer-overlay"></div>
+                    </div>
+                    <div class="offer-info">
+                      <div class="offer-inner-info">
+                        <p class="heading-bigger text-capitalize">Sale 30%</p>
+                        <p
+                          class="offer-title-1 text-uppercase font-weight-bold"
+                        >
+                          Don't Miss This Chance
+                        </p>
+                        <button
+                          type="button"
+                          class="btn btn-outline-primary text-uppercase mt-4"
+                        >
+                          Shop Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- box 2 -->
+            <div
+              class="col-sm-6 col-lg-4 mb-lg-0 mb-4 d-flex flex-column justify-content-between"
+            >
+              <a href="#">
+                <div
+                  class="offer-box text-center position-relative mb-4 mb-sm-0 mb-lg-0"
+                >
+                  <div class="offer-inner">
+                    <div class="offer-image position-relative overflow-hidden">
+                      <img
+                        src="./images/products/product-2.jpg"
+                        alt="mic"
+                        class="img-fluid"
+                      />
+                      <div class="offer-overlay"></div>
+                    </div>
+                    <div class="offer-info">
+                      <div class="offer-inner-info">
+                        <p class="heading-bigger text-capitalize">Sale 70%</p>
+                        <p
+                          class="offer-title-1 text-uppercase font-weight-bold"
+                        >
+                          Don't Miss This Chance
+                        </p>
+                        <button
+                          type="button"
+                          class="btn btn-outline-primary text-uppercase mt-4"
+                        >
+                          Shop Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- box 3 -->
+            <div class="col-sm-6 col-lg-4 mb-lg-0 mb-4">
+              <a href="#">
+                <div
+                  class="offer-box text-center position-relative third-offer"
+                >
+                  <div class="offer-inner">
+                    <div class="offer-image position-relative overflow-hidden">
+                      <img
+                        src="./images/products/product-4.jpg"
+                        alt="iphone"
+                        class="img-fluid"
+                      />
+                      <div class="offer-overlay"></div>
+                    </div>
+                    <div class="offer-info">
+                      <div class="offer-inner-info">
+                        <p class="heading-bigger text-capitalize">Sale 25%</p>
+                        <p
+                          class="offer-title-1 text-uppercase font-weight-bold"
+                        >
+                          Don't Miss This Chance
+                        </p>
+                        <button
+                          type="button"
+                          class="btn btn-outline-primary text-uppercase mt-4"
+                        >
+                          Shop Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products section -->
+    <section id="products" class="products">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="headline text-center mb-3">
+              <h2 class="pb-3 position-relative d-inline-block">
+                FEATURED PRODUCTS
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-lg-4">
+            <a href="#" class="d-block text-center mb-4">
+              <div class="product-list">
+                <div class="product-image position-relative">
+                  <span class="sale">Sale</span>
+                  <img
+                    decoding="async"
+                    src="images/products/product-5.jpg"
+                    alt="products"
+                    class="img-fluid"
+                  />
+                </div>
+                <div class="product-name pt-3">
+                  <h3 class="text-capitalize">Wireless Headphones</h3>
+                  <p class="mb-0 amount">$399.00 <del>$580.00</del></p>
+                  <div class="py-1">
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                  <button type="button" class="add_to_Cart">ADD TO CART</button>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-6 col-lg-4">
+            <a href="#" class="d-block text-center mb-4">
+              <div class="product-list">
+                <div class="product-image position-relative">
+                  <img
+                    decoding="async"
+                    src="images/products/product-6.jpg"
+                    alt="products"
+                    class="img-fluid"
+                  />
+                </div>
+                <div class="product-name pt-3">
+                  <h3 class="text-capitalize">Mini Bluetooth Speaker</h3>
+                  <p class="mb-0 amount">$299.00</p>
+                  <div class="py-1">
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                  <button type="button" class="add_to_Cart">ADD TO CART</button>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-6 col-lg-4">
+            <a href="#" class="d-block text-center mb-4">
+              <div class="product-list">
+                <div class="product-image position-relative">
+                  <img
+                    decoding="async"
+                    src="images/products/product-7.jpg"
+                    alt="products"
+                    class="img-fluid"
+                  />
+                </div>
+                <div class="product-name pt-3">
+                  <h3 class="text-capitalize">PX7 Wireless Headphones</h3>
+                  <p class="mb-0 amount">$599.00</p>
+                  <div class="py-1">
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                  </div>
+                  <button type="button" class="add_to_Cart">ADD TO CART</button>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-6 col-lg-4">
+            <a href="#" class="d-block text-center mb-4">
+              <div class="product-list">
+                <div class="product-image position-relative">
+                  <img
+                    decoding="async"
+                    src="images/products/product-8.jpg"
+                    alt="products"
+                    class="img-fluid"
+                  />
+                </div>
+                <div class="product-name pt-3">
+                  <h3 class="text-capitalize">Apple MacBook Air</h3>
+                  <p class="mb-0 amount">$599.00</p>
+                  <div class="py-1">
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                  <button type="button" class="add_to_Cart">ADD TO CART</button>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-6 col-lg-4">
+            <a href="#" class="d-block text-center mb-4">
+              <div class="product-list">
+                <div class="product-image position-relative">
+                  <span class="sale">Sale</span>
+                  <img
+                    decoding="async"
+                    src="images/products/product-1.jpg"
+                    alt="products"
+                    class="img-fluid"
+                  />
+                </div>
+                <div class="product-name pt-3">
+                  <h3 class="text-capitalize">Xiaomi Mi Band 5</h3>
+                  <p class="mb-0 amount">$599.00 <del>$700.00</del></p>
+                  <div class="py-1">
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                  <button type="button" class="add_to_Cart">ADD TO CART</button>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-6 col-lg-4">
+            <a href="#" class="d-block text-center mb-4">
+              <div class="product-list">
+                <div class="product-image position-relative">
+                  <img
+                    decoding="async"
+                    src="images/products/product-3.jpg"
+                    alt="products"
+                    class="img-fluid"
+                  />
+                </div>
+                <div class="product-name pt-3">
+                  <h3 class="text-capitalize">WiFi Security Camera</h3>
+                  <p class="mb-0 amount">$499.00</p>
+                  <div class="py-1">
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                  <button type="button" class="add_to_Cart">ADD TO CART</button>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- banner section -->
+    <section class="banner-section">
+      <div class="container">
+        <div class="row banner-row">
+          <div class="col-lg-6 col-md-6 col-12">
+            <div
+              class="single-banner"
+              style="background-image: url('images/banner/banner-1-bg.jpg')"
+            >
+              <div class="content">
+                <h2>Smart Watch 2.0</h2>
+                <p>
+                  Space Gray Aluminum Case with <br />Black/Volt Real Sport Band
+                </p>
+                <div class="button">
+                  <a href="product-grids.html" class="btn btn-primary"
+                    >Shop Now</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-12">
+            <div
+              class="single-banner"
+              style="background-image: url('images/banner/banner-2-bg.jpg')"
+            >
+              <div class="content">
+                <h2>Smart Headphone</h2>
+                <p>
+                  Lorem ipsum dolor sit amet, <br />eiusmod tempor incididunt ut
+                  labore.
+                </p>
+                <div class="button">
+                  <a href="product-grids.html" class="btn btn-primary"
+                    >Shop Now</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Special section -->
+    <section id="special" class="special">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="headline text-center mb-2">
+              <h2 class="pb-3 position-relative d-inline-block">SUMMER SALE</h2>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-lg-7 text-center text-lg-start">
+            <div class="countdown-container">
+              <h2 class="text-uppercase">Black Bird 4k Drone</h2>
+              <p class="my-4">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+              <ul class="list-unstyled countdown-counter">
+                <li><span class="fs-1 d-block" id="days">00</span> Days</li>
+                <li><span class="fs-1 d-block" id="hours">00</span> Hr</li>
+                <li><span class="fs-1 d-block" id="min">00</span> Min</li>
+                <li><span class="fs-1 d-block" id="sec">00</span> Sec</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-12 col-lg-5 special-div">
+            <div class="special-img position-relative">
+              <span class="">Sale</span>
+              <img
+                decoding="async"
+                src="images/products/01.jpg"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+          <div class="col-sm-12 col-lg-7 text-center text-lg-start">
+            <span class="countdown-price h3 d-block mb-4"
+                >$299.00 <del>$500.00</del></span
+              >
+              <button type="button" class="btn btn-primary">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog">
+      <div class="headline text-center mb-2">
+        <h2 class="pb-3 position-relative d-inline-block">
+          Recent Posts
+        </h2>
+      </div>
+
+      <div class="blog-container">
+        <!-- box1 -->
+        <div class="blog-box">
+          <div class="blog-img">
+            <img src="images/products/product-4.jpg" alt="iphone">
+          </div>
+          <div class="blog-text">
+            <span>08 July 2023 /Drone</span>
+            <a href="#" class="blog-title">Apple iPhone 8 Plus Review: iPhone X Power</a>
+            <p>Check back here for all the latest news, rumours and leaked photos of the next flagship phone</p>
+            <a href="#">Read More</a>
+          </div>
+        </div>
+
+        <!-- box2 -->
+        <div class="blog-box">
+          <div class="blog-img">
+            <img src="images/products/product-5.jpg" alt="headphone">
+          </div>
+          <div class="blog-text">
+            <span>08 July 2023 /Drone</span>
+            <a href="#" class="blog-title">wireless headphones - latest news</a>
+            <p>Latest London news, business, sport, showbiz and entertainment from the London Evening</p>
+            <a href="#">Read More</a>
+          </div>
+        </div>
+
+        <!-- box3 -->
+        <div class="blog-box">
+          <div class="blog-img">
+            <img src="images/products/product-6.jpg" alt="camera">
+          </div>
+          <div class="blog-text">
+            <span>08 July 2023 /Drone</span>
+            <a href="#" class="blog-title">Camera-News articles: Digital Photography Review</a>
+            <p>The best camera deals, reviews, product advice, and unmissable photography news</p>
+            <a href="#">Read More</a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Contact US section -->
+    <section id="contact">
+      <div class="contact">
+        <div class="container">
+          <div class="mb-5 text-center">
+            <h5>Let’s Start a Conversation!</h5>
+            <h2 class="fw-bold">Contact Us</h2>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-5 col-md-5">
+              <h4 class="fw-bold ml-5">Contact Info</h4>
+              <ul class="info list-unstyled">
+                <li class="d-flex align-items-center">
+                  <span class="pe-3 ti-location-pin fs-5"></span>
+                  <p><a href="">Lorem ipsum dolor sit amet, consectetur.</a></p>
+                </li>
+                <li class="d-flex align-items-center">
+                  <span class="pe-3 ti-mobile fs-5"></span>
+                  <p><a href="">074 555-666-777</a></p>
+                </li>
+                <li class="d-flex align-items-center">
+                  <span class="pe-3 ti-envelope fs-5"></span>
+                  <p><a href="">Info@eshop.uk</a></p>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-7 col-md-7 pt-lg-0 pt-md-0 pt-4">
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="name"
+                        id="name"
+                        placeholder="Your name"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input
+                        type="email"
+                        class="form-control"
+                        name="email"
+                        id="email"
+                        placeholder="Email address"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input
+                        class="textarea"
+                        name="message"
+                        cols="30"
+                        rows="4"
+                        id="message"
+                        placeholder="Enter your message"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <button class="btn btn-primary">
+                      <span class="ti-rocket pe-2 fs-5"></span> Send Message
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer section -->
+    <footer>
+      <div class="p-3 copyright">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-12 col-lg-6 p-1 p-lg-3 text-center text-lg-start">
+              <p class="my-0">
+                Copyright © 2023 <a href="#">Electronics-SHOP</a> All Rights
+                Reserved
+              </p>
+            </div>
+            <div class="col-12 col-lg-6 p-1 p-lg-3 text-center text-lg-end">
+              <p>Designed by <a href="#" target=" _blank">Madssar Aftab</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+{% endblock content %}
