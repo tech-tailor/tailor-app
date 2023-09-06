@@ -3,13 +3,17 @@
 {% load static %}
 {% block title %} Home {% endblock %}
 
+{% block navbar %} {% endblock %}
+
+
+
 {% block content %}
       <!-- Cart Section  -->
       <div class="shopping-cart">
         <div class="box">
           <i class="fa fa-trash"></i>
           <img
-            src="./images/products/product-1.jpg"
+            src="{% static 'store/images/blue_neeyee_logo.png' %}"
             alt="product-image"
             width="25%"
           />
@@ -23,7 +27,7 @@
         <div class="box">
           <i class="fa fa-trash"></i>
           <img
-            src="./images/products/product-2.jpg"
+            src="{% static 'store/images/blue_neeyee_logo.png' %}"
             alt="product-image"
             width="25%"
           />
@@ -37,7 +41,7 @@
         <div class="box">
           <i class="fa fa-trash"></i>
           <img
-            src="./images/products/product-3.jpg"
+            src="{% static 'store/images/blue_neeyee_logo.png' %}"
             alt="product-image"
             width="25%"
           />
@@ -79,7 +83,7 @@
           <div class="carousel-item active">
             <div class="home-banner home-banner-1">
               <div class="home-banner-text">
-                <h1>Students</h1>
+                <h1>No 1 Online Kaftan store</h1>
                 <h2>52% Discount For This Season</h2>
                 <a href="#" class="btn btn-primary text-uppercase mt-4"
                   >Our Products</a
@@ -90,7 +94,7 @@
           <div class="carousel-item">
             <div class="home-banner home-banner-2">
               <div class="home-banner-text">
-                <h1>Women</h1>
+                <h1>24h delivery timeline</h1>
                 <h2>Get Best Deals</h2>
                 <a href="#" class="btn btn-primary text-uppercase mt-4"
                   >Our Products</a
@@ -129,13 +133,13 @@
         <div class="container">
           <div class="row">
             <!-- box 1  -->
-            <div class="col-sm-6 col-lg-4 mb-lg-0 mb-4">
+            <div class="col-sm-4  mb-lg-0 mb-4">
               <a href="#">
                 <div class="offer-box text-center position-relative">
                   <div class="offer-inner">
                     <div class="offer-image position-relative overflow-hidden">
                       <img
-                        src="./images/products/product-3.jpg"
+                        src="{% static 'store/images/blue_neeyee_logo.png' %}"
                         alt="camera"
                         class="img-fluid"
                       />
@@ -164,7 +168,7 @@
 
             <!-- box 2 -->
             <div
-              class="col-sm-6 col-lg-4 mb-lg-0 mb-4 d-flex flex-column justify-content-between"
+              class="col-sm-4  mb-lg-0 mb-4 d-flex flex-column justify-content-between"
             >
               <a href="#">
                 <div
@@ -173,7 +177,7 @@
                   <div class="offer-inner">
                     <div class="offer-image position-relative overflow-hidden">
                       <img
-                        src="./images/products/product-2.jpg"
+                        src="{% static 'store/images/blue_neeyee_logo.png' %}"
                         alt="mic"
                         class="img-fluid"
                       />
@@ -201,7 +205,7 @@
             </div>
 
             <!-- box 3 -->
-            <div class="col-sm-6 col-lg-4 mb-lg-0 mb-4">
+            <div class="col-sm-4  mb-lg-0 mb-4">
               <a href="#">
                 <div
                   class="offer-box text-center position-relative third-offer"
@@ -209,7 +213,7 @@
                   <div class="offer-inner">
                     <div class="offer-image position-relative overflow-hidden">
                       <img
-                        src="./images/products/product-4.jpg"
+                        src="{% static 'store/images/blue_neeyee_logo.png' %}"
                         alt="iphone"
                         class="img-fluid"
                       />
@@ -260,7 +264,7 @@
                   <span class="sale">Sale</span>
                   <img
                     decoding="async"
-                    src="images/products/product-5.jpg"
+                    src="{% static 'store/images/blue_neeyee_logo.png' %}"
                     alt="products"
                     class="img-fluid"
                   />
@@ -286,7 +290,7 @@
                 <div class="product-image position-relative">
                   <img
                     decoding="async"
-                    src="images/products/product-6.jpg"
+                    src="{% static 'store/images/blue_neeyee_logo.png' %}"
                     alt="products"
                     class="img-fluid"
                   />
@@ -312,7 +316,7 @@
                 <div class="product-image position-relative">
                   <img
                     decoding="async"
-                    src="images/products/product-7.jpg"
+                    src="{% static 'store/images/blue_neeyee_logo.png' %}"
                     alt="products"
                     class="img-fluid"
                   />
@@ -338,7 +342,7 @@
                 <div class="product-image position-relative">
                   <img
                     decoding="async"
-                    src="images/products/product-8.jpg"
+                    src="{% static 'store/images/blue_neeyee_logo.png' %}"
                     alt="products"
                     class="img-fluid"
                   />
@@ -365,7 +369,7 @@
                   <span class="sale">Sale</span>
                   <img
                     decoding="async"
-                    src="images/products/product-1.jpg"
+                    src="{% static 'store/images/blue_neeyee_logo.png' %}"
                     alt="products"
                     class="img-fluid"
                   />
@@ -391,7 +395,7 @@
                 <div class="product-image position-relative">
                   <img
                     decoding="async"
-                    src="images/products/product-3.jpg"
+                    src="{% static 'store/images/blue_neeyee_logo.png' %}"
                     alt="products"
                     class="img-fluid"
                   />
@@ -422,7 +426,7 @@
           <div class="col-lg-6 col-md-6 col-12">
             <div
               class="single-banner"
-              style="background-image: url('images/banner/banner-1-bg.jpg')"
+              style="background-image: "{% static 'store/images/blue_neeyee_logo.png' %}"
             >
               <div class="content">
                 <h2>Smart Watch 2.0</h2>
@@ -440,7 +444,7 @@
           <div class="col-lg-6 col-md-6 col-12">
             <div
               class="single-banner"
-              style="background-image: url('images/banner/banner-2-bg.jpg')"
+              style="background-image: url('{% static 'store/images/blue_neeyee_logo.png' %}')"
             >
               <div class="content">
                 <h2>Smart Headphone</h2>
@@ -491,7 +495,7 @@
               <span class="">Sale</span>
               <img
                 decoding="async"
-                src="images/products/01.jpg"
+                src="{% static 'store/images/blue_neeyee_logo.png' %}"
                 class="img-fluid"
               />
             </div>
@@ -506,63 +510,13 @@
       </div>
     </section>
 
-    <!-- Blog Section -->
-    <section id="blog">
-      <div class="headline text-center mb-2">
-        <h2 class="pb-3 position-relative d-inline-block">
-          Recent Posts
-        </h2>
-      </div>
-
-      <div class="blog-container">
-        <!-- box1 -->
-        <div class="blog-box">
-          <div class="blog-img">
-            <img src="images/products/product-4.jpg" alt="iphone">
-          </div>
-          <div class="blog-text">
-            <span>08 July 2023 /Drone</span>
-            <a href="#" class="blog-title">Apple iPhone 8 Plus Review: iPhone X Power</a>
-            <p>Check back here for all the latest news, rumours and leaked photos of the next flagship phone</p>
-            <a href="#">Read More</a>
-          </div>
-        </div>
-
-        <!-- box2 -->
-        <div class="blog-box">
-          <div class="blog-img">
-            <img src="images/products/product-5.jpg" alt="headphone">
-          </div>
-          <div class="blog-text">
-            <span>08 July 2023 /Drone</span>
-            <a href="#" class="blog-title">wireless headphones - latest news</a>
-            <p>Latest London news, business, sport, showbiz and entertainment from the London Evening</p>
-            <a href="#">Read More</a>
-          </div>
-        </div>
-
-        <!-- box3 -->
-        <div class="blog-box">
-          <div class="blog-img">
-            <img src="images/products/product-6.jpg" alt="camera">
-          </div>
-          <div class="blog-text">
-            <span>08 July 2023 /Drone</span>
-            <a href="#" class="blog-title">Camera-News articles: Digital Photography Review</a>
-            <p>The best camera deals, reviews, product advice, and unmissable photography news</p>
-            <a href="#">Read More</a>
-          </div>
-        </div>
-      </div>
-
-    </section>
 
     <!-- Contact US section -->
     <section id="contact">
       <div class="contact">
         <div class="container">
           <div class="mb-5 text-center">
-            <h5>Let’s Start a Conversation!</h5>
+            <h5>Start a Conversation!</h5>
             <h2 class="fw-bold">Contact Us</h2>
           </div>
 
@@ -572,15 +526,15 @@
               <ul class="info list-unstyled">
                 <li class="d-flex align-items-center">
                   <span class="pe-3 ti-location-pin fs-5"></span>
-                  <p><a href="">Lorem ipsum dolor sit amet, consectetur.</a></p>
+                  <p><a href="">EN 472, Aco Estate, Airport Road Lugbe.</a></p>
                 </li>
                 <li class="d-flex align-items-center">
                   <span class="pe-3 ti-mobile fs-5"></span>
-                  <p><a href="">074 555-666-777</a></p>
+                  <p><a href="">+2347065727413</a></p>
                 </li>
                 <li class="d-flex align-items-center">
                   <span class="pe-3 ti-envelope fs-5"></span>
-                  <p><a href="">Info@eshop.uk</a></p>
+                  <p><a href="">Info@neeyee.store</a></p>
                 </li>
               </ul>
             </div>
@@ -641,12 +595,12 @@
           <div class="row align-items-center">
             <div class="col-12 col-lg-6 p-1 p-lg-3 text-center text-lg-start">
               <p class="my-0">
-                Copyright © 2023 <a href="#">Electronics-SHOP</a> All Rights
+                Copyright © 2023 <a href="#">Kaftan-SHOP</a> All Rights
                 Reserved
               </p>
             </div>
             <div class="col-12 col-lg-6 p-1 p-lg-3 text-center text-lg-end">
-              <p>Designed by <a href="#" target=" _blank">Madssar Aftab</a>.</p>
+              <p>Designed by <a href="#" target=" _blank">Neeyee-Tech LTD</a>.</p>
             </div>
           </div>
         </div>
