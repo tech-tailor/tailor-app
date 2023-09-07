@@ -202,9 +202,9 @@ AWS_DEFAULT_ACL = 'public-read'
 #serve static files during production
 if IS_HEROKU_APP:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    MEDIA_URL = f"https://s3.us-east-005.backblazeb2.com/media/"
+    MEDIA_URL = f"https://s3.us-east-005.backblazeb2.com/"
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
-    STATIC_URL = f"https://s3.us-east-005.backblazeb2.com/static/"
+    STATIC_URL = f"https://s3.us-east-005.backblazeb2.com/"
 
 
 #serve static files during development
