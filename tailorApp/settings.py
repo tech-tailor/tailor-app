@@ -201,7 +201,7 @@ AWS_DEFAULT_ACL = 'public-read'
 
 
 #serve static files during development
-if DEBUG:
+if DEBUG == True:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     STATIC_URL = '/static/'
 
