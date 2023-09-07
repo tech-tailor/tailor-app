@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+#development server script
+local_sever_script.sh
+
 # test files
 akin
 test.py

@@ -101,7 +101,7 @@ class Jobs(models.Model):
     status = models.CharField(max_length=50, choices=Job_Status.choices, default=Job_Status.PRODUCT)
     measurement = models.ForeignKey(ClientMeasurements, on_delete=models.SET_NULL, null=True)
     fabric_image_1 = models.ImageField(blank=True, null=True, upload_to='fabric_images')
-    fabric_image_2 = models.ImageField(blank=True, null=True, upload_to='fabric')
+    fabric_image_2 = models.ImageField(blank=True, null=True, upload_to='fabric_images')
     fabric_yardage = models.IntegerField(null=True, blank=True)
     fabric_note = models.TextField(null=True, blank=True)
     top_design_image_1 = models.ImageField(blank=True, null=True, upload_to='top_designs')
@@ -129,7 +129,15 @@ class Jobs(models.Model):
             image_field = getattr(self, field_name)
             return image_field.url
         except (AttributeError, ValueError):
-            return f"static/core/images/no_image_available.png"
+            return f"/static/core/media/no_image_available.png"
+        
+    def fabric_image_1_image_url(self): 
+        try:
+            image_field = self.fabric_image_1
+            return image_field.url
+        except (AttributeError, ValueError):
+            return f"/static/core/media/no_image_available.png" 
+
 
 
 class Job_operation(models.Model):

@@ -8,13 +8,14 @@ def home(request):
     jobs = Jobs.objects.all().order_by('-id')
     jobdones =Job_operation.objects.all()
     context = {'jobs':jobs,
-               'jobdones':jobdones
+               'jobdones':jobdones,
                }
     return render(request, 'core/home.html', context)
 
 
 def operation(request):
     return render(request, 'core/operation.html')
+
 
 def signin(request):
     return render(request, 'core/signin.html')
