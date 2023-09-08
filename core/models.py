@@ -129,14 +129,14 @@ class Jobs(models.Model):
             image_field = getattr(self, field_name)
             return image_field.url
         except (AttributeError, ValueError):
-            return f"/static/core/media/no_image_available.png"
+            return f"https://tailor-app-storage.s3.us-east-005.backblazeb2.com/tailor-app-storage/core/media/no_image_available.png"
         
     def fabric_image_1_image_url(self): 
         try:
             image_field = self.fabric_image_1
             return image_field.url
         except (AttributeError, ValueError):
-            return f"/static/core/media/no_image_available.png" 
+            return f"https://tailor-app-storage.s3.us-east-005.backblazeb2.com/tailor-app-storage/core/media/no_image_available.png" 
 
 
 
