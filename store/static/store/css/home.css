@@ -1,0 +1,21 @@
+/*product text*/
+.small-text{
+    font-size: 12px;
+}
+
+/*container for image and text overlay*/
+.image-container{
+    position: relative;
+}
+/*overlay text*/
+.overlay-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7); /* Background color with transparency */
+    color: #fff; /* Text color */
+    padding: 10px;
+    font-size: 25px;
+
+}

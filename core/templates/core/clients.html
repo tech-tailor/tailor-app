@@ -2,10 +2,11 @@
 {% load static  %}
 {% block title %} Home {% endblock %}
 
+{% block page_title %} Clients {% endblock%}
 
 {% block content %}
 
-<div class="list-group mt-2 py-5">
+<div class="list-group col mt-4 py-5">
     {% for client in clients %}
     <a href="{% url 'clientdetails' client.name client.measurement_id %}" class="list-group-item my-3 list-group-item-action active" aria-current="true">
         <div>

@@ -7,81 +7,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title%} {% endblock%} - Neeyee</title>
 
-    <!-- GOOGLE FONT -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500&family=Roboto:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <!-- bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-      crossorigin="anonymous"
-    />
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'store/css/index.css' %}" />
-    <link rel="icon" href="./images/logo/favicon.svg" />
+    <link rel="stylesheet" href="{% static 'store/css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/footer.css' %}">
   </head>
 
   
   <body>
     {% block navbar %}
-    <!-- Navbar -->
-    <header id="header">
-      <nav class="navbar navbar-expand-lg bg-light fixed-top">
-        <div class="container">
-          <a class="navbar-brand" href="{% url 'home' %}">
-            <img
-              src="{% static 'store/images/blue_neeyee_logo.png' %}"          
-              width="40" height="40" alt="logo"
-            />
+    <!-- for mobile view -->
+    <div class="container d-block d-md-none">
+      <nav class="navbar navbar-tabs fixed-top navbar-light bg-light">
+        <div class="container-fluid justify-content-center">
+          <a href="{% url 'home'%}" class="">
+            <img style=" width: 40px; height: 40px; " class="my-2" src="{% static 'store/media/blue_neeyee_logo.png' %}" alt="">
           </a>
-
-          <form class="d-flex mt-3" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
-
-
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="ti-align-justify navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="#home">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#products">Products</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#blog">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#contact">Contact Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./login.html">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./register.html">Register</a>
-              </li>
-            </ul>
-          </div>
+          <!--search bar-->
+          <span class="d-flex me-2">
+            <form class="d-flex mx-2 ">
+              <input class="form-control " type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <!--user icon-->
+            <a href="">
+              <img class=" m-2  " style=" width: 20px; height: 20px; "  src="{% static 'store/media/user.png' %}" alt="">
+            </a>
+            <!-- cart-->
+            <a href="">
+              <img style=" width: 20px; height: 20px; " class=" m-2  " src="{% static 'store/media/cart.png' %}" alt="">
+            </a>
+          </span>
         </div>
-      </nav>
+      </nav> 
+      <p class="m-5" ></p>
+    </div>
+
+
+    <!-- for larger screens view -->
+    <div class="container d-none d-md-block">
+      <nav class="navbar navbar-tabs fixed-top navbar-light bg-light">
+        <div class="container-fluid ">
+          <a href="{% url 'home'%}">
+            <img style=" width: 40px; height: 40px; " class="ms-5" src="{% static 'store/media/blue_neeyee_logo.png' %}" alt="">
+          </a>
+          
+          <span class="d-flex me-5">
+            <form class="d-flex mx-2 ">
+              <input class="form-control " type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <a href="">
+              <img class=" m-2 " style=" width: 20px; height: 20px; "  src="{% static 'store/media/user.png' %}" alt="">
+            </a>
+    
+            <a href="">
+              <img style=" width: 20px; height: 20px; " class=" m-2 " src="{% static 'store/media/cart.png' %}" alt="">
+            </a>
+          </span>
+        </div>
+      </nav> 
+      <p class="m-5" ></p>
+    </div>
+
     {% endblock navbar %}
 
 
@@ -92,25 +84,78 @@
 
     
     {% block footer%}
-    <nav class="navbar-brand bg-light mt-5 fixed-bottom">
-      <div class=" container-fluid btn-dark">
+    <footer>
+      <div class="footer-content">
+          <img src="img/light-logo.png" class="logo" alt="">
+          <div class="footer-ul-container">
+              <ul class="category">
+                  <li class="category-title">men</li>
+                  <li><a href="#" class="footer-link">t-shirts</a></li>
+                  <li><a href="#" class="footer-link">sweatshirts</a></li>
+                  <li><a href="#" class="footer-link">shirts</a></li>
+                  <li><a href="#" class="footer-link">jeans</a></li>
+                  <li><a href="#" class="footer-link">trousers</a></li>
+                  <li><a href="#" class="footer-link">shoes</a></li>
+                  <li><a href="#" class="footer-link">casuals</a></li>
+                  <li><a href="#" class="footer-link">formals</a></li>
+                  <li><a href="#" class="footer-link">sports</a></li>
+                  <li><a href="#" class="footer-link">watch</a></li>
+              </ul>
+              <ul class="category">
+                  <li class="category-title">women</li>
+                  <li><a href="#" class="footer-link">t-shirts</a></li>
+                  <li><a href="#" class="footer-link">sweatshirts</a></li>
+                  <li><a href="#" class="footer-link">shirts</a></li>
+                  <li><a href="#" class="footer-link">jeans</a></li>
+                  <li><a href="#" class="footer-link">trousers</a></li>
+                  <li><a href="#" class="footer-link">shoes</a></li>
+                  <li><a href="#" class="footer-link">casuals</a></li>
+                  <li><a href="#" class="footer-link">formals</a></li>
+                  <li><a href="#" class="footer-link">sports</a></li>
+                  <li><a href="#" class="footer-link">watch</a></li>
+              </ul>   
+          </div>
+      </div>
+      <p class="footer-title">about company</p>
+              <p class="info">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat tempore ad suscipit, eos eius quisquam sed optio nisi quae</p>
+              <p class="info">support emails - help@clothing.com, customersupport@clothing.com</p>
+              <p class="info">telephone - 180 00 00 001, 180 00 00 002</p>
+              <div class="footer-social-container">
+                  <div>
+                      <a href="#" class="social-link">terms & services</a>
+                      <a href="#" class="social-link">privacy page</a>
+                  </div>
+                  <div>
+                      <a href="#" class="social-link">instagram</a>
+
+                  </div>
+              </div>
+              <p class="footer-credit">Clothing, Best apparels online store</p>
+  </footer>
+
+
+
+
+    <p class="my-5" ></p>
+    <nav class="navbar-brand pt-5 fixed-bottom">
+      <div class=" col-12 container-fluid">
         <a class="btn col-3 bi bi-justify btn-light btn" href="{% url 'home'%}">Home
         </a>
 
-        <a class="btn  col-3 bi bi-justify btn-light btn" href=" # "><span class="text-start">Operation</span>
+        <a class="btn  col-3 bi bi-justify btn-light btn" href="{% url 'operation'"><span class="text-start">Operation</span>
         </a>
         
-        <a class="btn col-3 bi bi-justify  btn btn-light btn" href=" # ">Profile
+        <a class="btn col-3 bi bi-justify  btn btn-light btn" href="{% url 'myprofile' %">Profile
         </a>
         
-        <a class="btn col-3 bi bi-justif  btn btn-light fa-solid -cart-shopping" href=" # "> cart
+        <a class="btn col-3 bi bi-justif  btn btn-light btn" href="{% url 'signin'%">Signin
         </a>
-      </div>
-    </nav>
+
     
     {% endblock footer%}
-
+    <!-- other css-->
     <script src="{% static 'store/script/index.js' %}"></script>
+    <script src="{% static 'store/script/home.js' %}"></script>
 
     <!-- Bootstrap JS -->
     <script
@@ -118,12 +163,6 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
-
-    <!-- Fontawesome -->
-    <script
-      src="https://kit.fontawesome.com/819f6c7b76.js"
-      crossorigin="anonymous"
-    ></script>
     
-</body>
+  </body>
 </html>

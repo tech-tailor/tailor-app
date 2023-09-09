@@ -20,7 +20,7 @@
     <nav class="navbar bg-primary md-5 fixed-top">
         <div class="container-fluid">
           <a class="navbar-brand" href="{% url 'home'%}">
-            <img src="{% static 'core/media/blue_neeyee_logo.png' %}" alt="neeyee logo" width="40" height="40"> <span>name</span>
+            <img src="{% static 'core/media/blue_neeyee_logo.png' %}" alt="neeyee logo" width="40" height="40"> <span>{% block page_title %} {% endblock%} </span>
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -59,7 +59,7 @@
 
 
     {% block footer%}
-    <nav class="navbar-brand bg-primary mt-5 fixed-bottom">
+    <nav class="navbar-brand mt-5 fixed-bottom">
       <div class=" col-12 container-fluid btn-dark">
         <a class="btn col-3 bi bi-justify btn-primary btn" href="{% url 'home'%}">Home
         </a>
