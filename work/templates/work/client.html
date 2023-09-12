@@ -1,0 +1,27 @@
+{% extends 'work/main.html' %}
+{% load static  %}
+{% block title %} Home {% endblock %}
+
+{% block page_title %} Clients {% endblock%}
+
+{% block content %}
+
+<div class="list-group col mt-4 py-5">
+    {% for client in clients %}
+    <a href="{% url 'work_clientdetails' client.name client.measurement_id %}" class="list-group-item my-3 list-group-item-action active" aria-current="true">
+        <div>
+            
+            <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"> {{client.name}} </h5>
+            <small> {{client.size}} </small>
+            </div>
+            <div>
+            <small>Last Job</small> <small>5 days ago</small>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+
+</div>
+
+{% endblock content %}

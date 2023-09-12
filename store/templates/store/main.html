@@ -24,7 +24,7 @@
     <div class="container d-block d-md-none">
       <nav class="navbar navbar-tabs fixed-top navbar-light bg-light">
         <div class="container-fluid justify-content-center">
-          <a href="{% url 'home'%}" class="">
+          <a href="{% url 'store_home'%}" class="">
             <img style=" width: 40px; height: 40px; " class="my-2" src="{% static 'store/media/blue_neeyee_logo.png' %}" alt="">
           </a>
           <!--search bar-->
@@ -52,7 +52,7 @@
     <div class="container d-none d-md-block">
       <nav class="navbar navbar-tabs fixed-top navbar-light bg-light">
         <div class="container-fluid ">
-          <a href="{% url 'home'%}">
+          <a href="{% url 'store_home'%}">
             <img style=" width: 40px; height: 40px; " class="ms-5" src="{% static 'store/media/blue_neeyee_logo.png' %}" alt="">
           </a>
           
@@ -79,6 +79,7 @@
 
     {% block content%}
 
+    
     {% endblock content%}
 
 
@@ -139,10 +140,10 @@
     <p class="my-5" ></p>
     <nav class="navbar-brand pt-5 fixed-bottom">
       <div class=" col-12 container-fluid">
-        <a class="btn col-3 bi bi-justify btn-light btn" href="{% url 'home'%}">Home
+        <a class="btn col-3 bi bi-justify btn-light btn" href="{% url 'store_home'%}">Home
         </a>
 
-        <a class="btn  col-3 bi bi-justify btn-light btn" href="{% url 'operation'"><span class="text-start">Operation</span>
+        <a class="btn  col-3 bi bi-justify btn-light btn" href="{% url 'store_product'%}"><span class="text-start">Products</span>
         </a>
         
         <a class="btn col-3 bi bi-justify  btn btn-light btn" href="{% url 'myprofile' %">Profile

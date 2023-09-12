@@ -4,13 +4,13 @@
 {% block title %} Home {% endblock %}
 
 {% block content %}
-<!--the whole home content-->
-<div class="container row-8">
-
+ <!--the whole home content-->
+ <div class="container row-12">
     <!--the carrousel-->
     <p class="py-2"></p>
     
-    <div id="carouselExampleInterval" class="carousel slide mt-5 " data-bs-ride="carousel">
+    <div id="carouselExampleInterval" class="carousel slide mt-5" data-bs-ride="carousel">
+
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="10000">
             <img src="{% static 'store/media/header.png' %}" class="d-block w-100" alt="...">
@@ -44,6 +44,10 @@
           <span class="visually-hidden">N</span>
         </button>
     </div>
+
+    
+
+
     
     <!--product card for mobile only-->
     <div class=" mb-3 d-block d-md-none">
@@ -120,7 +124,7 @@
    
         
 
-    <!--product card for mobile only-->
+    <!--product card for desktop only-->
     <div class=" mb-3 d-none d-md-block">
         <div class="bg-light " >
             <h3 class="mx-2">Best selling</h5>
@@ -148,7 +152,7 @@
         </div>
     </div>
 
-    <!--product categories-->
+    <!--product categories for desktop-->
     <div class=" mb-3 d-none d-md-block">
         <div class="bg-light " >
             <h3 class="mx-2">Categories</h5>
@@ -186,12 +190,62 @@
             </div>
         </div>
     </div>
-    
+  </div>
+
+
+  <!-- category slider -->
+  <div class="slider-container">
+    <div class="slide">
+      <div class=" mb-3 d-block d-md-none">
+        <div class="bg-light " >
+            <h3 class="mx-2">Categories</h5>
+        </div>
+        
+            
+        <div class="container-fluid product-container mx-0 bg-light row row-cols-3 row-cols-md-3 g-2  ">
+            <div class="col">
+              <div class="card h-100 image-container">
+                    <img src="{% static 'store/media/light_ash.jpg' %}" class="" alt="...">
+                    <div class="overlay-text">
+                        Kaftans
+                    </div>
+
+              </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                      <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="card h-100">
+                      <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
+                </div>
+              </div>
+
+              
+               <div class="col">
+              <div class="card h-100">
+                    <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
+              </div>
+            </div>
+
+  
+
+            
+           
+        </div>
+    </div>
+
+  </div>
+
+  <button class="prev-button">Previous</button>
+  <button class="next-button">Next</button>
   
 
 
-
-</div>
 
 
     
