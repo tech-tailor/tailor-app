@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.templatetags.static import static
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 
 class Sex(models.TextChoices):
     MALE = 'MALE'
@@ -101,19 +103,19 @@ class Jobs(models.Model):
     delivery_date = models.DateField(blank=True, null=True)
     status = models.CharField(max_length=50, choices=Job_Status.choices, default=Job_Status.PRODUCT)
     measurement = models.ForeignKey(ClientMeasurements, on_delete=models.SET_NULL, null=True)
-    fabric_image_1 = models.ImageField(blank=True, null=True, upload_to='fabric_images')
-    fabric_image_2 = models.ImageField(blank=True, null=True, upload_to='fabric_images')
+    fabric_image_1 = models.ImageField(blank=True, null=True, upload_to='work/fabric_images')
+    fabric_image_2 = models.ImageField(blank=True, null=True, upload_to='work/fabric_images')
     fabric_yardage = models.IntegerField(null=True, blank=True)
     fabric_note = models.TextField(null=True, blank=True)
-    top_design_image_1 = models.ImageField(blank=True, null=True, upload_to='top_designs')
-    top_design_image_2 = models.ImageField(blank=True, null=True, upload_to='top_designs')
+    top_design_image_1 = models.ImageField(blank=True, null=True, upload_to='work/top_designs')
+    top_design_image_2 = models.ImageField(blank=True, null=True, upload_to='work/top_designs')
     top_design_note = models.TextField(null=True, blank=True)
-    trouser_design_image = models.ImageField(blank=True, null=True, upload_to='trouser_designs')
+    trouser_design_image = models.ImageField(blank=True, null=True, upload_to='work/trouser_designs')
     trouser_design_note = models.TextField(null=True, blank=True)
-    agbada_design_image = models.ImageField(blank=True, null=True, upload_to='agbada_designs')
+    agbada_design_image = models.ImageField(blank=True, null=True, upload_to='work/agbada_designs')
     agbada_design_note = models.TextField(null=True, blank=True)
-    cap_fabric_image= models.ImageField(blank=True, null=True, upload_to='cap_fabric')
-    cap_design_image= models.ImageField(blank=True, null=True, upload_to='cap_designs')
+    cap_fabric_image= models.ImageField(blank=True, null=True, upload_to='work/cap_fabric')
+    cap_design_image= models.ImageField(blank=True, null=True, upload_to='work/cap_designs')
     cap_design_note = models.TextField(null=True, blank=True)
     top_worker = models.ForeignKey(Workers, on_delete=models.SET_NULL, null=True, blank=True)
     """
@@ -121,8 +123,9 @@ class Jobs(models.Model):
     agbada_worker = models.ForeignKey(Workers, on_delete=models.SET_NULL, null=True, blank=True)
     cap_worker = models.ForeignKey(Workers, on_delete=models.SET_NULL, null=True, blank=True)
     """
+
     def __str__(self):
-        return str(self.name)
+        return str(self.name)  
     
     '''return a placeholder image when no image is uploaded'''
     def image_url(self, field_name): 
@@ -141,6 +144,21 @@ class Jobs(models.Model):
             no_image_available_url = static('work/media/no_image_available.png')
             return no_image_available_url
 
+@receiver(pre_delete, sender=Jobs)
+def delete_s3_files(sender, instance, **kwargs):
+    import boto3
+    from botocore.exceptions import NoCredentialsError
+
+
+    s3_bucket_name = 'tailorapp-app-storage'
+    s3_object_key = instance.file_field_name.name
+
+    try:
+        s3_client = boto.client('s3')
+        s3_client.delete_object(Bucket=s3_bucket_name, key=s3_object_key)
+
+    except NoCredentialsError:
+        print('no credentials found')
 
 
 class Job_operation(models.Model):
