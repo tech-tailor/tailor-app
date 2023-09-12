@@ -64,7 +64,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'django.contrib.staticfiles',
     'django_hosts',
-    'core',
+    'work',
     'store',
 
 ]
@@ -148,11 +148,11 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': config('DATABASE_NAME'),
-            'USER': 'zsztxvkkpxwuoa',
-            'PASSWORD': config('PASSWORD'),
+            'USER': 'tailorapp_admin',
+            'PASSWORD': config('MY_PASSWORD'),
             'HOST': config('HOST'),
             'PORT': config('PORT'),
-        } 
+        }, 
     }
 
 
