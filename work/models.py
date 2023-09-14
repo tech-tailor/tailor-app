@@ -173,7 +173,8 @@ def delete_s3_files(sender, instance, **kwargs):
                 try:
                     s3_client = boto3.client('s3')
                     s3_client.delete_object(Bucket=s3_bucket_name, key=s3_object_key)
-                except (NoCredentialsError, AttributeError):
+                    print('s3 object deleted succesfully')
+                except NoCredentialsError:
                     print('no credentials found')
 
 class Job_operation(models.Model):
