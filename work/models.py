@@ -5,6 +5,7 @@ from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from django.conf import settings
 import os
+import logging
 
 class Sex(models.TextChoices):
     MALE = 'MALE'
@@ -155,32 +156,33 @@ def delete_s3_files(sender, instance, **kwargs):
     IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    logger = logging.getLogger(__name__)
     
     s3_bucket_name = 'tailorapp-app-storage'
     for field in Jobs._meta.get_fields():
         if isinstance(field, models.FileField):
             s3_object_key = getattr(instance, field.name)
 
-            print('s3_bucket_name: {}'.format(s3_bucket_name))
-            print('s3_object_key: {}'.format(s3_object_key))
-            print('sender: {}, kwargs: {}'.format(sender, kwargs))
+            logger.info('s3_bucket_name: %s', s3_bucket_name)
+            logger.info('s3_object_key: %s', s3_object_key)
 
             if IS_HEROKU_APP:
                 try:
-                    s3_client = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
-                    s3_client.delete_object(Bucket=s3_bucket_name,key=s3_object_key)
-                    print('s3 object deleted succesfully')
+                    s3_client = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY
+                    )
+                    s3_client.delete_object(Bucket=s3_bucket_name,Key=s3_object_key)
+                    logger.info('S3 object deleted successfully')
                 except NoCredentialsError:
-                    print('no credentials found')
+                    logger.error('No AWS credentials found')
             else:      
                 try:
                     if s3_object_key:
                         del s3_object_key
                         print('s3 object deleted succesfully')
                     else:
-                        print('no image for this field')
+                        logger.info('no image for this field')
                 except AttributeError:
-                    print('no credentials found')
+                    logger.error('no credentials found')
                 
 
 class Job_operation(models.Model):
