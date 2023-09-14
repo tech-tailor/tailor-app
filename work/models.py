@@ -4,6 +4,7 @@ from django.templatetags.static import static
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from django.conf import settings
+import os
 
 class Sex(models.TextChoices):
     MALE = 'MALE'
@@ -151,7 +152,7 @@ class Jobs(models.Model):
 def delete_s3_files(sender, instance, **kwargs):
     import boto3
     from botocore.exceptions import NoCredentialsError
-
+    IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
 
     s3_bucket_name = 'tailorapp-app-storage'
     for field in Jobs._meta.get_fields():
@@ -162,20 +163,23 @@ def delete_s3_files(sender, instance, **kwargs):
             print('s3_object_key: {}'.format(s3_object_key))
             print('sender: {}, kwargs: {}'.format(sender, kwargs))
 
-            if settings.DEBUG:      
-                try:
-                    del s3_object_key
-                    print('s3 object deleted succesfully')
-                except AttributeError:
-                    print('no credentials found')
-
-            else:
+            if IS_HEROKU_APP:
                 try:
                     s3_client = boto3.client('s3')
                     s3_client.delete_object(Bucket=s3_bucket_name, key=s3_object_key)
                     print('s3 object deleted succesfully')
                 except NoCredentialsError:
                     print('no credentials found')
+            else:      
+                try:
+                    if s3_object_key:
+                        del s3_object_key
+                        print('s3 object deleted succesfully')
+                    else:
+                        print('no image for this field')
+                except AttributeError:
+                    print('no credentials found')
+                
 
 class Job_operation(models.Model):
     name = models.ForeignKey(Jobs, max_length=250, null=True, on_delete=models.SET_NULL)
