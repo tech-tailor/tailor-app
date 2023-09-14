@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponse
 
 # Create your views here.
 from .models import *
@@ -63,3 +64,13 @@ def jobdetails(request, id):
         'cap_design_image_url':cap_design_image_url,
         }
     return render(request, 'work/jobdetails.html', context)
+
+
+def error_log(request):
+    try:
+        with open('error.test', 'r') as log_file:
+            log_content = log_file.read()
+    except FileNotFoundError:
+        log_content = "Error log not found"
+
+    return HttpResponse(log_content, content_type='text/html', status=200)

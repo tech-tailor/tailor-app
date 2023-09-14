@@ -29,6 +29,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
 
+
+
 # The `DYNO` env var is set on Heroku CI, but it's not a real Heroku app, so we have to
 # also explicitly exclude CI
 IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
@@ -41,8 +43,7 @@ if IS_HEROKU_APP:
     ALLOWED_HOSTS = [
         "www.neeyee.store",
         "work.neeyee.store",
-        "neeyee.store",
-        
+        "neeyee.store",  
     ]
 else:
     ALLOWED_HOSTS = []
@@ -130,6 +131,27 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 WSGI_APPLICATION = 'tailorApp.wsgi.application'
+
+#log error into error.log file in production
+if IS_HEROKU_APP:
+    LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': 'error.test',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    },
+}
 
 
 # Database

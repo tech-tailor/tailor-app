@@ -22,7 +22,7 @@
             <img src="{{ fabric_image_1_url }}" class="img-thumbnail rounded float-center my-3 col-4 "  alt="">
         </a>
     </div>
-    <a href="{% url 'core_operation' %}">
+    <a href="{% url 'operation' %}">
         <div class="spinner-grow text-primary" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
@@ -50,7 +50,7 @@
             </div>
         </div>
 
-        <a href="{% url 'core_clientdetails' jobs.name jobs.measurement_id %}">
+        <a href="{% url 'clientdetails' jobs.name jobs.measurement_id %}">
             <div class="col-8 container overflow-hidden text-center ">
                 <div class="p-2 h5 text-light bg-secondary ">Measurement</div>
             </div>

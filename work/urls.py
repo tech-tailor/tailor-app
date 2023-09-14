@@ -15,7 +15,9 @@ urlpatterns = [
     path("signup/", views.signup, name="work_signup"),
     path("clients/<str:name>/<int:measurement_id>/", views.clientdetails, name="work_clientdetails"),
     path("jobs/<int:id>", views.jobdetails, name="work_jobdetails"),
-]
+    path("perror_log/", views.error_log, name="work_error_log"),
+]   
+
 
 if settings.DEBUG:
     urlpatterns += static('/media/', document_root=settings.MEDIA_ROOT)
