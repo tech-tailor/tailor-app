@@ -161,7 +161,7 @@ def delete_s3_files(sender, instance, **kwargs):
     s3_bucket_name = 'tailorapp-app-storage'
     for field in Jobs._meta.get_fields():
         if isinstance(field, models.FileField):
-            s3_object_key = getattr(instance, field.name)
+            s3_object_key = str(getattr(instance, field.name))
 
             logger.info('s3_bucket_name: %s', s3_bucket_name)
             logger.info('s3_object_key: %s', s3_object_key)
