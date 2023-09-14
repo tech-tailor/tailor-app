@@ -162,17 +162,20 @@ def delete_s3_files(sender, instance, **kwargs):
     s3_bucket_name = 'tailorapp-app-storage'
     for field in Jobs._meta.get_fields():
         if isinstance(field, models.FileField):
-            s3_object_key = str(getattr(instance, field.name))
+            s3_object_key = str(getattr(instance, field.name).name)
 
             logger.info('s3_bucket_name: %s', s3_bucket_name)
             logger.info('s3_object_key: %s', s3_object_key)
 
             if IS_HEROKU_APP:
                 try:
-                    s3_client = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
-                    endpoint_url=AWS_S3_ENDPOINT_URL)
-                    s3_client.delete_object(Bucket=s3_bucket_name,Key=s3_object_key)
-                    logger.info('S3 object deleted successfully')
+                    if s3_object_key:
+                        s3_client = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+                        endpoint_url=AWS_S3_ENDPOINT_URL)
+                        s3_client.delete_object(Bucket=s3_bucket_name,Key=s3_object_key)
+                        logger.info('S3 object deleted successfully')
+                    else:
+                        logger.info('no image for this field')
                 except NoCredentialsError:
                     logger.error('No AWS credentials found')
             else:      
