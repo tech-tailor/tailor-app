@@ -6,6 +6,13 @@ from django.dispatch import receiver
 from django.conf import settings
 import os
 
+import boto3
+from botocore.exceptions import NoCredentialsError
+AWS_S3_ENDPOINT_URL = os.environ.get('AWS_S3_ENDPOINT_URL')
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
+
 class Sex(models.TextChoices):
     MALE = 'MALE'
     FEMALE = 'FEMALE'
@@ -150,14 +157,10 @@ class Jobs(models.Model):
 
 @receiver(pre_delete, sender=Jobs)
 def delete_s3_files(sender, instance, **kwargs):
-    import boto3
-    from botocore.exceptions import NoCredentialsError
-    IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
-
     s3_bucket_name = 'tailorapp-app-storage'
     for field in Jobs._meta.get_fields():
         if isinstance(field, models.FileField):
-            s3_object_key = getattr(instance, field.name).name
+            s3_object_key = getattr(instance, field.name)
 
             print('s3_bucket_name: {}'.format(s3_bucket_name))
             print('s3_object_key: {}'.format(s3_object_key))
@@ -166,7 +169,7 @@ def delete_s3_files(sender, instance, **kwargs):
             if IS_HEROKU_APP:
                 try:
                     s3_client = boto3.client('s3')
-                    s3_client.delete_object(Bucket=s3_bucket_name, key=s3_object_key)
+                    s3_client.delete_object(Bucket=s3_bucket_name,key=s3_object_key)
                     print('s3 object deleted succesfully')
                 except NoCredentialsError:
                     print('no credentials found')
