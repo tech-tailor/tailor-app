@@ -156,6 +156,7 @@ def delete_s3_files(sender, instance, **kwargs):
     IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_ENDPOINT_URL = os.environ.get('AWS_S3_ENDPOINT_URL')
     logger = logging.getLogger(__name__)
     
     s3_bucket_name = 'tailorapp-app-storage'
@@ -168,8 +169,8 @@ def delete_s3_files(sender, instance, **kwargs):
 
             if IS_HEROKU_APP:
                 try:
-                    s3_client = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY
-                    )
+                    s3_client = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+                    endpoint_url=AWS_S3_ENDPOINT_URL)
                     s3_client.delete_object(Bucket=s3_bucket_name,Key=s3_object_key)
                     logger.info('S3 object deleted successfully')
                 except NoCredentialsError:
