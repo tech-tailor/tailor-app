@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.templatetags.static import static
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
+from django.conf import settings
 
 class Sex(models.TextChoices):
     MALE = 'MALE'
@@ -140,9 +141,11 @@ class Jobs(models.Model):
         try:
             image_field = self.fabric_image_1
             return image_field.url
+
         except (AttributeError, ValueError):
             no_image_available_url = static('work/media/no_image_available.png')
             return no_image_available_url
+
 
 @receiver(pre_delete, sender=Jobs)
 def delete_s3_files(sender, instance, **kwargs):
@@ -151,15 +154,27 @@ def delete_s3_files(sender, instance, **kwargs):
 
 
     s3_bucket_name = 'tailorapp-app-storage'
-    s3_object_key = instance.file_field_name.name
+    for field in Jobs._meta.get_fields():
+        if isinstance(field, models.FileField):
+            s3_object_key = getattr(instance, field.name).name
 
-    try:
-        s3_client = boto.client('s3')
-        s3_client.delete_object(Bucket=s3_bucket_name, key=s3_object_key)
+            print('s3_bucket_name: {}'.format(s3_bucket_name))
+            print('s3_object_key: {}'.format(s3_object_key))
+            print('sender: {}, kwargs: {}'.format(sender, kwargs))
 
-    except NoCredentialsError:
-        print('no credentials found')
+            if settings.DEBUG:      
+                try:
+                    del s3_object_key
+                    print('s3 object deleted succesfully')
+                except AttributeError:
+                    print('no credentials found')
 
+            else:
+                try:
+                    s3_client = boto3.client('s3')
+                    s3_client.delete_object(Bucket=s3_bucket_name, key=s3_object_key)
+                except (NoCredentialsError, AttributeError):
+                    print('no credentials found')
 
 class Job_operation(models.Model):
     name = models.ForeignKey(Jobs, max_length=250, null=True, on_delete=models.SET_NULL)
