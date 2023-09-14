@@ -174,10 +174,14 @@ def delete_s3_files(sender, instance, **kwargs):
                         endpoint_url=AWS_S3_ENDPOINT_URL)
                         s3_client.delete_object(Bucket=s3_bucket_name,Key=s3_object_key)
                         logger.info('S3 object deleted successfully')
+                        print(('S3 object deleted successfully'))
                     else:
                         logger.info('no image for this field')
+                        print('no image for this field')
+
                 except NoCredentialsError:
                     logger.error('No AWS credentials found')
+                    print('No AWS credentials found')
             else:      
                 try:
                     if s3_object_key:
