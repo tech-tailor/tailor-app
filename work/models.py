@@ -165,7 +165,7 @@ def delete_s3_files(sender, instance, **kwargs):
     AWS_S3_ENDPOINT_URL = os.environ.get('AWS_S3_ENDPOINT_URL')
     logger = logging.getLogger(__name__)
     
-    s3_bucket_name = 'tailorapp-app-storage'
+    s3_bucket_name = 'tailor-app-storage'
     for field in Jobs._meta.get_fields():
         if isinstance(field, models.FileField):
             s3_object_key = str(getattr(instance, field.name).name)
