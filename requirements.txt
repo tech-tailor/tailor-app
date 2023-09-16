@@ -13,4 +13,5 @@ django-storages==1.13.2
 boto3==1.28.29
 django-hosts==5.2
 django-allauth
+django-phonenumber-field==7.1.0
 phonenumbers==8.13.20
