@@ -8,7 +8,7 @@
 
 <div class="text-center col mt-5 py-3">
     <div class="card-header">
-      <span class="h2">{{ jobs.title}} {{ jobs.name}}</span>
+      <span class="h2">{{ jobs.title}} {{ jobs.job_name}}</span>
     </div>
 </div>
 
@@ -45,12 +45,12 @@
                 <h6> {{ jobs.status }}</h6>
             </div>
             <div class="border border-secondary m-4">
-                <p> Fabric_Yard:</p>
+                <p> Fabric Yard:</p>
                 <h6> {{ jobs.fabric_yardage }}</h6>
             </div>
         </div>
 
-        <a href="{% url 'work_clientdetails' jobs.name jobs.measurement_id %}">
+        <a href="{% url 'work_clientmeasurement' jobs.client %}">
             <div class="col-8 container overflow-hidden text-center ">
                 <div class="p-2 h5 text-light bg-secondary ">Measurement</div>
             </div>

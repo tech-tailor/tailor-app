@@ -7,23 +7,22 @@ from .models import *
 
 
 class JobAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['job_name']
     orderin = ['-id']
 
 class WorkersAdmin(admin.ModelAdmin):
     list_display = ['name', 'user' ]
 
 
+
 class ClientAdmin(admin.ModelAdmin):
-    def clean(self):
-        name = self.cleaned_data['name']
-        measurement = self.cleaned_data["measurement"]
-        if measurement != name:
-            raise ValidationError("Client's name must be same with the measurement name")
+    list_display = ['measurement_name']
+
+
+    
     
 
 
-admin.site.register(ClientMeasurements)
 admin.site.register(Clients, ClientAdmin)
 admin.site.register(Workers, WorkersAdmin)
 admin.site.register(Jobs, JobAdmin)

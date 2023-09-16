@@ -1,11 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.templatetags.static import static
-from django.db.models.signals import pre_delete
+from django.db.models.signals import pre_delete, post_save
 from django.dispatch import receiver
+from phonenumber_field.modelfields import PhoneNumberField
+from phonenumber_field.phonenumber import PhoneNumber
 from django.conf import settings
 import os
 import logging
+from django.contrib.auth import get_user_model
 
 class Sex(models.TextChoices):
     MALE = 'MALE'
@@ -33,11 +36,21 @@ class ClientSize(models.TextChoices):
     LARGE = 'L', ('Large')
     XTRA_LARGE = 'XL', ('Xtra Large')
     XTRA_XTRA_LARGE = 'XXL', ('Xtra Xtra Large')
+ 
 
-
-class ClientMeasurements(models.Model):
+class Clients(models.Model):
     user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
-    name = models.CharField(max_length=250, null=True)
+    measurement_name = models.CharField(max_length=100, null=True, blank=True)
+    title = models.CharField(max_length=10, choices=Mr_mrs.choices, default=Mr_mrs.MR)
+    phone_number = PhoneNumberField(default='+234',
+        blank=True,
+        null=True,
+        help_text='Enter a valid phone number in E.164 format.')
+    address = models.TextField(blank=True, null=True)
+    sex = models.CharField(max_length=50, choices=Sex.choices, default=Sex.MALE)
+    birthday = models.DateField(null=True, blank=True)
+    client_note = models.TextField(null=True, blank=True)
+    size = models.CharField(max_length=50, choices=ClientSize.choices, default=ClientSize.LARGE)
     top_lenght = models.CharField(max_length=15,null=True, blank=True)
     shoulder = models.CharField(max_length=15, null=True, blank=True)
     Round_chest = models.CharField(max_length=15, null=True, blank=True)
@@ -49,7 +62,7 @@ class ClientMeasurements(models.Model):
     back_chest = models.CharField(max_length=15, null=True, blank=True)
     cuff = models.CharField(max_length=15, null=True, blank=True)
     short_sleeve_width = models.CharField(max_length=15, null=True, blank=True)
-    _3quarter_width = models.CharField(max_length=15, null=True, blank=True)
+    three_quarter_width = models.CharField(max_length=15, null=True, blank=True)
     long_sleeve_width = models.CharField(max_length=15, null=True, blank=True)
     trouser_lenght = models.CharField(max_length=15, null=True, blank=True)
     waist = models.CharField(max_length=15, null=True, blank=True)
@@ -63,49 +76,47 @@ class ClientMeasurements(models.Model):
     agbada_shoulder = models.CharField(max_length=15, null=True, blank=True)
     agbada_sleeve = models.CharField(max_length=15, null=True, blank=True)
     cap = models.CharField(max_length=15, null=True, blank=True)
-    
-    def __str__(self):
-        return str(self.name)
-
-    
-
-class Clients(models.Model):
-    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
-    title = models.CharField(max_length=10, choices=Mr_mrs.choices, default=Mr_mrs.MR)
-    name = models.CharField(max_length=250, null=True)
-    email = models.CharField(max_length=50, null=True)
-    phone_number = models.IntegerField(null=True, blank=True)
-    address = models.TextField(blank=True, null=True)
-    sex = models.CharField(max_length=50, choices=Sex.choices, default=Sex.MALE)
-    birthday = models.DateField(null=True, blank=True)
-    client_note = models.TextField(null=True, blank=True)
-    size = models.CharField(max_length=50, choices=ClientSize.choices, default=ClientSize.LARGE)
-    measurement = models.OneToOneField(ClientMeasurements, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return str(self.name)
+        return str(self.measurement_name)
     
+@receiver(post_save, sender=User)
+def create_client_profile(sender, instance, created, **kwargs):
+    if created:
+        Clients.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_client_profile(sender, instance, **kwargs):
+    instance.clients.save()
+
     
 class Workers(models.Model):
     user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
-    name = models.CharField(max_length=250, null=True)
-    email = models.CharField(max_length=50, null=True)
-    phone_number = models.IntegerField(null=True, blank=True)
+    name = models.CharField(max_length=250, null=True, blank=True)
+    phone_number = PhoneNumberField()
     address = models.TextField(blank=True, null=True)
     sex = models.CharField(max_length=50, choices=Sex.choices, default=Sex.MALE)
     birthday = models.DateField(null=True, blank=True)
     
     def __str__(self):
         return str(self.name)
-    
+
+@receiver(post_save, sender=Workers)
+def create_worker_profile(sender, instance, created, **kwargs):
+    if created:
+        Workers.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_worker_profile(sender, instance, **kwargs):
+    instance.worker.save()
     
 
 class Jobs(models.Model):
-    name = models.ForeignKey(Clients, max_length=250, null=True, on_delete=models.SET_NULL)
+    client = models.ForeignKey(Clients, on_delete=models.SET_NULL, null=True)
+    job_name = models.TextField(max_length=50, null=True, blank=True, unique=True,help_text='Enter name + fabrictype or color'  )
     start_date = models.DateField(blank=True, null=True)
     delivery_date = models.DateField(blank=True, null=True)
     status = models.CharField(max_length=50, choices=Job_Status.choices, default=Job_Status.PRODUCT)
-    measurement = models.ForeignKey(ClientMeasurements, on_delete=models.SET_NULL, null=True)
     fabric_image_1 = models.ImageField(blank=True, null=True, upload_to='work/fabric_images')
     fabric_image_2 = models.ImageField(blank=True, null=True, upload_to='work/fabric_images')
     fabric_yardage = models.IntegerField(null=True, blank=True)
@@ -120,15 +131,10 @@ class Jobs(models.Model):
     cap_fabric_image= models.ImageField(blank=True, null=True, upload_to='work/cap_fabric')
     cap_design_image= models.ImageField(blank=True, null=True, upload_to='work/cap_designs')
     cap_design_note = models.TextField(null=True, blank=True)
-    top_worker = models.ForeignKey(Workers, on_delete=models.SET_NULL, null=True, blank=True)
-    """
-    trouser_worker = models.ForeignKey(Workers, on_delete=models.SET_NULL, null=True, blank=True)
-    agbada_worker = models.ForeignKey(Workers, on_delete=models.SET_NULL, null=True, blank=True)
-    cap_worker = models.ForeignKey(Workers, on_delete=models.SET_NULL, null=True, blank=True)
-    """
+    workers = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
-        return str(self.name)  
+        return str(self.job_name)  
     
     '''return a placeholder image when no image is uploaded'''
     def image_url(self, field_name): 

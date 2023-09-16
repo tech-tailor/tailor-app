@@ -13,8 +13,9 @@ urlpatterns = [
     path("operation/", views.operation, name="work_operation"),
     path("signin/", views.signin, name="work_signin"),
     path("signup/", views.signup, name="work_signup"),
-    path("clients/<str:name>/<int:measurement_id>/", views.clientdetails, name="work_clientdetails"),
-    path("jobs/<int:id>", views.jobdetails, name="work_jobdetails"),
+    path("clients/<str:measurement_name>/", views.clientdetails, name="work_clientdetails"),
+    path("a#va^ilable-^jo#bs/<str:job_name>/", views.jobdetails, name="work_jobdetails"),
+    path("cli^en#t-mea^ur*ement/<str:measurement_name>/", views.clientmeasurement, name="work_clientmeasurement"),
     path("perror_log/", views.error_log, name="work_error_log"),
 ]   
 

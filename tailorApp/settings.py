@@ -153,6 +153,8 @@ if IS_HEROKU_APP:
     },
 }
 
+#access the user profile directly from the User model
+AUTH_PROFILE_MODULE = 'work.UserProfile'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -228,9 +230,9 @@ AWS_DEFAULT_ACL = 'public-read'
 #serve static files during production
 if IS_HEROKU_APP:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    MEDIA_URL = f"https://s3.us-east-005.backblazeb2.com/media/".format(AWS_STORAGE_BUCKET_NAME)
+    MEDIA_URL = f"https://s3.us-east-005.backblazeb2.com/media/"
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
-    STATIC_URL = f"https://s3.us-east-005.backblazeb2.com/static/".format(AWS_STORAGE_BUCKET_NAME)
+    STATIC_URL = f"https://s3.us-east-005.backblazeb2.com/static/"
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     STATIC_URL = '/static/'

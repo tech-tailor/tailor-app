@@ -31,20 +31,23 @@ def myprofile(request):
     return render(request, 'work/profile.html', context)
 
 def client(request):
-    clients = Clients.objects.all().order_by('name', '-id')
+    clients = Clients.objects.all().order_by('measurement_name', '-id')
     context = {'clients':clients}
     return render(request, 'work/client.html', context)
 
-def clientdetails(request, name, measurement_id):
-    measurement = get_object_or_404(ClientMeasurements, name=name)
-    clients = get_object_or_404(Clients, measurement_id=measurement_id)
-    context = {'clients':clients,
-               'measurement': measurement,
-               }
+def clientdetails(request, measurement_name):
+    clients = get_object_or_404(Clients, measurement_name=measurement_name)
+    context = {'clients':clients}
     return render(request, 'work/clientdetails.html', context)
 
-def jobdetails(request, id):
-    jobs = Jobs.objects.get(id=id)
+def clientmeasurement(request, measurement_name):
+    clients = Clients.objects.get(measurement_name=measurement_name)
+    context = {'clients':clients}
+    return render(request, 'work/measurement.html', context)
+    
+
+def jobdetails(request, job_name):
+    jobs = Jobs.objects.get(job_name=job_name)
     fabric_image_1_url = jobs.image_url('fabric_image_1')
     fabric_image_2_url = jobs.image_url('fabric_image_2')
     top_design_image_1_url = jobs.image_url('top_design_image_1')
@@ -71,6 +74,8 @@ def error_log(request):
     try:
         with open('error.test', 'r') as log_file:
             log_content = log_file.read()
+            if len(log_content) == 0:
+                log_content = "No error yet, file is empty"
     except FileNotFoundError:
         log_content = "Error log not found"
 
