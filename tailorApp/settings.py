@@ -44,7 +44,8 @@ if IS_HEROKU_APP:
         "www.neeyee.store",
         "work.neeyee.store",
         "neeyee.store",
-        "tailorapp-testing-7e3974aad551.herokuapp.com"  
+        "tailorapp-testing-7e3974aad551.herokuapp.com"
+        "work.tailorapp-testing-7e3974aad551.herokuapp.com" 
     ]
 else:
     ALLOWED_HOSTS = []
