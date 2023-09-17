@@ -43,7 +43,8 @@ if IS_HEROKU_APP:
     ALLOWED_HOSTS = [
         "www.neeyee.store",
         "work.neeyee.store",
-        "neeyee.store",  
+        "neeyee.store",
+        "tailorapp-testing-7e3974aad551.herokuapp.com"  
     ]
 else:
     ALLOWED_HOSTS = []
