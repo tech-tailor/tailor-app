@@ -9,7 +9,7 @@ def del_s3(s3_object_key):
     
     AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-    AWS_S3_ENDPOINT_URL = config('AWS_S3_ENDPOINT_URL')
+    AWS_S3_ENDPOINT_URL = 'https://s3.us-east-005.backblazeb2.com'
 
     print(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_S3_ENDPOINT_URL )
 
@@ -18,21 +18,17 @@ def del_s3(s3_object_key):
     bucket_name = 'tailor-app-storage'
 
     try:
+        s3_client.delete_object(Bucket=bucket_name, Key=s3_object_key)
 
-        print(s3_client)
-
-        response = s3_client.list_objects_v2(Bucket=bucket_name)
+        response = s3_client.list_objects(Bucket=bucket_name)
+        print('S3 object deleted successfully')
         if 'Contents' in response:
             print('yes contents')
             for obj in response['Contents']:
                 print(f'Object Key: {obj["Key"]}')
-        else:
-            print('No contents')
-
-        s3_client.delete_object(Bucket=bucket_name, Key=s3_object_key)
-        print('S3 object deleted successfully')
     except NoCredentialsError as e:
         print(f'No credentials found, {e}')
 
-del_s3('work/fabric_images/for_insta.jpg')
+del_s3('work/fabric_images/agbada.jpg')
+
 

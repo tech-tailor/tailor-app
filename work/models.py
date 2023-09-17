@@ -9,6 +9,12 @@ from django.conf import settings
 import os
 import logging
 from django.contrib.auth import get_user_model
+import boto3
+from botocore.exceptions import NoCredentialsError
+IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_S3_ENDPOINT_URL = os.environ.get('AWS_S3_ENDPOINT_URL')
 
 class Sex(models.TextChoices):
     MALE = 'MALE'
@@ -101,14 +107,6 @@ class Workers(models.Model):
     def __str__(self):
         return str(self.name)
 
-@receiver(post_save, sender=Workers)
-def create_worker_profile(sender, instance, created, **kwargs):
-    if created:
-        Workers.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_worker_profile(sender, instance, **kwargs):
-    instance.worker.save()
     
 
 class Jobs(models.Model):
@@ -153,16 +151,29 @@ class Jobs(models.Model):
         except (AttributeError, ValueError):
             no_image_available_url = static('work/media/no_image_available.png')
             return no_image_available_url
+        
+    def save(self, *args, **kwargs):
+        # Check if the image field is being cleared
+        if self._state.adding and not self.fabric_image_1:
+            super(Jobs, self).save(*args, **kwargs)  # Save the instance without an image
+            return
+
+        # Delete the old image from S3 if it exists
+        if self.pk:
+            old_instance = Jobs.objects.get(pk=self.pk)
+            if old_instance.fabric_image_1 != self.fabric_image_1:
+                if IS_HEROKU_APP:
+                    storage = S3Boto3Storage()
+                    storage.delete(old_instance.image_field.name)
+                else:
+                    print(old_instance.fabric_image_1.name)
+                    del(old_instance.fabric_image_1.name)
+
+        super(Jobs, self).save(*args, **kwargs)  # Save the instance with the new image
 
 
 @receiver(pre_delete, sender=Jobs)
 def delete_s3_files(sender, instance, **kwargs):
-    import boto3
-    from botocore.exceptions import NoCredentialsError
-    IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
-    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-    AWS_S3_ENDPOINT_URL = os.environ.get('AWS_S3_ENDPOINT_URL')
     logger = logging.getLogger(__name__)
     
     s3_bucket_name = 'tailor-app-storage'
@@ -190,11 +201,12 @@ def delete_s3_files(sender, instance, **kwargs):
                     print('No AWS credentials found')
             else:      
                 try:
+                    print(s3_object_key)
                     if s3_object_key:
                         del s3_object_key
                         print('s3 object deleted succesfully')
                     else:
-                        logger.info('no image for this field')
+                        print('no image for this field')
                 except AttributeError:
                     logger.error('no credentials found')
                 
