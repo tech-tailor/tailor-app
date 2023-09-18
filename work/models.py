@@ -10,6 +10,7 @@ import os
 import logging
 from django.contrib.auth import get_user_model
 import boto3
+from storages.backends.s3boto3 import S3Boto3Storage
 from botocore.exceptions import NoCredentialsError
 IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
