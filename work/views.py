@@ -75,13 +75,14 @@ def error_log(request):
     try:
         with open('error.test', 'r') as log_file:
             log_content = log_file.read()
-            
-            time.sleep(60)
-            with open('error.test', 'w') as del_file:
-                del_file.write("file deleted after 60 seconds\n")
 
             if len(log_content) == 0:
                 log_content = "No error yet, file is empty"
+            
+        with open('error.test', 'w') as log_file:
+            log_file.write("file deleted after refresh\n")
+
+            
 
     except FileNotFoundError:
         log_content = "Error log not found"
