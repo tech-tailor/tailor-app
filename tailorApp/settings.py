@@ -41,12 +41,15 @@ if not IS_HEROKU_APP:
 
 if IS_HEROKU_APP:
     ALLOWED_HOSTS = [
-        "www.neeyee.store",
-        "work.neeyee.store",
-        "neeyee.store",
-        "work-test.neeyee.store", #for testing enviroment
-        "test.neeyee.store",      #for tsting enviroment
-
+        "neeyee.store",   # production url main host
+        "www.neeyee.store", #sub-domain for roduction     
+        "test.neeyee.store", #main host for testing url
+        "work.neeyee.store", # production url for work module
+        "work-test.neeyee.store", # testing url for work module
+        "gladmin.neeyee.store", # production url for admin
+        "gladmin-test.neeyee.store", #testing url for admin
+        "account.neeyee.store",    #production url for account module - allauth
+        "account-test.neeyee.store",   #testing url for account module - allauth
     ]
 else:
     ALLOWED_HOSTS = []
