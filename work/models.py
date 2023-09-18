@@ -156,23 +156,8 @@ class Jobs(models.Model):
             return no_image_available_url
         
     def save(self, *args, **kwargs):
-        # Check if the image field is being cleared
-        if self._state.adding and not self.fabric_image_1:
-            super(Jobs, self).save(*args, **kwargs)  # Save the instance without an image
-            return
-
-        # Delete the old image from S3 if it exists
-        if self.pk:
-            old_instance = Jobs.objects.get(pk=self.pk)
-            if old_instance.fabric_image_1 != self.fabric_image_1:
-                if IS_HEROKU_APP:
-                    storage = S3Boto3Storage()
-                    storage.delete(old_instance.fabric_image_1.name)
-                else:
-                    print(old_instance.fabric_image_1.name)
-                    del(old_instance.fabric_image_1.name)
-
-        super(Jobs, self).save(*args, **kwargs)  # Save the instance with the new image
+        delete_s3_files()
+        
 
 
 @receiver(pre_delete, sender=Jobs)
@@ -206,7 +191,7 @@ def delete_s3_files(sender, instance, **kwargs):
                 try:
                     print(s3_object_key)
                     if s3_object_key:
-                        del s3_object_key
+                        os.remove(s3_object_key)
                         print('s3 object deleted succesfully')
                     else:
                         print('no image for this field')
