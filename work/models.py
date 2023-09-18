@@ -167,7 +167,7 @@ class Jobs(models.Model):
             if old_instance.fabric_image_1 != self.fabric_image_1:
                 if IS_HEROKU_APP:
                     storage = S3Boto3Storage()
-                    storage.delete(old_instance.image_field.name)
+                    storage.delete(old_instance.fabric_image_1.name)
                 else:
                     print(old_instance.fabric_image_1.name)
                     del(old_instance.fabric_image_1.name)
