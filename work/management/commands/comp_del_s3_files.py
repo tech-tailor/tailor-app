@@ -23,9 +23,9 @@ class Command(BaseCommand):
             # Specify the S3 folder for the current model class
          
             if model_class == Jobs:
-                s3_folder = 'tailor-app-storage/work/jobs'
+                s3_folder = 'work/jobs'
             elif model_class == Workers:
-                s3_folder = 'tailor-app-storage/worker/profile_pic'
+                s3_folder = 'worker/profile_pic'
             else:
                 # Handle other models or set a default folder
                 s3_folder = 'default_folder/'
