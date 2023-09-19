@@ -49,23 +49,16 @@ class Command(BaseCommand):
                 if image4:
                     model_filenames.add(image4.name)
 
-            print(model_filenames)
-
             # Compare model filenames with objects in the specified S3 folder
             s3_bucket_name = 'tailor-app-storage'
             s3_client = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY, endpoint_url=AWS_S3_ENDPOINT_URL)
 
-            print(AWS_ACCESS_KEY_ID)
-            print(AWS_SECRET_ACCESS_KEY)
-            print(AWS_S3_ENDPOINT_URL)
 
 
             try:
                 s3_objects = s3_client.list_objects_v2(Bucket='tailor-app-storage', Prefix=s3_folder)
-                print(f' {s3_objects}')
                 for s3_object in s3_objects.get('Contents', []):
                     s3_object_key = s3_object['Key']
-                    print(f's3_object: {s3_object_key}')
                     if s3_object_key not in model_filenames:
                         try:
                             # Delete S3 object not in the model
