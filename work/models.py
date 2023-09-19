@@ -118,19 +118,19 @@ class Jobs(models.Model):
     start_date = models.DateField(blank=True, null=True)
     delivery_date = models.DateField(blank=True, null=True)
     status = models.CharField(max_length=50, choices=Job_Status.choices, default=Job_Status.PRODUCT)
-    fabric_image_1 = models.ImageField(blank=True, null=True, upload_to='work/fabric_images')
-    fabric_image_2 = models.ImageField(blank=True, null=True, upload_to='work/fabric_images')
+    fabric_image_1 = models.ImageField(blank=True, null=True, upload_to='work/jobs/fabric_images')
+    fabric_image_2 = models.ImageField(blank=True, null=True, upload_to='work/jobs/fabric_images')
     fabric_yardage = models.IntegerField(null=True, blank=True)
     fabric_note = models.TextField(null=True, blank=True)
-    top_design_image_1 = models.ImageField(blank=True, null=True, upload_to='work/top_designs')
-    top_design_image_2 = models.ImageField(blank=True, null=True, upload_to='work/top_designs')
+    top_design_image_1 = models.ImageField(blank=True, null=True, upload_to='work/jobs/top_designs')
+    top_design_image_2 = models.ImageField(blank=True, null=True, upload_to='work/jobs/top_designs')
     top_design_note = models.TextField(null=True, blank=True)
-    trouser_design_image = models.ImageField(blank=True, null=True, upload_to='work/trouser_designs')
+    trouser_design_image = models.ImageField(blank=True, null=True, upload_to='work/jobs/trouser_designs')
     trouser_design_note = models.TextField(null=True, blank=True)
-    agbada_design_image = models.ImageField(blank=True, null=True, upload_to='work/agbada_designs')
+    agbada_design_image = models.ImageField(blank=True, null=True, upload_to='work/jobs/agbada_designs')
     agbada_design_note = models.TextField(null=True, blank=True)
-    cap_fabric_image= models.ImageField(blank=True, null=True, upload_to='work/cap_fabric')
-    cap_design_image= models.ImageField(blank=True, null=True, upload_to='work/cap_designs')
+    cap_fabric_image= models.ImageField(blank=True, null=True, upload_to='work/jobs/cap_fabric')
+    cap_design_image= models.ImageField(blank=True, null=True, upload_to='work/jobs/cap_designs')
     cap_design_note = models.TextField(null=True, blank=True)
     workers = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True, blank=True)
 
@@ -154,12 +154,7 @@ class Jobs(models.Model):
         except (AttributeError, ValueError):
             no_image_available_url = static('work/media/no_image_available.png')
             return no_image_available_url
-        
-    def save(self, *args, **kwargs):
-        delete_s3_files()
-        
-
-
+'''      
 @receiver(pre_delete, sender=Jobs)
 def delete_s3_files(sender, instance, **kwargs):
     logger = logging.getLogger(__name__)
@@ -195,8 +190,9 @@ def delete_s3_files(sender, instance, **kwargs):
                         print('s3 object deleted succesfully')
                     else:
                         print('no image for this field')
-                except AttributeError:
+                except (AttributeError, FileNotFoundError):
                     logger.error('no credentials found')
+'''
                 
 
 class Job_operation(models.Model):
