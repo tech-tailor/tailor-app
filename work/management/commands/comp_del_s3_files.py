@@ -55,6 +55,10 @@ class Command(BaseCommand):
             s3_bucket_name = 'tailor-app-storage'
             s3_client = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY, endpoint_url=AWS_S3_ENDPOINT_URL)
 
+            print(AWS_ACCESS_KEY_ID)
+            print(AWS_SECRET_ACCESS_KEY)
+            print(AWS_S3_ENDPOINT_URL)
+
 
             try:
                 s3_objects = s3_client.list_objects_v2(Bucket='tailor-app-storage', Prefix=s3_folder)
