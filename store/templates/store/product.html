@@ -1,56 +1,116 @@
 {% extends 'store/main.html' %}
 {% load static %}
 
+{% block title%} Products {% endblock%}
+
 
 {% block content %}
-<h2>Products</h2>
+<!--product card for mobile only-->
+
+  <div class="container-fluid col-12 mb-2 d-block d-md-none">
+    <div class="bg-light p-2 " >
+        <h3 class="mx-1 mb-0 border text-center ">Amazing Products</h5>
+    </div>
+      
+    <div class=" container-fluid product-container mx-0 bg-light row row-cols-4 row-cols-md-4 g-2  ">
+      <div class="col">
+        <div class="card h-100">
+              <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
+              <div class="text-start ">
+                <h5 class=" small-text"> AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAshgjghggghhh with suitXXXXXXXXXXXXXCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDFFFFFFFFFFFFFFGGGGGGGGGooooooooooo pocket Kaftan</h5>
+                <h6 class="col-12 price"><small> <strong>#65,999</strong></small></h6>
+                <div class="small-text">
+                  <span class="text start"><s>#86,6968</s></span>
+                  <span class="text-end">50% Off</span>
+                </div>
+              </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+              <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
+              <div class="text-start ">
+                <h5 class=" small-text"> Ashgjghggghhh with suitooooooooooo pocket Kaftan</h5>
+                <h6 class="col-12 price"><small> <strong>#65,999</strong></small></h6>
+                <div class="small-text">
+                  <span class="text start"><s>#86,6968</s></span>
+                  <span class="text-end">50% Off</span>
+                </div>
+              </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+              <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
+              <div class="text-start ">
+                <h5 class=" small-text"> Ashgjghggghhh with suitooooooooooo pocket Kaftan</h5>
+                <h6 class="col-12 price"><small> <strong>#65,999</strong></small></h6>
+                <div class="small-text">
+                  <span class="text start"><s>#86,6968</s></span>
+                  <span class="text-end">50% Off</span>
+                </div>
+              </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+              <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
+              <div class="text-start ">
+                <h5 class=" small-text"> Ashgjghggghhh with suitooooooooooo pocket Kaftan</h5>
+                <h6 class="col-12 price"><small> <strong>#65,999</strong></small></h6>
+                <div class="small-text">
+                  <span class="text start"><s>#86,6968</s></span>
+                  <span class="text-end">50% Off</span>
+                </div>
+              </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+              <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
+              <div class="text-start ">
+                <h5 class=" small-text"> Ashgjghggghhh with suitooooooooooo pocket Kaftan</h5>
+                <h6 class="col-12 price"><small> <strong>#65,999</strong></small></h6>
+                <div class="small-text">
+                  <span class="text start"><s>#86,6968</s></span>
+                  <span class="text-end">50% Off</span>
+                </div>
+              </div>
+        </div>
+      </div>
 
 
-<button>
-    <a href="{% url 'store_home' %}">home</a>
-</button>
 
-<button>
-    <a href="{% url 'store_home' %}">clients in workapp</a>
-</button>
+      
+     
+    </div>
+
+    <nav aria-label="...">
+      <ul class="pagination">
+        <li class="page-item disabled">
+          <a class="page-link">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active" aria-current="page">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
 
 
-   <!--the carrousel-->
-   <p class="py-2"></p>
-    
-   <div id="carouselExampleInterval" class="carousel slide mt-5 " data-bs-ride="carousel">
-       <div class="carousel-inner">
-         <div class="carousel-item active" data-bs-interval="10000">
-           <img src="{% static 'store/media/header.png' %}" class="d-block w-100" alt="...">
-           <div class="carousel-caption">
-               <h2>Limited-Time Offer: Up to 50% Off</h2>
-               <p>Discover the Perfect Outfit for Every Occasion</p>
-           </div>
-         </div>
-         <div class="carousel-item" data-bs-interval="2000">
-           <img src="{% static 'store/media/header2.jpg' %}" class="d-block w-100" alt="...">
-           <div class="carousel-caption Text-center ">
-               <h2>Get Styled</h2>
-               <p>"Timeless Elegance: Our New Arrivals"</p>
-           </div>
-         </div>
-         <div class="carousel-item">
-           <img src="{% static 'store/media/header3.jpg' %}" class="d-block w-100" alt="...">
-           <div class="carousel-caption">
-               <h2>Explore the Collection</h2>
-               <p>Elevate Your Style with Our Latest Collection</p>
-           </div>
-         </div>
-       </div>
-       
-       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-         <span class="visually-hidden">P</span>
-       </button>
-       <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-         <span class="visually-hidden">N</span>
-       </button>
-   </div>
+  
 
-   {% endblock content %}
+
+
+
+{% endblock content %}

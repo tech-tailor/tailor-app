@@ -1,0 +1,18 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block title%} Error404 {% endblock%}
+
+
+{% block content %}
+
+<div class=" mb-2 col bg-light text-center">
+
+    <img src="{% static 'store/media/404.png' %}" class="img-thumbnail justify-content-center" alt="">
+    <p class="four-0-four-msg">look like you are lost. Head back to our <a href="{% url 'store_home'%}">homepage</a></p>
+</div>
+
+
+{% endblock content %}
+
+{% block footer%} {% endblock footer%}

@@ -5,11 +5,9 @@
 
 {% block content %}
  <!--the whole home content-->
- <div class="container row-12">
+ <div class="container-fluid row-12">
     <!--the carrousel-->
-    <p class="py-2"></p>
-    
-    <div id="carouselExampleInterval" class="carousel slide mt-5" data-bs-ride="carousel">
+    <div id="carouselExampleInterval" class="carousel slide " data-bs-ride="carousel">
 
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="10000">
@@ -50,77 +48,143 @@
 
     
     <!--product card for mobile only-->
-    <div class=" mb-3 d-block d-md-none">
-        <div class="bg-light " >
-            <h3 class="mx-2">Best selling</h5>
+    <div class=" mb-2 d-block d-md-none">
+        <div class="bg-light p-2 " >
+            <h3 class="mx-1 mb-0 ">Best selling</h5>
         </div>
         
-            
-        <div class="container-fluid product-container mx-0 bg-light row row-cols-3 row-cols-md-3 g-2  ">
-            <div class="col">
-              <div class="card h-100">
-                    <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
-                    <div class="text-start ">
+          
+        <div class=" product-container  border bg-light container  ">
+            <div class="d-flex flex-row overflow-auto  ">
 
-                        <h5 class=" small-text">Light Ash with suit pocket Kaftan</h5>
-                        <h6 class="col-sm-6 text-start"><small> <strong>#65,00000</strong></small></h6>
-                        <span class="row">
-                            <small class=" col-12 small-text" style="opacity: 0.5;"><s>#80000</s></small>
-                            <span class="col-12 small-text">50% Off</span>
-                    </span>
-                    </div>
+              <div class="card col-4 m-1 ">
+                <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
+                <div class="text-start ">
+                  <h5 class=" small-text">Light Ash Kaftan with Patch Pocket</h5>
+                  <h6 class="col-12 price"><small> <strong>#65,999</strong></small></h6>
+                  <div class="small-text">
+                    <span class="text start"><s>#86,6968</s></span>
+                    <span class="text-end">50% off</span>
+                  </div>
+                </div>
               </div>
+
+              <div class="card col-4 m-1 ">
+                <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
+                <div class="text-start ">
+                  <h5 class=" small-text">Light Ash Kaftan with suit Pocket</h5>
+                  <h6 class="col-12 price"><small> <strong>#65,999</strong></small></h6>
+                  <div class="small-text">
+                    <span class="text start"><s>#86,6968</s></span>
+                    <span class="text-end">50% off</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card col-4 m-1">
+                <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
+                <div class="text-start ">
+                  <h5 class=" small-text">Check Ash Kaftan</h5>
+                  <h6 class="col-12 price"><small> <strong>#65,999</strong></small></h6>
+                  <div class="small-text">
+                    <span class="text start"><s>#86,6968</s></span>
+                    <span class="text-end">50% off</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card col-4 m-1">
+                <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
+                <div class="text-start ">
+                  <h5 class=" small-text">Plain green Kaftan with Patch Pocket</h5>
+                  <h6 class="col-12 price"><small> <strong>#65,999</strong></small></h6>
+                  <div class="small-text">
+                    <span class="text start"><s>#86,6968</s></span>
+                    <span class="text-end">50% off</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card  col-4 m-1">
+                <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
+                <div class="text-start ">
+                  <h5 class=" small-text">Yello-custard Kaftan</h5>
+                  <h6 class="col-12 price"><small> <strong>#65,999</strong></small></h6>
+                  <div class="small-text">
+                    <span class="text start"><s>#86,6968</s></span>
+                    <span class="text-end">50% off</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card col-4 m-1">
+                <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
+                <div class="text-start ">
+                  <h5 class=" small-text">Fine-grained khaki kaftan</h5>
+                  <h6 class="col-12 price"><small> <strong>#6,999</strong></small></h6>
+                  <div class="small-text">
+                    <span class="text start"><s>#86,6968</s></span>
+                    <span class="text-end">50% off</span>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
             
            
         </div>
     </div>
+    
 
-    <!--product categories-->
-    <div class=" mb-3 d-block d-md-none">
-        <div class="bg-light " >
-            <h3 class="mx-2">Categories</h5>
-        </div>
+    <!--product categories mobile-only -->
+    <div class="my-2 d-block d-md-none">
+      <div class="bg-light py-1  " >
+          <h3 class="mx-2 mb-0 mt-1">Categories</h5>
+      </div>
         
-            
-        <div class="container-fluid product-container mx-0 bg-light row row-cols-3 row-cols-md-3 g-2  ">
-            <div class="col">
-              <div class="card h-100 image-container">
-                    <img src="{% static 'store/media/light_ash.jpg' %}" class="" alt="...">
-                    <div class="overlay-text">
-                        Kaftans
-                    </div>
-
+        <div id="carouselExample5" class="carousel slide bg-light product-container container-fluid"  data-bs-ride="carousel">
+          <div class="carousel-inner overflow-auto ">
+            <div class=" d-flex flex-row  ">
+              <div class="col-6 m-0 text-center">
+                    <img src="{% static 'store/media/light_ash.jpg' %}" class="img-thumbnail  " alt="...">
+                    <div class=" text-size h2 p-4 position-relative bottom-50">Kaftan</div>
               </div>
+
+              <div class="col-6 m-0 text-center">
+                <img src="{% static 'store/media/light_ash.jpg' %}" class="img-thumbnail  " alt="...">
+                <div class="h2 text-size p-4 position-relative bottom-50">Agbada</div>
+              </div>
+
+              <div class="col-6 m-0 text-center ">
+                <img src="{% static 'store/media/light_ash.jpg' %}" class="img-thumbnail " alt="...">
+                <div class="h2 p-4 text-size position-relative bottom-50">Caps</div>
+              </div>
+
+              <div class="col-6 m-0 text-center ">
+                <img src="{% static 'store/media/light_ash.jpg' %}" class="img-thumbnail" alt="...">
+                <div class="h2 p-4 text-size position-relative bottom-50">Dashiki</div>
+              </div>
+
+              <div class="col-6 m-0 text-center">
+                <img src="{% static 'store/media/light_ash.jpg' %}" class="img-thumbnail" alt="...">
+                <div class="h2 p-4 text-size text-center position-relative bottom-50">Trouser</div>
+              </div>
+
             </div>
-
-            <div class="col">
-                <div class="card h-100">
-                      <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
-                </div>
-              </div>
-
-              <div class="col">
-                <div class="card h-100">
-                      <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
-                </div>
-              </div>
-
-              
-               <div class="col">
-              <div class="card h-100">
-                    <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
-              </div>
-            </div>
-
-  
-
-            
-           
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample5" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample5" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-    </div>
 
+
+      </div>  
    
         
 
@@ -135,7 +199,7 @@
             <div class="col">
               <div class="card h-100">
                     <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
-                    <div class="text-start ">
+                    <div class="text-start card ">
 
                         <h5 class=" small-text">Light Ash with suit pocket Kaftan</h5>
                         <h6 class="col-sm-6 text-start"><small> <strong>#65,00000</strong></small></h6>
@@ -172,13 +236,13 @@
 
             <div class="col">
                 <div class="card h-100">
-                      <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
+                      <img src="{% static 'store/media/404.png' %}" class="card-img-top" alt="...">
                 </div>
               </div>
 
               <div class="col">
                 <div class="card h-100">
-                      <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
+                      <img src="{% static 'store/media/men-collection.png' %}" class="card-img-top" alt="...">
                 </div>
               </div>
 
@@ -189,17 +253,21 @@
               </div>
             </div>
         </div>
+      </div>
     </div>
-  </div>
 
-
- 
-
-</div>
-  
 
 
 
 
     
+    
+
+
+
+
+
+ 
+
+  </div>    
 {% endblock content %}

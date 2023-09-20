@@ -1,33 +1,17 @@
-/*product text*/
 .small-text{
-    font-size: 12px;
+    font-size: 10px;
+    margin: 1px;
+   ;
 }
 
-/*container for image and text overlay*/
-.image-container{
-    position: relative;
-}
-/*overlay text*/
-.overlay-text{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(250, 247, 247, 0.7); /* Background color with transparency */
-    color: #fff; /* Text color */
-    padding: 1px;
-    font-size: 25px;
-
+.price{
+    margin: 2px;
 }
 
-.slider-container {
-    display: flex;
-    overflow: hidden;
-    width: 50%; /* Set your desired width */
-  }
-  
-  .slide {
-    flex: 0 0 10%;
-    transition: transform 0.5s ease-in-out;
-  }
-  
+.text-size{
+    font-size: 50px;
+    background-color: rgba(160, 149, 149, 0.5); /* Semi-transparent background color */
+    
+    
+}
+
