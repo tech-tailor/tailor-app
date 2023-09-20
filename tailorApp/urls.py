@@ -16,6 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+
+
 
 urlpatterns = [
     path('', include('store.urls')), # homepage urls
