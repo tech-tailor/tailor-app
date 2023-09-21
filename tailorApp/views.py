@@ -1,2 +1,5 @@
+from django.http import HttpResponse
 
-handler404 = "tailorApp.views.custom_404_view"
+
+def custom_404_view(request, exception=None):
+    return HttpResponse(request, 'store/error404.html', status=404)

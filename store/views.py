@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 # Create your views here.
 from .models import  *
 
@@ -24,17 +25,15 @@ def register(request):
     context = {}
     return render(request, 'store/register.html', context)
 
-def error404(request):
-    context = {}
-    return render(request, 'store/error404.html', context)
 
-def searchpage(request):
+def searchpage(request,):
     context = {}
     return render(request, 'store/searchpage.html', context)
 
 def productpage(request):
     context = {}
     return render(request, 'store/productpage.html', context)
+
 
 
 

@@ -19,6 +19,8 @@ from django.urls import path, include
 from django.http import HttpResponse
 
 
+handler404 = "tailorApp.views.custom_404_view"
+
 
 urlpatterns = [
     path('', include('store.urls')), # homepage urls
