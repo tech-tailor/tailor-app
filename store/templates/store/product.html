@@ -5,91 +5,40 @@
 
 
 {% block content %}
-<!--product card for mobile only-->
 
-  <div class="container-fluid col-12 mb-2 d-block d-md-none">
-    <div class="bg-light p-2 " >
-        <h3 class="mx-1 mb-0 border text-center ">Amazing Products</h5>
-    </div>
-      
-    <div class=" container-fluid product-container mx-0 bg-light row row-cols-4 row-cols-md-4 g-2  ">
-      <div class="col">
-        <div class="card h-100">
-              <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
-              <div class="text-start ">
-                <h5 class=" small-text"> short sleeve pocket Kaftan</h5>
-                <h6 class="col-12 price"><small> <strong>#65,999</strong></small></h6>
-                <div class="small-text">
-                  <span class="text start"><s>#86,6968</s></span>
-                  <span class="text-end">50% Off</span>
-                </div>
-              </div>
+ <!--Feature products for mobile only-->
+ <div class=" mb-2 d-block d-md-none border ">
+  <div class="bg-light p-1 " >
+      <h3 class=" mx-3 my-1 text-center border ">Amazing Products</h5>
+  </div>
+  
+    
+  <div class=" product-container   bg-light container  ">
+      <div class="row mx-2 ">
+        {% for product in products %}
+        {% if product.imageurl %}
+        <div class="card my-1 mx-0 col-3 border ">
+          <a href="{% url 'store_productpage' product.product_id %}" style="text-decoration: none; color: black;">
+            <img src="{{ product.imageurl }}" class="card-img-top" alt="...">
+            <div class="text-start ">
+            <h5 class=" small-text">{{ product.name}}</h5>
+            <h6 class="col-12 price"><small> <strong>#{{ product.discount_price }}</strong></small></h6>
+            <div class="small-text">
+              <span class="text start"><s>#{{ product.price }}</s></span>
+              <span class="text-end">{{ product.discount_percentage }}% off</span>
+            </div>
+          </div>
+          </a>
         </div>
+        {% endif %}
+        {% endfor %}
       </div>
-
-      <div class="col">
-        <div class="card h-100">
-              <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
-              <div class="text-start ">
-                <h5 class=" small-text"> Ash with pocket Kaftan</h5>
-                <h6 class="col-12 price"><small> <strong>#65,999</strong></small></h6>
-                <div class="small-text">
-                  <span class="text start"><s>#86,6968</s></span>
-                  <span class="text-end">50% Off</span>
-                </div>
-              </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card h-100">
-              <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
-              <div class="text-start ">
-                <h5 class=" small-text"> blue with suit ppocket Kaftan</h5>
-                <h6 class="col-12 price"><small> <strong>#65,999</strong></small></h6>
-                <div class="small-text">
-                  <span class="text start"><s>#86,6968</s></span>
-                  <span class="text-end">50% Off</span>
-                </div>
-              </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card h-100">
-              <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
-              <div class="text-start ">
-                <h5 class=" small-text"> white with no pocket Kaftan</h5>
-                <h6 class="col-12 price"><small> <strong>#65,999</strong></small></h6>
-                <div class="small-text">
-                  <span class="text start"><s>#86,6968</s></span>
-                  <span class="text-end">50% Off</span>
-                </div>
-              </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card h-100">
-              <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
-              <div class="text-start ">
-                <h5 class=" small-text"> Brown cap with pocket Kaftan</h5>
-                <h6 class="col-12 price"><small> <strong>#65,999</strong></small></h6>
-                <div class="small-text">
-                  <span class="text start"><s>#86,6968</s></span>
-                  <span class="text-end">50% Off</span>
-                </div>
-              </div>
-        </div>
-      </div>
+  </div>
+</div>
 
 
 
-      
-     
-    </div>
-
-    <nav aria-label="...">
+    <nav class="mx-3 mt-2" aria-label="...">
       <ul class="pagination">
         <li class="page-item disabled">
           <a class="page-link">Previous</a>

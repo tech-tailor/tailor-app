@@ -25,4 +25,5 @@ handler404 = "tailorApp.views.custom_404_view"
 urlpatterns = [
     path('', include('store.urls')), # homepage urls
     path('accounts/', include('allauth.urls')),
+    path('admin/', admin.site.urls),
 ]

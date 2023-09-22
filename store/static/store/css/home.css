@@ -10,8 +10,12 @@
 
 .text-size{
     font-size: 50px;
-    background-color: rgba(160, 149, 149, 0.5); /* Semi-transparent background color */
-    
-    
+    /*background-color: rgba(214, 190, 190, 0.5); /* Semi-transparent background color */
+    color: rgb(245, 240, 240); 
+}
+
+a{
+    text-decoration: none;
+    color: black;
 }
 

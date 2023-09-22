@@ -13,7 +13,7 @@ urlpatterns = [
     path("logout/", views.logout, name="store_logout"),
     path("register/", views.register, name="store_register"),
     path("search/", views.searchpage, name="store_searchpage"),
-    path("productpage/", views.productpage, name="store_productpage"), 
+    path("productpage/<uuid:product_id>/", views.productpage, name="store_productpage"), 
 ]
 
 

@@ -14,33 +14,36 @@
 			<aside class="col-sm-5 border-right">
 	<article class="gallery-wrap"> 
 	<div class="img-big-wrap ">
-	  <div class="text-center"> <a href="#"><img src="{% static 'store/media/light_ash.jpg' %}"></a></div>
+	  <div class="text-center "> <a href=""><img src="{{ image_1_url }}" id="large-image" ></a></div>
 	</div> <!-- slider-product.// -->
+	
 	<div class="img-small-wrap">
-	  <div class="item-gallery"> <img src="{% static 'store/media/light_ash.jpg' %}"> </div>
-	  <div class="item-gallery"> <img src="{% static 'store/media/light_ash.jpg' %}"> </div>
-	  <div class="item-gallery"> <img src="{% static 'store/media/light_ash.jpg' %}"> </div>
-	  <div class="item-gallery"> <img src="{% static 'store/media/light_ash.jpg' %}"> </div>
+	  <div class="item-gallery"> <img src="{{ image_1_url }}" class="small-image" data-src="{{ image_1_url }}" alt="product"> </div>
+	  {% if image_2_url %}
+	  <div class="item-gallery"> <img src="{{ image_2_url }}" alt="" data-src="{{ image_2_url }}" class="small-image"> </div>
+	  {% endif %}
+	  {% if image_3_url %}
+	  <div class="item-gallery"> <img src="{{image_3_url }}" alt="" data-src="{{ image_3_url }}" class="small-image"> </div>
+	  {% endif %}
 	</div> <!-- slider-nav.// -->
+	
 	</article> <!-- gallery-wrap .end// -->
 			</aside>
 			<aside class="col-sm-7">
 	<article class="card-body p-5">
-		<h3 class="title mb-3">Light Ash Kaftan</h3>
+		<h3 class="title mb-3">{{ products.name}}</h3>
 	
 	<p class="price-detail-wrap"> 
-		<span class="price h3 text-warning"> 
-			<span class="currency">#</span><span class="num">60,000</span>
+		<span class="price h3 text-primary"> 
+			<span class="currency">#</span><span class="num">{{ products.discount_price}}</span>
 		</span> 
 	</p> <!-- price-detail-wrap .// -->
 	<dl class="item-property">
 	  <dt>Description</dt>
-	  <dd><p>Here goes description consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco </p></dd>
+	  <dd><p>{{ products.description}}</p></dd>
 	<dl class="param param-feature">
 	  <dt>Delivery</dt>
-	  <dd>Free Delivery</dd>
+	  <dd>{{ products.delivery}}</dd>
 	</dl>  <!-- item-property-hor .// -->
 	
 	<hr>

@@ -9,13 +9,7 @@ from django.conf import settings
 import os
 import logging
 from django.contrib.auth import get_user_model
-import boto3
-from storages.backends.s3boto3 import S3Boto3Storage
-from botocore.exceptions import NoCredentialsError
-IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_S3_ENDPOINT_URL = os.environ.get('AWS_S3_ENDPOINT_URL')
+
 
 class Sex(models.TextChoices):
     MALE = 'MALE'

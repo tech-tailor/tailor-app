@@ -12,10 +12,9 @@
 
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'store/css/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'store/css/main.css' %}" />
     <link rel="stylesheet" href="{% static 'store/css/home.css' %}">
     <link rel="stylesheet" href="{% static 'store/css/footer.css' %}">
-    <link rel="stylesheet" href="{% static 'store/css/product_slide.css' %}">
     <link rel="stylesheet" href="{% static 'store/css/productpage.css' %}">
   </head>
 
@@ -85,13 +84,22 @@
     
     {% block footer%}
     <footer>
-              <p class="info text-center"><a href="mailto:neeyeeclothier@gmail.com">support email - neeyeeclothier@mail.com</a></p>
-              <p class="info text-center text-light">For inquiries, please call - <a href="tel:07065727413">07065727413</a>.</p>
+              <p class="info text-light text-center"><a href="mailto:neeyeeclothier@gmail.com" style="text-decoration: none; color: white;">support email - neeyeeclothier@mail.com</a></p>
+              <p class="info text-center text-light ">For inquiries, please call - <a href="tel:07065727413" style="text-decoration: none; color: white;">+2347065727413</a>.</p>
+
+              <div>
+                <i class="bi bi-whatsapp"></i>
+              
+              </div>
+
+
+              <!--
               <div class="footer-social-container mt-0 justify-content-sm-evenly">
                 <a href="#" class="social-link">terms & services</a>
                 <a href="#" class="social-link">privacy page</a>
                 <a href="#" class="social-link">instagram</a>
               </div>
+              -->
               <p class="footer-credit">Clothing, Best apparels online store</p>
   </footer>
 
@@ -119,6 +127,7 @@
     <script src="{% static 'store/script/index.js' %}"></script>
     <script src="{% static 'store/script/home.js' %}"></script>
     <script src="{% static 'store/script/product_slide.js' %}"></script>
+    <script src="{% static 'store/script/productpage.js' %}"></script>
 
     <!-- Bootstrap JS -->
     <script
