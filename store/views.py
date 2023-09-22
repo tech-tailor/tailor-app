@@ -35,7 +35,6 @@ def home(request):
         'carousels':carousels,
         'categories':categories,
         'random_selection_products':random_selection_products,
-        'discount':discount,
         'feature_products':feature_products
     }
     return render(request, 'store/home.html', context)
