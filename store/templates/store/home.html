@@ -36,7 +36,7 @@
     <!--Random products for mobile only-->
     <div class=" mb-2 d-block d-md-none border ">
         <div class="bg-light p-1 " >
-            <h3 class=" m-3 text-center border ">Best selling</h5>
+            <h3 class=" mx-1 text-center border ">Best selling</h5>
         </div>
         
           
@@ -44,17 +44,17 @@
             <div class="d-flex flex-row  overflow-auto  ">
               {% for product in random_selection_products%}
               {% if product.imageurl %}
-              <div class="card col-4 p-1 border ">
+              <div class="card col-4 m-0 p-1 border ">
                 <a href="{% url 'store_productpage' product.product_id %}" style="text-decoration: none; color: black;">
                   <img src="{{ product.imageurl }}" class="card-img-top" alt="...">
-                  <div class="text-start ">
-                  <h5 class=" small-text">{{ product.name}}</h5>
-                  <h6 class="col-12 price"><small> <strong>#{{ product.discount_price }}</strong></small></h6>
-                  <div class="small-text">
-                    <span class="text start"><s>#{{ product.price }}</s></span>
-                    <span class="text-end">{{ product.discount_percentage }}% off</span>
+                  <div class=" text-start product_text ">
+                    <h5 class=" text-capitalize product_name">{{ product.name}}</h5>
+                    <h6 class=" discount_price"><small> <strong>#{{ product.discount_price }}</strong></small></h6>
+                    <div class="product_price">
+                      <span class="product_price"><s>#{{ product.price }}</s></span>
+                      <span class="text-end discount_percentage">{{ product.discount_percentage }}% off</span>
+                    </div>
                   </div>
-                </div>
                 </a>
               </div>
               {% endif %}
@@ -69,18 +69,18 @@
 
       <!--product categories mobile-only -->
     <div class="my-2 d-block d-md-none border bg-light">
-      <div class=" mx-1" >
-          <h3 class=" mb-0 border mx-2 text-center ">Categories</h5>
+      <div class=" m-1" >
+          <h3 class="  border mx-1 text-center ">Categories</h5>
       </div>
         
           <div class="overflow-auto">
-            <div class=" mb-0 d-flex m-2  ">
+            <div class=" mb-0 d-flex m-1  ">
 
               {% for category in categories%}
               {% if category.imageurl %}
-              <div class="col-6 m-0 text-center ">
+              <div class="col-5 m-0 text-center ">
                     <img src="{{ category.imageurl }}" class="img-thumbnail  " alt="...">
-                    <span class=" text-size text-center h2 position-absolute bottom-50">{{ category.nam }}</span>
+                    <span class=" text-size text-center text-wrap h2 position-absolute bottom-50">{{ category.nam }}</span>
               </div>
               {% endif %}
               {% endfor %}
@@ -91,27 +91,27 @@
     </div>
 
      <!--Feature products for mobile only-->
-    <div class=" mb-2 d-block d-md-none border ">
+    <div class=" my-2 d-block d-md-none border ">
       <div class="bg-light p-1 " >
-          <h3 class=" mx-3 my-1 text-center border ">Feature Product</h5>
+          <h3 class=" mx-1  text-center border ">Feature Product</h5>
       </div>
       
         
       <div class=" product-container   bg-light container  ">
-          <div class="row mx-2 ">
+          <div class="row mx-0 ">
             {% for product in feature_products%}
             {% if product.imageurl %}
-            <div class="card my-1 mx-0 col-3 border ">
+            <div class="card my-1  col-3 ">
               <a href="{% url 'store_productpage' product.product_id %}" style="text-decoration: none; color: black;">
                 <img src="{{ product.imageurl }}" class="card-img-top" alt="...">
-                <div class="text-start ">
-                <h5 class=" small-text">{{ product.name}}</h5>
-                <h6 class="col-12 price"><small> <strong>#{{ product.discount_price }}</strong></small></h6>
-                <div class="small-text">
-                  <span class="text start"><s>#{{ product.price }}</s></span>
-                  <span class="text-end">{{ product.discount_percentage }}% off</span>
+                <div class="text-start product_text ">
+                  <h5 class=" product_name text-capitalize  ">{{ product.name}}</h5>
+                  <h6 class=" discount_price"><small> <strong>#{{ product.discount_price }}</strong></small></h6>
+                  <div class="product_price">
+                    <span class="product_price"><s>#{{ product.price }}</s></span>
+                    <span class="discount_percentage">{{ product.discount_percentage }}% Off</span>
+                  </div>
                 </div>
-              </div>
               </a>
             </div>
             {% endif %}

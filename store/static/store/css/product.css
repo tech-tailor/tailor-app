@@ -1,0 +1,31 @@
+.product_text{
+    line-height: normal;
+
+}
+
+.product_name{
+    font-size: 7px;
+    margin: 0.5px;
+    
+}
+
+.discount_price{
+   
+    font-size: 9px;
+    margin: 0.5px;
+    
+
+
+}
+
+.discount_percentage{
+    font-size: 5px;
+   
+    
+}
+
+.product_price{
+    font-size: 6px;
+    margin: 0.5px;
+   
+}

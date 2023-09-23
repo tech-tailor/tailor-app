@@ -1,11 +1,35 @@
-.small-text{
-    font-size: 10px;
-    margin: 1px;
-   ;
+
+
+.product_text{
+    line-height: normal;
+
 }
 
-.price{
-    margin: 2px;
+.product_name{
+    font-size: 7px;
+    margin: 0.5px;
+    
+}
+
+.discount_price{
+   
+    font-size: 9px;
+    margin: 0.5px;
+    
+
+
+}
+
+.discount_percentage{
+    font-size: 5px;
+   
+    
+}
+
+.product_price{
+    font-size: 6px;
+    margin: 0.5px;
+   
 }
 
 .text-size{
