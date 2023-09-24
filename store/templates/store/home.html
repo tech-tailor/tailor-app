@@ -40,11 +40,11 @@
         </div>
         
           
-        <div class=" product-container   bg-light container  ">
+        <div class="   bg-light  ">
             <div class="d-flex flex-row  overflow-auto  ">
               {% for product in random_selection_products%}
               {% if product.imageurl %}
-              <div class="card col-4 m-0 p-1 border ">
+              <div class="card col-4 p-1 border ">
                 <a href="{% url 'store_productpage' product.product_id %}" style="text-decoration: none; color: black;">
                   <img src="{{ product.imageurl }}" class="card-img-top" alt="...">
                   <div class=" text-start product_text ">
@@ -91,13 +91,13 @@
     </div>
 
      <!--Feature products for mobile only-->
-    <div class=" my-2 d-block d-md-none border ">
+    <div class=" my-2 d-block d-md-none border bg-light">
       <div class="bg-light p-1 " >
           <h3 class=" mx-1  text-center border ">Feature Product</h5>
       </div>
       
         
-      <div class=" product-container   bg-light container  ">
+      <div class=" product-container bg-light">
           <div class="row mx-0 ">
             {% for product in feature_products%}
             {% if product.imageurl %}

@@ -7,53 +7,56 @@
 {% block content %}
 
  <!--Feature products for mobile only-->
- <div class="container mb-2 d-block d-md-none ">
-  <div class="bg-light p-1 " >
-      <h3 class=" mx-3 my-1 text-center border ">Amazing Products</h5>
-  </div>
-  
-    
-    <div class=" product-container   bg-light container  ">
-      <div class="row mx-1 ">
-        {% for product in products %}
-        {% if product.imageurl %}
-        <div class="card my-1 mx-0 col-3 border ">
-          <a href="{% url 'store_productpage' product.product_id %}" style="text-decoration: none; color: black;">
-            <img src="{{ product.imageurl }}" class="card-img-top" alt="...">
-            <div class="text-start ">
-              <h5 class=" text-capitalize product_name">{{ product.name}}</h5>
-              <h6 class=" discount_price"><small> <strong>#{{ product.discount_price }}</strong></small></h6>
-              <div class="product_price">
-                <span class="product_price"><s>#{{ product.price }}</s></span>
-                <span class="text-end discount_percentage">{{ product.discount_percentage }}% off</span>
-              </div>
-            </div>
-          </a>
-        </div>
-        {% endif %}
-        {% endfor %}
-      </div>
+<div class="container-fluid row-12">
+
+  <div class=" d-block d-md-none ">
+    <div class="bg-light " >
+        <h3 class=" my-0 text-center border ">Amazing Products</h5>
     </div>
-
-
-
-    <nav class="mx-3" aria-label="...">
-      <ul class="pagination">
-        <li class="page-item disabled">
-          <a class="page-link">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item active" aria-current="page">
-          <a class="page-link" href="#">2</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#">Next</a>
-        </li>
-      </ul>
-    </nav>
-
-  </div>
+    
+      
+      <div class="    bg-light border  ">
+        <div class="row text-start container border border-danger ">
+          {% for product in products %}
+          {% if product.imageurl %}
+          <div class=" my-1 col-3 card">
+            <a href="{% url 'store_productpage' product.product_id %}" style="text-decoration: none; color: black;">
+              <img src="{{ product.imageurl }}" class="card-img-top" alt="...">
+              <div class="text-start ">
+                <h5 class=" text-capitalize product_name">{{ product.name}}</h5>
+                <h6 class=" discount_price"><small> <strong>#{{ product.discount_price }}</strong></small></h6>
+                <div class="product_price">
+                  <span class="product_price"><s>#{{ product.price }}</s></span>
+                  <span class="text-end discount_percentage">{{ product.discount_percentage }}% off</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+  
+  
+  
+      <nav class="" aria-label="...">
+        <ul class="pagination">
+          <li class="page-item disabled">
+            <a class="page-link">Previous</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="#">2</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+  
+    </div>
+</div>
 
 
   
