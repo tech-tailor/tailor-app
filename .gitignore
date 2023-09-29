@@ -10,6 +10,7 @@ local_sever_script.sh
 akin
 test.py
 test2.py
+akinn
 
 # C extensions
 *.so
@@ -138,6 +139,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.myvenv
 
 # Spyder project settings
 .spyderproject

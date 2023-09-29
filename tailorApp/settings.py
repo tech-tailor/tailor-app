@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY =  'ejjfg7euejg48t48gedjgd87t57843'  #config('SECRET_KEY')
 
 
 
@@ -85,6 +85,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
     'django_hosts.middleware.HostsResponseMiddleware',
 ]
 
@@ -96,7 +97,8 @@ DEFAULT_HOST = 'default'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.normpath(os.path.join(BASE_DIR, 'templates')),
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,6 +118,16 @@ AUTHENTICATION_BACKENDS = [
     # `allauth` specific authentication methods, such as login by email
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+
+#django-allauth settings
+LOGIN_REDIRECT_URL='/accounts/myprofile/'
+ACCOUNT_AUTHENTICATION_METHOD='username_email'
+ACCOUNT_CHANGE_EMAIL=True
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS=1
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_LOGOUT_REDIRECT_URL='/'
+ACCOUNT_USERNAME_BLACKLIST=['jesus', 'admin', 'neeyee']
 
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -177,11 +189,11 @@ else:
 
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': config('DATABASE_NAME'),
-            'USER': 'tailorapp_admin',
-            'PASSWORD': config('MY_PASSWORD'),
-            'HOST': config('HOST'),
-            'PORT': config('PORT'),
+            'NAME': 'tailorapp',   #os.path.join('DATABASE_NAME'),
+            'USER': 'akin',
+            'PASSWORD':  'testing',  #os.path.join('MY_PASSWORD'),
+            'HOST': 'localhost',  #os.path.join('HOST'),
+            'PORT': 5432    #os.path.join('PORT'),
         }, 
     }
 
@@ -205,6 +217,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+#email settings
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -219,8 +234,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-
 # Access the storage credentials from environment variables
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
@@ -230,9 +243,7 @@ AWS_S3_REGION_NAME = 'auto'
 AWS_DEFAULT_ACL = 'public-read'
 
 
-#serve static files during development
-
-
+#serve static files
 #serve static files during production
 if IS_HEROKU_APP:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

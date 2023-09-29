@@ -1,10 +1,7 @@
 import random
 from django.shortcuts import render
-
-
-# Create your views here.
 from store.models import  *
-
+from django.contrib.auth.decorators import login_required
 
 def discount_percentage(products):
         percentage = []
@@ -56,10 +53,10 @@ def productpage(request, product_id):
     }
     return render(request, 'store/productpage.html', context)
 
-
-def login(request):
+@login_required
+def myprofile(request):
     context = {}
-    return render(request, 'store/login.html', context)
+    return render(request, 'store/myprofile.html', context)
 
 def logout(request):
     context = {}

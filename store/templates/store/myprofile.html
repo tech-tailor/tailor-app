@@ -1,0 +1,24 @@
+
+{% extends 'store/main.html' %}
+{% load static %}
+{% load account %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<h1>profile</h1>
+<h6>welcome, {% user_display user %}</h6>
+
+{% user_display user as user_display %}
+
+{% block t %}
+{{ user_display }} has logged in...
+
+{% endblock t %}
+
+<form action="{%url 'account_logout' %}"><button>
+    Logout
+</button></form>
+
+
+{% endblock content %}
