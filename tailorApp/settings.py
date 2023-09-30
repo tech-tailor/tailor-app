@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY =  'ejjfg7euejg48t48gedjgd87t57843'  #config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY')
 
 
 
@@ -140,8 +140,8 @@ SOCIALACCOUNT_PROVIDERS = {
             'access_type': 'offline',
         },
         'APP': {
-            'client_id': os.environ.get('YOUR_CLIENT_ID'),
-            'secret': os.environ.get('YOUR_CLIENT_SECRET'),
+            'client_id': config('YOUR_CLIENT_ID'),
+            'secret': config('YOUR_CLIENT_SECRET'),
         },
         'OAUTH_PKCE_ENABLED': True,
         
@@ -189,11 +189,11 @@ else:
 
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'tailorapp',   #os.path.join('DATABASE_NAME'),
+            'NAME': config('DATABASE_NAME'),
             'USER': 'akin',
-            'PASSWORD':  'testing',  #os.path.join('MY_PASSWORD'),
-            'HOST': 'localhost',  #os.path.join('HOST'),
-            'PORT': 5432    #os.path.join('PORT'),
+            'PASSWORD':  config('PASSWORD'),
+            'HOST': config('HOST'),
+            'PORT': config('PORT'),
         }, 
     }
 
@@ -235,10 +235,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 # Access the storage credentials from environment variables
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-AWS_S3_ENDPOINT_URL = os.environ.get('AWS_S3_ENDPOINT_URL')
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_ENDPOINT_URL = config('AWS_S3_ENDPOINT_URL')
 AWS_S3_REGION_NAME = 'auto'
 AWS_DEFAULT_ACL = 'public-read'
 
