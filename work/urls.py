@@ -17,6 +17,7 @@ urlpatterns = [
     path("a#va^ilable-^jo#bs/<str:job_name>/", views.jobdetails, name="work_jobdetails"),
     path("cli^en#t-mea^ur*ement/<str:measurement_name>/", views.clientmeasurement, name="work_clientmeasurement"),
     path("perror_log/", views.error_log, name="work_error_log"),
+    
 ]   
 
 
