@@ -1,4 +1,5 @@
 from django.conf import settings
+from .settings_dev import *
 from django.contrib import admin
 from django_hosts import patterns, host
 
