@@ -37,6 +37,11 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
+INSTALLED_APPS = [
+    'django.contrib.staticfiles',
+]
+
+
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 # For development, you might want to use SQLite as your database
