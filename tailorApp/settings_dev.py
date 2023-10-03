@@ -37,7 +37,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
-INSTALLED_APPS = [
+INSTALLED_APPS += [
     'django.contrib.staticfiles',
 ]
 
