@@ -94,3 +94,8 @@ MEDIA_URL = f"https://s3.us-east-005.backblazeb2.com/media/"
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 STATIC_URL = f"https://s3.us-east-005.backblazeb2.com/static/"
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
