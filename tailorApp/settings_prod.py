@@ -89,13 +89,14 @@ AWS_DEFAULT_ACL = 'public-read'
 
 #serve static files
 #serve static files during production
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-MEDIA_URL = f"https://s3.us-east-005.backblazeb2.com/media/"
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
-STATIC_URL = f"https://s3.us-east-005.backblazeb2.com/static/"
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#MEDIA_URL = f"https://s3.us-east-005.backblazeb2.com/media/"
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+#STATIC_URL = f"https://s3.us-east-005.backblazeb2.com/static/"
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
+STATIC_ROOT = "/var/www/neeyee/static"
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_ROOT = "/var/www/neeyee/media"
+MEDIA_URL = "/media/"
