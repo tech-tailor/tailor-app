@@ -2,7 +2,7 @@
 dont forget to export these to each of the enviroments
 export DJANGO_SETTINGS_MODULE=tailorApp.settings_prod  # For production
 
-export DJANGO_SETTINGS_MODULE=tailorAppt.settings_dev  # For development
+export DJANGO_SETTINGS_MODULE=tailorApp.settings_dev  # For development
 
 """
 

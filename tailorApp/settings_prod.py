@@ -18,8 +18,8 @@ from .settings import *
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = False
+
 ALLOWED_HOSTS = [
-    "192.168.44.159",
     "neeyee.store",   # production url main host
     "www.neeyee.store", #sub-domain for roduction     
     "test.neeyee.store", #main host for testing url
