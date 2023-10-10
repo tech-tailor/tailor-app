@@ -31,10 +31,9 @@ SECRET_KEY = config('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#TEMPLATE_DEBUG = True
+#DEBUG = True
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
 
 
 
@@ -70,6 +69,15 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
     'django_hosts.middleware.HostsResponseMiddleware',
 ]
+
+#MIDDLEWARE += ["csp.middleware.CSPMiddleware"]
+
+#CSP_DEFAULT_SRC = ("'self'",  )
+#CSP_STYLE_SRC = ("'self'", "'unsafe-inline'", "cdn.jsdelivr.net")
+#CSP_SCRIPT_SRC = ("'self'", "'unsafe-inline'", "cdn.jsdelivr.net")
+#CSP_IMG_SRC = ("'self'")
+
+#CSP_REPORT_URI = "/csp-violation-report/"  #handle this in a view to monitor it
 
 ROOT_URLCONF = 'tailorApp.urls'
 
@@ -158,6 +166,12 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+SECURE_HSTS_SECONDS = 30
+SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
 
 
 # Internationalization

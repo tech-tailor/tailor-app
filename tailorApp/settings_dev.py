@@ -31,7 +31,7 @@ SECRET_KEY = config('SECRET_KEY')
  
 # SECURITY WARNING: don't run with debug turned on in production!
 
-#DEBUG = True
+DEBUG = True
 #TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
@@ -69,8 +69,11 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # Serve static and media files locally during development
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
