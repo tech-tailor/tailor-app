@@ -49,8 +49,9 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
+    #'allauth.socialaccount.providers.google',
     'django.contrib.staticfiles',
+    'csp',
     'django_hosts',
     'work',
     'store',
@@ -66,18 +67,20 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'csp.middleware.CSPMiddleware',
     'allauth.account.middleware.AccountMiddleware',
     'django_hosts.middleware.HostsResponseMiddleware',
 ]
 
-#MIDDLEWARE += ["csp.middleware.CSPMiddleware"]
 
-#CSP_DEFAULT_SRC = ("'self'",  )
-#CSP_STYLE_SRC = ("'self'", "'unsafe-inline'", "cdn.jsdelivr.net")
-#CSP_SCRIPT_SRC = ("'self'", "'unsafe-inline'", "cdn.jsdelivr.net")
-#CSP_IMG_SRC = ("'self'")
 
-#CSP_REPORT_URI = "/csp-violation-report/"  #handle this in a view to monitor it
+CSP_DEFAULT_SRC = ("'self'", "cdn.jsdelivr.net", "'unsafe-inline'")
+CSP_STYLE_SRC = ("'self'", "cdn.jsdelivr.net", "https://maxcdn.bootstrapcdn.com", "fonts.googleapis.com","https://cdnjs.cloudflare.com", "https://stackpath.bootstrapcdn.com", "code.jquery.com", )
+CSP_SCRIPT_SRC = ("'self'", "cdn.jsdelivr.net", "https://maxcdn.bootstrapcdn.com", "fonts.googleapis.com","https://cdnjs.cloudflare.com", "https://stackpath.bootstrapcdn.com", "code.jquery.com", )
+CSP_IMG_SRC = ("'self'", "data:")
+CSP_FONT_SRC = ("'self'", "cdn.jsdelivr.net", "https://maxcdn.bootstrapcdn.com", "fonts.googleapis.com","https://cdnjs.cloudflare.com", "https://stackpath.bootstrapcdn.com", "code.jquery.com", "https://fonts.gstatic.com" )
+
+#CSP_REPORT_URI = "/product/"  #handle this in a view to monitor it
 
 ROOT_URLCONF = 'tailorApp.urls'
 
@@ -111,14 +114,15 @@ AUTHENTICATION_BACKENDS = [
 
 
 #django-allauth settings
-LOGIN_REDIRECT_URL='/accounts/myprofile/'
+LOGIN_REDIRECT_URL='/accounts/profile/'
+LOGIN_URL = '/accounts/login/'
 ACCOUNT_AUTHENTICATION_METHOD='username_email'
 ACCOUNT_CHANGE_EMAIL=True
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS=1
 ACCOUNT_EMAIL_REQUIRED=True
 ACCOUNT_LOGOUT_REDIRECT_URL='/'
 ACCOUNT_USERNAME_BLACKLIST=['jesus', 'admin', 'neeyee']
-
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -167,7 +171,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-SECURE_HSTS_SECONDS = 30
+SECURE_HSTS_SECONDS = 2592000
 SECURE_HSTS_PRELOAD = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")

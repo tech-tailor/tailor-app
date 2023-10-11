@@ -58,13 +58,6 @@ def myprofile(request):
     context = {}
     return render(request, 'store/myprofile.html', context)
 
-def logout(request):
-    context = {}
-    return render(request, 'store/logout.html', context)
-
-def register(request):
-    context = {}
-    return render(request, 'store/register.html', context)
 
 
 def searchpage(request,):

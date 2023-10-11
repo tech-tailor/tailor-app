@@ -9,9 +9,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("", views.home, name="store_home"),
     path("product/", views.product, name="store_product"),
-    path("accounts/myprofile/", views.myprofile, name="store_myprofile"),
-    path("logout/", views.logout, name="store_logout"),
-    path("register/", views.register, name="store_register"),
+    path("accounts/profile/", views.myprofile, name="store_myprofile"),
     path("search/", views.searchpage, name="store_searchpage"),
     path("productpage/<uuid:product_id>/", views.productpage, name="store_productpage"), 
 ]
