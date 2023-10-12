@@ -98,5 +98,5 @@ STATIC_ROOT = config('STATIC_ROOT')
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
-MEDIA_ROOT = "/var/www/neeyee/media"
+MEDIA_ROOT = config('MEDIA_ROOT')
 MEDIA_URL = "/media/"
