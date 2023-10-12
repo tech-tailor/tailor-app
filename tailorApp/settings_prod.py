@@ -94,7 +94,7 @@ AWS_DEFAULT_ACL = 'public-read'
 #STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 #STATIC_URL = f"https://s3.us-east-005.backblazeb2.com/static/"
 
-STATIC_ROOT = "/var/www/neeyee/static"
+STATIC_ROOT = config('STATIC_ROOT')
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
