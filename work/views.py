@@ -1,6 +1,7 @@
 import time
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -20,15 +21,11 @@ def operation(request):
     return render(request, 'work/operation.html')
 
 
-def signin(request):
-    return render(request, 'work/signin.html')
 
-def signup(request):
-    return render(request, 'work/signup.html')
 
+@login_required
 def myprofile(request):
-    profile = Workers.objects.filter(name=User)
-    context = {'profile':profile}
+    context = {}
     return render(request, 'work/profile.html', context)
 
 def client(request):
@@ -81,8 +78,6 @@ def error_log(request):
             
         with open('error.test', 'w') as log_file:
             log_file.write("file deleted after refresh\n")
-
-            
 
     except FileNotFoundError:
         log_content = "Error log not found"

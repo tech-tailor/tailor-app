@@ -8,6 +8,6 @@ host_patterns = patterns('',
     host(r'test', 'store.urls', name='test'),   #the home url for testing enviroment
     host(r'work', 'work.urls', name='work'),   # workapp for production enviroment
     host(r'work-test', 'work.urls', name='work-test'),  # the work app for the testing enviroment
-    #host(r'gladmin', 'admin_urls', name='admin'), #the admin url for the producton
-    #host(r'glaidmin-test', 'admin_urls', name='admin-test'), #the admin url for the testing enviroment
+    host(r'gladmin', 'admin_urls', name='admin'), #the admin url for the producton
+    host(r'glaidmin-test', 'admin_urls', name='admin-test'), #the admin url for the testing enviroment
 )
