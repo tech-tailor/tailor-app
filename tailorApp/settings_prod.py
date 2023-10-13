@@ -39,7 +39,7 @@ LOGGING = {
 'disable_existing_loggers': False,
 'handlers': {
     'file': {
-        'level': 'ERROR',
+        'level': 'DEBUG',
         'class': 'logging.FileHandler',
         'filename': 'error.test',
     },
@@ -47,7 +47,7 @@ LOGGING = {
 'loggers': {
     'django': {
         'handlers': ['file'],
-        'level': 'ERROR',
+        'level': 'DEBUG',
         'propagate': True,
     },
 },
