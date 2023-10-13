@@ -24,16 +24,16 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'store:store_product'%}">My Wadrobe</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'store_product'%}">My Wadrobe</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'store:store_home' %}">My Measurements</a>
+              <a class="nav-link" href="{% url 'store_home' %}">My Measurements</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'store:store_home'%}">Submit fabric for sewing</a>
+                <a class="nav-link" href="{% url 'store_home'%}">Submit fabric for sewing</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'store:store_home'%}">My Wishlist</a>
+                <a class="nav-link" href="{% url 'store_home'%}">My Wishlist</a>
               </li>
             <li>
                 <form action="{%url 'account_logout' %}"><button>

@@ -4,7 +4,7 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-app_name = 'store'  #namespace for the store app
+#app_name = 'store'  #namespace for the store app
 
 urlpatterns = [
     path("", views.home, name="store_home"),
