@@ -59,27 +59,19 @@
 
 
     {% block footer%}
-    <nav class="navbar-brand mt-5 fixed-bottom">
-      <div class=" col-12 container-fluid btn-dark">
-        <a class="btn col-3 bi bi-justify btn-primary btn" href="{% url 'work_home'%}">Home
+    <nav class="navbar-brand mt-5 row fixed-bottom">
+      <div class=" row-12 ">
+        <a class="  col-3   btn-primary btn" href="{% url 'work_home'%}"><span class="text-start">Home</span>
         </a>
 
-        <a class="btn  col-3 bi bi-justify btn-primary btn" href="{% url 'work_operation'%}"><span class="text-start">Operation</span>
+        <a class="  col-3 btn-primary btn " href="{% url 'work_operation'%}"><span class="text-start">Operation</span>
         </a>
         
-        <a class="btn col-3 bi bi-justify  btn btn-primary btn" href="{% url 'work_myprofile' %}">Profile
+        <a class="col-3 btn-primary btn" href="{% url 'work_myprofile' %}">Profile
         </a>
         
-        <a class="btn col-3 bi bi-justif  btn btn-primary btn" href="{% url 'work_signin'%}">Signin
+        <a class=" col-3 btn-primary btn" href="{% url 'work_signin'%}">Signin
         </a>
-
-<!--
-
-        <a class="btn  border col-3 bi bi-justify border  btn btn-primary btn-md" href="{% url 'work_signin'%}">Signin
-        </a>
-      
-
-        -->
       </div>
     </nav>
     

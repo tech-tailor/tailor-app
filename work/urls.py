@@ -5,6 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
+app_name = 'work'  #namespace for the work app
 
 urlpatterns = [
     path("", views.home, name="work_home"),

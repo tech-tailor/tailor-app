@@ -4,14 +4,14 @@
 }
 
 .product_name{
-    font-size: 6px;
+    font-size: 9px;
     margin: 0.5px;
     
 }
 
 .discount_price{
    
-    font-size: 20px;
+    font-size: 11px;
     margin: 0.5px;
     
 
@@ -19,13 +19,13 @@
 }
 
 .discount_percentage{
-    font-size: 4px;
+    font-size: 6px;
    
     
 }
 
 .product_price{
-    font-size: 4px;
+    font-size: 7px;
     margin: 0.5px;
    
 }

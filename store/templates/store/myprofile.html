@@ -3,22 +3,63 @@
 {% load static %}
 {% load account %}
 
-{% block title %} Home {% endblock %}
+{% block title %} Profile {% endblock %}
 
 {% block content %}
-<h1>profile</h1>
-<h6>welcome, {% user_display user %}</h6>
 
-{% user_display user as user_display %}
 
-{% block t %}
-{{ user_display }} has logged in...
 
-{% endblock t %}
+{% block nav%}
+<nav class="navbar bg-light md-5">
+    <div class="container-fluid">
+        <h6>Welcome, {% user_display user %}</h6>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'store:store_product'%}">My Wadrobe</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'store:store_home' %}">My Measurements</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'store:store_home'%}">Submit fabric for sewing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'store:store_home'%}">My Wishlist</a>
+              </li>
+            <li>
+                <form action="{%url 'account_logout' %}"><button>
+                    Logout
+                </button></form>
+            </li>
+            <!-- 
+          <form class="d-flex mt-3" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+          -->
+        </div>
+        </ul>
+      </div>
+    </div>
+</nav>
 
-<form action="{%url 'account_logout' %}"><button>
-    Logout
-</button></form>
+{% endblock nav%}
+
+
+
+
+
+
+
 
 
 {% endblock content %}
