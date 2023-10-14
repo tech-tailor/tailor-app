@@ -1,7 +1,10 @@
 import random
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from store.models import  *
 from django.contrib.auth.decorators import login_required
+from work.models import  Clients
+
+
 
 def discount_percentage(products):
         percentage = []
@@ -75,9 +78,14 @@ def product(request):
     }
     return render(request, 'store/product.html', context)
 
-
-
-
+def clientdetails(request, phone_number):
+    clients = get_object_or_404(Clients)
+    phone_number = get_object_or_404(Clients, phone_number=phone_number)
+    context = {
+        'clients':clients,
+        f'phone_number':phone_number,
+    }
+    return render(request, 'store/clientdetails.html', context)
 
 
 
