@@ -5,25 +5,6 @@ footer{
     background: #383838;
 }
 
-.footer-link:hover{
-    color: #fff;
-}
-
-.footer-social-container{
-
-    display: flex;
-    justify-content: space-between;
-}
-
-.social-link{
-    color: #fff;
-    margin-left: 2px;
-    text-transform: capitalize;
-}
-
-.social-link:nth-child(1){
-    margin-left: 0;
-}
 
 .footer-credit{
     width: 100%;
