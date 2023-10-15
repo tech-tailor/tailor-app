@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django_hosts',
     'work',
     'store',
+    'user',
 
 ]
 
@@ -145,7 +146,8 @@ WSGI_APPLICATION = 'tailorApp.wsgi.application'
 
 
 #access the user profile directly from the User model
-AUTH_PROFILE_MODULE = 'work.UserProfile'
+AUTH_USER_MODEL = 'user.CustomUser'
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

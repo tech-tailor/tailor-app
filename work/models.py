@@ -40,7 +40,7 @@ class ClientSize(models.TextChoices):
  
 
 class Clients(models.Model):
-    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
     measurement_name = models.CharField(max_length=100, null=True, blank=True)
     title = models.CharField(max_length=10, choices=Mr_mrs.choices, default=Mr_mrs.MR)
     phone_number = PhoneNumberField(default='+234',
@@ -94,7 +94,7 @@ def save_client_profile(sender, instance, **kwargs):
 
     
 class Workers(models.Model):
-    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=250, null=True, blank=True)
     phone_number = PhoneNumberField()
     address = models.TextField(blank=True, null=True)
