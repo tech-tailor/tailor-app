@@ -17,6 +17,7 @@ urlpatterns = [
    # path('work/', include('work.urls')),
    path('admin/', admin.site.urls),
    path("clients/<phone:phone_number>/", views.clientdetails, name="store_clientdetails"),
+   path("accounts/nomeasurement/", views.no_measurement, name="store_no_measurement"),
 
 ]
 

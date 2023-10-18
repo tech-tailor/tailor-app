@@ -119,3 +119,8 @@ class UserProfile(models.Model):
     address = models.TextField(blank=True, null=True)
     birthday = models.DateField(null=True, blank=True)
     client_note = models.TextField(null=True, blank=True)
+    
+class TemporaryPhoneNumber(models.Model):
+    phone_number = models.CharField(max_length=15)  # No unique constraint
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)  # Associate with the user
+    verification_code = models.CharField(max_length=6, blank=True, null=True)  # Indicates whether the phone number is verified

@@ -40,7 +40,6 @@ class ClientSize(models.TextChoices):
  
 
 class Clients(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
     measurement_name = models.CharField(max_length=100, null=True, blank=True)
     title = models.CharField(max_length=10, choices=Mr_mrs.choices, default=Mr_mrs.MR)
     phone_number = PhoneNumberField(default='+234',

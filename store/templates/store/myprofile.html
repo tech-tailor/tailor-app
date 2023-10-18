@@ -14,7 +14,7 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light mb-4 bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'store_home'%}">
       <img src="{% static 'work/media/blue_neeyee_logo.png' %}" alt="neeyee logo" width="40" height="40">
@@ -31,15 +31,23 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'store_product'%}">My Wadrobe</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'store_clientdetails' '+2347065727413' %}">My Measurements</a>
-        </li>
+        
+        {% if request.user.phone_number != client_phone_number %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'store_clientdetails' request.user.phone_number %}">My Measurement</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'store_no_measurement'%}">My Measurement</a>
+          </li>
+          {% endif %}
+          
         <li class="nav-item">
             <a class="nav-link" href="{% url 'store_home'%}">Submit fabric for sewing</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{% url 'store_home'%}">My Wishlist</a>
-          </li>
+        </li>
         <li>
             <form action="{%url 'account_logout' %}"><button>
                 Logout
@@ -56,14 +64,73 @@
   </div>
 </nav>
 
-
-
-
 {% endblock nav%}
 
 
+<div class="container mx-auto mb-4 col-lg-6 col-sm-8 " >
+
+  <div class="row my-auto ">
+    <div class="col-6 mb-3  ">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Submit fabric for sewing</h5>
+          <p class="card-text">
+            <li>take a picture of your fabric</li>
+            <li>input your measurement</li>
+            <li>upload your design</li>
+            <li>submit</li>
+            as simple as it should be
+          </p>
+          <a href="#" class="btn btn-light">Submit fabric</a>
+        </div>
+      </div>
+    </div>
+    {% if request.user.phone_number != client_phone_number %}
+
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">My measurement</h5>
+          <p class="card-text">To update your measurement, send us a message..</p>
+          <a href="{% url 'store_clientdetails' request.user.phone_number %}" class="btn btn-light">Check my measurement</a>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">My measurement</h5>
+          <p class="card-text">Please update your phone number to see your measurement.</p>
+          <a href="{% url 'store_no_measurement'%}" class="btn btn-light">Check my measurement</a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="card" style="width: 18rem;">
+      <img src="{%static 'store/media/header.png'%}" width="200" height="100" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">My wadrobe</h5>
+        <p class="card-text">See some suggested designs for your size and color preference.</p>
+        <a href="#" class="btn btn-light">Check some recomended designs</a>
+      </div>
+    </div>
 
 
+  </div>
+  
+
+  
+
+  
+
+
+  
+  
+
+
+</div>
 
 
 

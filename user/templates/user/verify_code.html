@@ -5,23 +5,47 @@
 {% block content %}
 
 
-{% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
 
 
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submitt">
-</form>
-
-<a id="next-link" style="display: none;" href="{% url 'store_clientdetails' '+2347065727413' %}">See Measurement</a>
 
 
+
+
+
+<div class="container border mb-5 col-8 col-lg-6 border-light bg-light pb-5">
+    <div class="row">
+        <div class="mx-auto text-center" >
+            <div class="mt-3">
+                <h5>Please, confirm your Phone number to access your Measurement</h5>
+            </div>
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            
+            <div class=" mx-auto m-3 p-4">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Verify">
+                </form>
+
+            </div>
+
+            <div>
+                <h6>you can click <a id="next-link" style="display: none;" href="{% url 'store_clientdetails' '+2347065727413' %}">See Measurement</a> to access your measuremnts</h6>
+            </div>
+            
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
+
+
+
+
