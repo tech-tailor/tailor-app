@@ -7,11 +7,12 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
-    phone_number = PhoneNumberField(default='+234',
-        blank=True,
-        null=True,
-        help_text='Enter a valid phone number in E.164 format.')
+    phone_number = PhoneNumberField(unique=True,blank=True, null=True)
     verified = models.BooleanField(default=False)
+    verify_code = models.CharField(max_length=6, unique=True, blank=True, null=True)
+    
+    
+    #USERNAME_FIELD = 'phone_number'
 
     def __str__(self):
         return self.username

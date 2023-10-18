@@ -13,6 +13,8 @@ export DJANGO_SETTINGS_MODULE=tailorApp.settings_dev  # For development
 from pathlib import Path
 import os
 from decouple import config
+import django
+from django.utils.encoding import smart_str
 
 
 
@@ -53,6 +55,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'csp',
     'django_hosts',
+    'django_inlinecss',
+    "phonenumber_field",
     'work',
     'store',
     'user',
@@ -72,6 +76,9 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
     'django_hosts.middleware.HostsResponseMiddleware',
 ]
+
+
+django.utils.encoding.smart_text = smart_str
 
 
 
@@ -116,13 +123,28 @@ AUTHENTICATION_BACKENDS = [
 
 #django-allauth settings
 LOGIN_REDIRECT_URL= '/accounts/profile/'
-ACCOUNT_AUTHENTICATION_METHOD='username_email'
+ACCOUNT_AUTHENTICATION_METHOD= 'username_email'
 ACCOUNT_CHANGE_EMAIL=True
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS=1
-ACCOUNT_EMAIL_REQUIRED=False
+ACCOUNT_EMAIL_REQUIRED=True
 ACCOUNT_LOGOUT_REDIRECT_URL='/'
 ACCOUNT_USERNAME_BLACKLIST=['jesus', 'admin', 'neeyee']
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
+
+#ACCOUNT_FORMS = {
+#
+# 'signup': 'user.forms.CustomSignupForm', 
+#}
+
+
+#twill0 account to confirm every phonenumber
+TWILIO_ACCOUNT_SID = 'AC898688ec7726160651e2772aab6d718a'
+TWILIO_AUTH_TOKEN = '2b8b6df46c3c70365b0387aaa9930b04'
+TWILIO_PHONE_NUMBER = '+2347065727413'
+
+
+
+
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {

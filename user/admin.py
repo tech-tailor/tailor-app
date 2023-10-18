@@ -8,7 +8,7 @@ from .models import CustomUserGroup
 class CustomUserAdmin(UserAdmin):
     fieldsets = (
         ('User Information', {
-            'fields': ('username', 'email', 'phone_number', 'password', 'verified')
+            'fields': ('username', 'email', 'phone_number', 'password', 'verified', 'verify_code')
         }),
         ('Permissions', {
             'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')
@@ -18,7 +18,7 @@ class CustomUserAdmin(UserAdmin):
         }),
     )
       
-    list_display = ('username', 'phone_number', 'email', 'is_staff')  # Add 'phone' here
+    list_display = ('username', 'phone_number', 'email', 'verified', 'is_staff')  # Add 'phone' here
     
     list_filter = ('is_active', 'is_staff', 'groups')
     search_fields = ('username', 'email', 'phone', 'phone_number')

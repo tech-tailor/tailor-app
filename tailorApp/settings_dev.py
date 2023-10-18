@@ -69,11 +69,9 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # Serve static and media files locally during development
 
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'statics')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    ]
+STATICFILES_DIRS = [BASE_DIR / "static",]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

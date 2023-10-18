@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from store.models import  *
 from django.contrib.auth.decorators import login_required
 from work.models import  Clients
+from user.decorators import phone_number_required
 
 
 
@@ -78,6 +79,8 @@ def product(request):
     }
     return render(request, 'store/product.html', context)
 
+@login_required
+@phone_number_required
 def clientdetails(request, phone_number):
     clients = get_object_or_404(Clients)
     phone_number = get_object_or_404(Clients, phone_number=phone_number)

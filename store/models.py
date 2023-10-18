@@ -2,7 +2,8 @@ import random
 from django.db import models
 import uuid
 from django.templatetags.static import static
-from django.db.models import F
+from user.models import CustomUser
+from django.conf import settings
 
 
 class Size(models.Model):
@@ -112,3 +113,9 @@ class Product(models.Model):
         except ValueError:
             return all_products
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.CASCADE)
+    date_of_birth = models.DateField(null=True, blank=True)
+    address = models.TextField(blank=True, null=True)
+    birthday = models.DateField(null=True, blank=True)
+    client_note = models.TextField(null=True, blank=True)

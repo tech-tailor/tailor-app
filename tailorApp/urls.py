@@ -16,10 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from user.views import phonenumber, verify_code
+
 
 
 urlpatterns = [
     path('', include('store.urls')), # homepage urls
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
+    path('verify/', phonenumber , name='verifyphone'),
+    path('verifycode/', verify_code , name='verifycode'),
 ]
