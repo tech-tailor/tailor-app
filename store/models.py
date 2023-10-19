@@ -57,6 +57,9 @@ class Carousel(models.Model):
 
 class Product(models.Model):
     product_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    image_1 = models.ImageField(blank=True, null=True, upload_to='store/Product/images')
+    image_2 = models.ImageField(blank=True, null=True, upload_to='store/Product/images')
+    image_3 = models.ImageField(blank=True, null=True, upload_to='store/Product/images')
     name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     discount_price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -64,11 +67,8 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, blank=True)
     size = models.ManyToManyField(Size, blank=True)
-    delivery = models.CharField(max_length=100)
-    stock_quantity = models.PositiveIntegerField(default=0)
-    image_1 = models.ImageField(blank=True, null=True, upload_to='store/Product/images')
-    image_2 = models.ImageField(blank=True, null=True, upload_to='store/Product/images')
-    image_3 = models.ImageField(blank=True, null=True, upload_to='store/Product/images')
+    delivery = models.CharField(max_length=100, blank=True, null=True)
+    stock_quantity = models.PositiveIntegerField(default=0, blank=True, null=True)
     date_uploaded = models.DateTimeField(auto_now_add=True)  # Set on creation
     date_updated = models.DateTimeField(auto_now=True) 
 
