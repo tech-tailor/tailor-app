@@ -1,12 +1,12 @@
 from twilio.rest import Client
-from django.conf import settings
+from decouple import config
  
  
  
 def send_verification_code(phone_number, verification_code):
-        account_sid = settings.TWILIO_ACCOUNT_SID
-        auth_token = settings.TWILIO_AUTH_TOKEN
-        twilio_phone_number = settings.TWILIO_PHONE_NUMBER
+        account_sid = config(TWILIO_ACCOUNT_SID)
+        auth_token = config(TWILIO_AUTH_TOKEN)
+        twilio_phone_number = config(TWILIO_PHONE_NUMBER)
         
         try:
             
@@ -14,7 +14,7 @@ def send_verification_code(phone_number, verification_code):
 
             message = client.messages.create(
                 to=phone_number,
-                messaging_service_sid='MG930c177f6809ab1ae72f2e98e27329a4',
+                messaging_service_sid=config(messaging_service_sid),
                 body=f"Your verification code: {verification_code}"
             )
             print('verification succesful')

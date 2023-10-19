@@ -131,16 +131,7 @@ ACCOUNT_LOGOUT_REDIRECT_URL='/'
 ACCOUNT_USERNAME_BLACKLIST=['jesus', 'admin', 'neeyee']
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
-#ACCOUNT_FORMS = {
-#
-# 'signup': 'user.forms.CustomSignupForm', 
-#}
 
-
-#twill0 account to confirm every phonenumber
-TWILIO_ACCOUNT_SID = 'AC898688ec7726160651e2772aab6d718a'
-TWILIO_AUTH_TOKEN = '2b8b6df46c3c70365b0387aaa9930b04'
-TWILIO_PHONE_NUMBER = '+2347065727413'
 
 
 
