@@ -5,36 +5,40 @@
 
 {% block content %}
  <!--the whole home content-->
- <div class="container-fluid row-12">
+ <div class="container-fluid row-12 mx-lg-auto row-lg-8">
    <!--the carrousel-->
-   <div id="carouselExampleInterval1" class="carousel slide " data-bs-ride="carousel">
+    <div id="carouselExampleInterval1" class="carousel slide col-lg-8 mx-lg-auto "  data-bs-ride="carousel">
 
-    <div class="carousel-inner">
-      {% for carousel in carousels%}
-      {% if carousel.imageurl%}
-      <div class="carousel-item active" data-bs-interval="10000">
-        <img src="{{ carousel.imageurl}}" class="d-block w-100" alt="...">
-        <div class="carousel-caption">
-            <h2>{{carousel.title}}</h2>
-            <p>{{carousel.text}}</p>
+      <div class="carousel-inner">
+        {% for carousel in carousels%}
+        {% if carousel.imageurl%}
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="{{ carousel.imageurl}}" class="d-block w-100" alt="...">
+          <div class="carousel-caption">
+              <h2>{{carousel.title}}</h2>
+              <p>{{carousel.text}}</p>
+          </div>
         </div>
+        {% endif %}
+        {% endfor %}
+      
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval1" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">P</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval1" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">N</span>
+        </button>
       </div>
-      {% endif %}
-      {% endfor %}
-    
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval1" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">P</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval1" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">N</span>
-      </button>
+
     </div>
+
+    
     
 
     <!--Random products for mobile only-->
-    <div class=" mb-2 d-block d-md-none border ">
+    <div class=" mb-2 col-lg-8 mx-lg-auto border ">
         <div class="bg-light p-1 " >
             <h3 class=" mx-1 text-center border ">Best selling</h5>
         </div>
@@ -44,7 +48,7 @@
             <div class="d-flex flex-row  overflow-auto  ">
               {% for product in random_selection_products%}
               {% if product.imageurl %}
-              <div class="card col-3 p-1 border ">
+              <div class="card col-3 col-lg-2 p-1 border ">
                 <a href="{% url 'store_productpage' product.product_id %}" style="text-decoration: none; color: black;">
                   <img src="{{ product.imageurl }}" class="card-img-top" alt="...">
                   <div class=" text-start product_text ">
@@ -68,7 +72,7 @@
 
 
       <!--product categories mobile-only -->
-    <div class="my-2 d-block d-md-none border bg-light">
+    <div class="my-2 border col-lg-8 mx-lg-auto bg-light">
       <div class=" m-1" >
           <h3 class="  border mx-1 text-center ">Categories</h5>
       </div>
@@ -78,7 +82,7 @@
 
               {% for category in categories%}
               {% if category.imageurl %}
-              <div class="col-4 m-0 text-center ">
+              <div class="col-4 col-lg-3  m-0 text-center ">
                     <img src="{{ category.imageurl }}" class="img-thumbnail  " alt="...">
                     <span class=" text-size text-center text-wrap h2 position-absolute bottom-50">{{ category.nam }}</span>
               </div>
@@ -91,13 +95,13 @@
     </div>
 
      <!--Feature products for mobile only-->
-    <div class=" my-2 d-block d-md-none border bg-light">
+    <div class=" my-2 col-lg-8 mx-lg-auto  border bg-light">
       <div class="bg-light p-1 " >
           <h3 class=" mx-1  text-center border ">Feature Products</h5>
       </div>
       
         
-      <div class=" product-container bg-light">
+      <div class=" product-container col-lg-8 bg-light">
           <div class="row mx-0 ">
             {% for product in feature_products%}
             {% if product.imageurl %}
@@ -120,96 +124,6 @@
       </div>
     </div>
 
-
-
-    
-
-    
-   
-        
-
-    <!--product card for desktop only-->
-    <div class=" mb-3 d-none d-md-block">
-        <div class="bg-light " >
-            <h3 class="mx-2">Best selling</h5>
-        </div>
-        
-            
-        <div class="container-fluid product-container mx-0 bg-light row row-cols-3 row-cols-md-3 g-2  ">
-            <div class="col">
-              <div class="card h-100">
-                    <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
-                    <div class="text-start card ">
-
-                        <h5 class=" small-text">Light Ash with suit pocket Kaftan</h5>
-                        <h6 class="col-sm-6 text-start"><small> <strong>#65,00000</strong></small></h6>
-                        <span class="row">
-                            <small class=" col-12 small-text" style="opacity: 0.5;"><s>#80000</s></small>
-                            <span class="col-12 small-text">50% Off</span>
-                    </span>
-                    </div>
-              </div>
-            </div>
-
-            
-           
-        </div>
-    </div>
-
-    <!--product categories for desktop-->
-    <div class=" mb-3 d-none d-md-block">
-        <div class="bg-light " >
-            <h3 class="mx-2">Categories</h5>
-        </div>
-        
-            
-        <div class="container-fluid product-container mx-0 bg-light row row-cols-3 row-cols-md-3 g-2  ">
-            <div class="col">
-              <div class="card h-100 image-container">
-                    <img src="{% static 'store/media/light_ash.jpg' %}" class="" alt="...">
-                    <div class="overlay-text">
-                        Kaftans
-                    </div>
-
-              </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-100">
-                      <img src="{% static 'store/media/404.png' %}" class="card-img-top" alt="...">
-                </div>
-              </div>
-
-              <div class="col">
-                <div class="card h-100">
-                      <img src="{% static 'store/media/men-collection.png' %}" class="card-img-top" alt="...">
-                </div>
-              </div>
-
-              
-               <div class="col">
-              <div class="card h-100">
-                    <img src="{% static 'store/media/light_ash.jpg' %}" class="card-img-top" alt="...">
-              </div>
-            </div>
-        </div>
-      </div>
-    </div>
-
-
-
-
-  
-
-  
-    
-    
-
-
-
-
-
- 
 
   </div>    
 {% endblock content %}
