@@ -4,6 +4,10 @@ import uuid
 from django.templatetags.static import static
 from user.models import CustomUser
 from django.conf import settings
+from PIL import Image
+from django.contrib import admin
+from PIL import Image
+from django.core.exceptions import ValidationError
 
 
 class Size(models.Model):
@@ -44,7 +48,8 @@ class Carousel(models.Model):
     def __str__(self):
         return str(self.title)
     
-    '''return a placeholder image when no image is uploaded'''
+    
+    #return a placeholder image when no image is uploaded
     def imageurl(self): 
         try:
             image_field = self.image
@@ -52,6 +57,8 @@ class Carousel(models.Model):
         except (AttributeError, ValueError):
             no_image_available_url = static('work/media/no_image_available.png')
             return 
+
+
 
 
 
