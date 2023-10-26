@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
 from user.forms import PhoneNumberForm, VerifyCode
-from django import forms
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 from user.twillo import send_verification_code
@@ -74,7 +73,7 @@ def verify_code(request):
         if form.is_valid():
             # Get the user-submitted code
             verify_code = form.cleaned_data['verify_code']
-            #if user.verify_code == verify_code:
+    
             try:
                 temp_code = TemporaryPhoneNumber.objects.get( user=request.user)
                 if temp_code.verification_code == verify_code:

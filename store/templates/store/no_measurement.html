@@ -1,1 +1,83 @@
-<h1>No Measurements</h1>
+{% extends 'store/main.html' %}
+{% load static %}
+{% load account %}
+
+{% block title %} Profile {% endblock %}
+
+{% block navbar %} 
+<nav class="navbar navbar-expand-lg navbar-light mb-4 bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'store_home'%}">
+        <img src="{% static 'work/media/blue_neeyee_logo.png' %}" alt="neeyee logo" width="40" height="40">
+      </a>
+      <h6>Welcome, {% user_display user %} with {{user.phone_number}}</h6>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mx-lg-5 mb-2 text-end-lg mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'store_home'%}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'store_product'%}">My Wadrobe</a>
+          </li>
+          
+          {% if request.user.phone_number != client_phone_number %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'store_clientdetails' request.user.phone_number %}">My Measurement</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'store_no_measurement'%}">My Measurement</a>
+            </li>
+            {% endif %}
+            
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'store_home'%}">Submit fabric for sewing</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'store_home'%}">My Wishlist</a>
+          </li>
+          <li>
+              <form action="{%url 'account_logout' %}"><button>
+                  Logout
+              </button></form>
+          </li>
+        </ul>
+        <!--
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        -->
+      </div>
+    </div>
+  </nav>
+{% endblock navbar %}
+
+{% block content %}
+
+<div class="container mx-auto mb-4 col-lg-6 col-sm-8 border" >
+
+    <div class="text-center ">
+        <h3>You do not have a measurement with us yet</h3><br>
+    </div>
+
+    <div>
+         <span class="bold">if we had taken your measurement:</span> 
+        <li>
+            kindly ensure you verify with the phone number you gave us</li>
+        <li>click <a href="whatsapp://send?phone=2347065727413&text=Hello Neeyee, upload my measurement. This is my Phone number">
+            <i class="bi bi-whatsapp text-light mx-2"></i> to send us a whatsapp message to get it updated if you already used the phone number. Ensure you include the phone number in the message</li>   
+    </div><br>
+
+    <div>
+        For new measurements kindly click <a class="text-primary" href="{%url 'store_upload_measurement'%}">here</a> to upload your measurement or here to get us to take your measurement
+    </div>
+
+
+
+</div>
+
+{% endblock content %}

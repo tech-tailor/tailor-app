@@ -1,0 +1,91 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% load account %}
+
+{% block title %} Profile {% endblock %}
+
+{% block navbar %} {% endblock navbar %}
+
+{% block content %}
+
+
+<nav class="navbar navbar-expand-lg navbar-light mb-4 bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'store_home'%}">
+        <img src="{% static 'work/media/blue_neeyee_logo.png' %}" alt="neeyee logo" width="40" height="40">
+      </a>
+      <h6>Welcome, {% user_display user %} with {{user.phone_number}}</h6>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mx-lg-5 mb-2 text-end-lg mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'store_home'%}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'store_product'%}">My Wadrobe</a>
+          </li>
+          
+          {% if request.user.phone_number != client_phone_number %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'store_clientdetails' request.user.phone_number %}">My Measurement</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'store_no_measurement'%}">My Measurement</a>
+            </li>
+            {% endif %}
+            
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'store_home'%}">Submit fabric for sewing</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'store_home'%}">My Wishlist</a>
+          </li>
+          <li>
+              <form action="{%url 'account_logout' %}"><button>
+                  Logout
+              </button></form>
+          </li>
+        </ul>
+        <!--
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        -->
+      </div>
+    </div>
+</nav>
+
+<div class="container border mb-5 col-8 col-lg-6 border-light bg-light pb-5">
+    <div class="row">
+        <div class="mx-auto text-center" >
+            <div class="mt-3">
+                <h5>Please, enter your measurement</h5>
+            </div>
+
+            
+            {% if messages %}
+            <ul class="messages mt-3">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            
+            <div class=" mx-auto pt-3 ">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Submit">
+                </form>
+            
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

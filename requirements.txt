@@ -21,6 +21,7 @@ django-hosts==5.2
 django-inlinecss==0.3.0
 django-phonenumber-field==7.1.0
 django-storages==1.14.1
+et-xmlfile==1.1.0
 frozenlist==1.4.0
 future==0.18.3
 gunicorn==21.2.0
@@ -31,8 +32,11 @@ markdown-it-py==3.0.0
 mdurl==0.1.2
 multidict==6.0.4
 naomi==0.1.2
+numpy==1.24.4
 oauthlib==3.2.2
+openpyxl==3.1.2
 packaging==23.1
+pandas==2.0.3
 phonenumbers==8.13.21
 Pillow==10.1.0
 psycopg==3.1.12
@@ -45,6 +49,7 @@ python-dateutil==2.8.2
 python-decouple==3.8
 python-dotenv==1.0.0
 python3-openid==3.2.0
+pytz==2023.3.post1
 requests==2.31.0
 requests-oauthlib==1.3.1
 requests-toolbelt==1.0.0
@@ -55,5 +60,6 @@ soupsieve==2.5
 sqlparse==0.4.4
 twilio==8.9.1
 typing-extensions==4.8.0
+tzdata==2023.3
 urllib3==1.26.16
 yarl==1.9.2

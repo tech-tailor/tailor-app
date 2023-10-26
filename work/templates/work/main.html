@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load account %}
 <html lang="en">
   <head>
 
@@ -17,34 +18,35 @@
 
 
     {% block navbar%}
-    <nav class="navbar bg-primary md-5 fixed-top">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'work_home'%}">
-            <img src="{% static 'work/media/blue_neeyee_logo.png' %}" alt="neeyee logo" width="40" height="40"> <span>{% block page_title %} {% endblock%} </span>
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Sidebar</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'work_client'%}">Client</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'work_home' %}">store</a>
-                </li>
-              <form class="d-flex mt-3" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-              </form>
-            </div>
-          </div>
+   
+    <nav class="navbar navbar-expand-lg navbar-light mb-4 bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'work_home'%}">
+          <img src="{% static 'work/media/blue_neeyee_logo.png' %}" alt="neeyee logo" width="40" height="40">
+        </a>
+        <h6>Welcome, {% user_display user %}</h6>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mx-lg-5 mb-2 text-end-lg mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'work_home'%}">Home</a>
+            </li>
+            
+                <form action="{%url 'account_logout' %}"><button>
+                    Logout
+                </button></form>
+            </li>
+          </ul>
+          <!--
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+          -->
         </div>
+      </div>
     </nav>
     
     {% endblock navbar%}
@@ -59,19 +61,13 @@
 
 
     {% block footer%}
-    <nav class="navbar-brand mt-5 row fixed-bottom">
-      <div class=" row-12 ">
-        <a class="  col-3   btn-primary btn" href="{% url 'work_home'%}"><span class="text-start">Home</span>
+    <nav class="navbar-brand text-center bg-primary mx-auto  mt-5 row fixed-bottom">
+      <div class=" text-center ">
+        <a class=" text-center btn-primary btn" href="{% url 'work_home'%}"><span class="text-start">Home</span>
         </a>
 
-        <a class="  col-3 btn-primary btn " href="{% url 'work_operation'%}"><span class="text-start">Operation</span>
-        </a>
         
-        <a class="col-3 btn-primary btn" href="{% url 'work_myprofile' %}">Profile
-        </a>
-        
-        <a class=" col-3 btn-primary btn" href="{% url 'work_home'%}">Signin
-        </a>
+     
       </div>
     </nav>
     

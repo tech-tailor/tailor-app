@@ -4,10 +4,17 @@ import uuid
 from django.templatetags.static import static
 from user.models import CustomUser
 from django.conf import settings
-from PIL import Image
-from django.contrib import admin
-from PIL import Image
 from django.core.exceptions import ValidationError
+from phonenumber_field.modelfields import PhoneNumberField
+
+
+class Sex(models.TextChoices):
+    MALE = 'MALE'
+    FEMALE = 'FEMALE'
+    
+class Mr_mrs(models.TextChoices):
+    MR = 'Mr'
+    YES = 'Mrs'
 
 
 class Size(models.Model):
@@ -121,7 +128,7 @@ class Product(models.Model):
             return all_products
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, null=True, blank=True, on_delete=models.CASCADE)
     date_of_birth = models.DateField(null=True, blank=True)
     address = models.TextField(blank=True, null=True)
     birthday = models.DateField(null=True, blank=True)
@@ -131,3 +138,40 @@ class TemporaryPhoneNumber(models.Model):
     phone_number = models.CharField(max_length=15)  # No unique constraint
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)  # Associate with the user
     verification_code = models.CharField(max_length=6, blank=True, null=True)  # Indicates whether the phone number is verified
+    
+class User_Uploaded_Measurement(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)  # Associate with the user
+    phone_number = PhoneNumberField(unique=True,blank=True, null=True)
+    measurement_name = models.CharField(max_length=100, null=True, blank=True)
+    address = models.TextField(blank=True, null=True)
+    sex = models.CharField(max_length=50, choices=Sex.choices, default=Sex.MALE)
+    birthday = models.DateField(null=True, blank=True)
+    client_note = models.TextField(null=True, blank=True)
+    top_lenght = models.CharField(max_length=15,null=True, blank=True)
+    shoulder = models.CharField(max_length=15, null=True, blank=True)
+    Round_chest = models.CharField(max_length=15, null=True, blank=True)
+    sleeve_lenght = models.CharField(max_length=15, null=True, blank=True)
+    neck = models.CharField(max_length=15, null=True, blank=True)
+    round_arm = models.CharField(max_length=15, null=True, blank=True)
+    arm_hole = models.CharField(max_length=15, null=True, blank=True)
+    front_chest = models.CharField(max_length=15, null=True, blank=True)
+    back_chest = models.CharField(max_length=15, null=True, blank=True)
+    cuff = models.CharField(max_length=15, null=True, blank=True)
+    short_sleeve_width = models.CharField(max_length=15, null=True, blank=True)
+    three_quarter_width = models.CharField(max_length=15, null=True, blank=True)
+    long_sleeve_width = models.CharField(max_length=15, null=True, blank=True)
+    trouser_lenght = models.CharField(max_length=15, null=True, blank=True)
+    waist = models.CharField(max_length=15, null=True, blank=True)
+    lap = models.CharField(max_length=15, null=True, blank=True)
+    knee = models.CharField(max_length=15, null=True, blank=True)
+    calf = models.CharField(max_length=15, null=True, blank=True)
+    ankle = models.CharField(max_length=15, null=True, blank=True)
+    BR = models.CharField(max_length=15, null=True, blank=True)
+    RBR = models.CharField(max_length=15, null=True, blank=True)
+    agbada_lenght = models.CharField(max_length=15, null=True, blank=True)
+    agbada_shoulder = models.CharField(max_length=15, null=True, blank=True)
+    agbada_sleeve = models.CharField(max_length=15, null=True, blank=True)
+    cap = models.CharField(max_length=15, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.measurement_name)

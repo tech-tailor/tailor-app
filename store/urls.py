@@ -10,14 +10,17 @@ from store.converters import PhoneNumberConverter
 urlpatterns = [
     path("", views.home, name="store_home"),
     path("product/", views.product, name="store_product"),
-    path("accounts/profile/", views.myprofile, name="store_myprofile"),
+    path("accounts/profile/<phone:phone_number>/", views.myprofile, name="store_myprofile"),
+    path("accounts/profile2/", views.myprofile2, name="store_myprofile2"),
     path("search/", views.searchpage, name="store_searchpage"),
     path("productpage/<uuid:product_id>/", views.productpage, name="store_productpage"), 
     path('accounts/', include('allauth.urls')),
    # path('work/', include('work.urls')),
    path('admin/', admin.site.urls),
-   path("clients/<phone:phone_number>/", views.clientdetails, name="store_clientdetails"),
+   path("neeyee-upload-measurement<phone:phone_number>/", views.clientdetails, name="store_clientdetails"),
+   path("user-upload-measurement/<phone:phone_number>/", views.user_entered_measurement, name="store_user_entered_measurement"),
    path("accounts/nomeasurement/", views.no_measurement, name="store_no_measurement"),
+   path("account/upload/", views.upload_measurement, name="store_upload_measurement"),
 
 ]
 

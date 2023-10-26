@@ -10,6 +10,7 @@ class CustomUser(AbstractUser):
     phone_number = PhoneNumberField(unique=True,blank=True, null=True)
     verified = models.BooleanField(default=False)
     verify_code = models.CharField(max_length=6, unique=True, blank=True, null=True)
+    verified_worker = models.BooleanField(default=False)
     
     
     #USERNAME_FIELD = 'phone_number'

@@ -132,7 +132,13 @@ ACCOUNT_USERNAME_BLACKLIST=['jesus', 'admin', 'neeyee']
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
 
+# Set the maximum file size for uploads in bytes (10MB in this case).
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024
 
+# Set the maximum file size for individual file fields.
+FILE_UPLOAD_MAX_MEMORY_SIZE = DATA_UPLOAD_MAX_MEMORY_SIZE
+# Set the maximum allowed file size for file fields in a model
+MY_MODEL_FILE_FIELD_UPLOAD_MAX_SIZE = 10 * 1024 * 1024  # 10MB
 
 
 

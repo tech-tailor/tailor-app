@@ -1,0 +1,32 @@
+
+
+
+
+<div class="container border mb-5 col-8 col-lg-6 border-light bg-light pb-5">
+    <div class="row">
+        <div class="mx-auto text-center" >
+            <div class="mt-3">
+                <h5>Please, enter few details to be sure you know Neeyee Clothier</h5>
+            </div>
+
+            
+            {% if messages %}
+            <ul class="messages mt-3">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            
+            <div class=" mx-auto pt-3 ">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Submit">
+                </form>
+            
+            </div>
+            
+        </div>
+    </div>
+</div>

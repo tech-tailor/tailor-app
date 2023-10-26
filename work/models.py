@@ -1,14 +1,8 @@
 from django.db import models
-from django.contrib.auth.models import User
 from django.templatetags.static import static
-from django.db.models.signals import pre_delete, post_save
-from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
-from phonenumber_field.phonenumber import PhoneNumber
-from django.conf import settings
-import os
-import logging
 from django.contrib.auth import get_user_model
+from user.models import CustomUser
 
 
 class Sex(models.TextChoices):
@@ -37,7 +31,7 @@ class ClientSize(models.TextChoices):
     LARGE = 'L', ('Large')
     XTRA_LARGE = 'XL', ('Xtra Large')
     XTRA_XTRA_LARGE = 'XXL', ('Xtra Xtra Large')
- 
+    
 
 class Clients(models.Model):
     measurement_name = models.CharField(max_length=100, null=True, blank=True)
@@ -79,29 +73,19 @@ class Clients(models.Model):
 
     def __str__(self):
         return str(self.measurement_name)
-"""   
-@receiver(post_save, sender=User)
-def create_client_profile(sender, instance, created, **kwargs):
-    if created:
-        Clients.objects.create(user=instance)
 
-@receiver(post_save, sender=User)
-def save_client_profile(sender, instance, **kwargs):
-    instance.clients.save()
-
-"""
 
     
-class Workers(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
-    name = models.CharField(max_length=250, null=True, blank=True)
-    phone_number = PhoneNumberField()
+class Worker_Profile(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
     address = models.TextField(blank=True, null=True)
-    sex = models.CharField(max_length=50, choices=Sex.choices, default=Sex.MALE)
+    sex = models.CharField(max_length=10, blank=True, null=True, default='Male')
     birthday = models.DateField(null=True, blank=True)
+    next_of_kin = models.CharField(max_length=50, null=True, blank=True)
+    verified_worker = models.BooleanField(default=False)
     
     def __str__(self):
-        return str(self.name)
+        return str(self.user)
 
     
 
@@ -147,45 +131,7 @@ class Jobs(models.Model):
         except (AttributeError, ValueError):
             no_image_available_url = static('work/media/no_image_available.png')
             return no_image_available_url
-'''      
-@receiver(pre_delete, sender=Jobs)
-def delete_s3_files(sender, instance, **kwargs):
-    logger = logging.getLogger(__name__)
-    
-    s3_bucket_name = 'tailor-app-storage'
-    for field in Jobs._meta.get_fields():
-        if isinstance(field, models.FileField):
-            s3_object_key = str(getattr(instance, field.name).name)
 
-            logger.info('s3_bucket_name: %s', s3_bucket_name)
-            logger.info('s3_object_key: %s', s3_object_key)
-
-            if IS_HEROKU_APP:
-                try:
-                    if s3_object_key:
-                        s3_client = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
-                        endpoint_url=AWS_S3_ENDPOINT_URL)
-                        s3_client.delete_object(Bucket=s3_bucket_name,Key=s3_object_key)
-                        logger.info('S3 object deleted successfully')
-                        print(('S3 object deleted successfully'))
-                    else:
-                        logger.info('no image for this field')
-                        print('no image for this field')
-
-                except NoCredentialsError:
-                    logger.error('No AWS credentials found')
-                    print('No AWS credentials found')
-            else:      
-                try:
-                    print(s3_object_key)
-                    if s3_object_key:
-                        os.remove(s3_object_key)
-                        print('s3 object deleted succesfully')
-                    else:
-                        print('no image for this field')
-                except (AttributeError, FileNotFoundError):
-                    logger.error('no credentials found')
-'''
                 
 
 class Job_operation(models.Model):

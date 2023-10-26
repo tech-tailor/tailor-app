@@ -9,17 +9,13 @@
 
 {% block content %}
 
-{% block nav%}
-
-
-
 
 <nav class="navbar navbar-expand-lg navbar-light mb-4 bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'store_home'%}">
       <img src="{% static 'work/media/blue_neeyee_logo.png' %}" alt="neeyee logo" width="40" height="40">
     </a>
-    <h6>Welcome, {% user_display user %}</h6>
+    <h6>Welcome, {% user_display user %} with {{user.phone_number}}</h6>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -32,15 +28,21 @@
           <a class="nav-link active" aria-current="page" href="{% url 'store_product'%}">My Wadrobe</a>
         </li>
         
-        {% if request.user.phone_number != client_phone_number %}
+        
+        {% if request.user.phone_number == client_phone_number %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'store_clientdetails' request.user.phone_number %}">My Measurement</a>
           </li>
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'store_no_measurement'%}">My Measurement</a>
-          </li>
-          {% endif %}
+        {% elif request.user.phone_number == client_phone_number2 %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'store_user_entered_measurement' request.user.phone_number %}">My Measurement</a>
+        </li>
+        {% elif request.user.phone_number == None %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'store_no_measurement'%}">MyMeasurement</a>
+        </li>
+        
+        {% endif %}
           
         <li class="nav-item">
             <a class="nav-link" href="{% url 'store_home'%}">Submit fabric for sewing</a>
@@ -64,7 +66,7 @@
   </div>
 </nav>
 
-{% endblock nav%}
+
 
 
 <div class="container mx-auto mb-4 col-lg-6 col-sm-8 " >
@@ -85,7 +87,20 @@
         </div>
       </div>
     </div>
-    {% if request.user.phone_number != client_phone_number %}
+
+    {% if request.user.phone_number == None %}
+
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">My measurement</h5>
+          <p class="card-text">Please update your phone number to see your measurement.</p>
+          <a href="{% url 'store_no_measurement'%}" class="btn btn-light">Check my measurement</a>
+        </div>
+      </div>
+    </div>
+
+    {% elif request.user.phone_number == client_phone_number %}
 
     <div class="col-6">
       <div class="card">
@@ -96,6 +111,17 @@
         </div>
       </div>
     </div>
+    {% elif request.user.phone_number == client_phone_number2 %}
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">My measurement</h5>
+          <p class="card-text">To update your measurement, send us a message..</p>
+          <a href="{% url 'store_user_entered_measurement' request.user.phone_number %}" class="btn btn-light">Check my measurement</a>
+        </div>
+      </div>
+    </div>
+
     {% else %}
     <div class="col-6">
       <div class="card">

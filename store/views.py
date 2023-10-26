@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required
 from work.models import  Clients
 from user.decorators import phone_number_required
 from django.urls import reverse
-
+from store.forms import MeasurementForm
+from django.contrib.auth import get_user_model
 
 
 def discount_percentage(products):
@@ -59,8 +60,31 @@ def productpage(request, product_id):
     return render(request, 'store/productpage.html', context)
 
 @login_required
-def myprofile(request):
+def myprofile2(request):
     context = {}
+    return render(request, 'store/myprofile2.html', context)
+
+
+@login_required
+def myprofile(request, phone_number=None):
+    context = {}
+    client_phone_number2 = []
+    client_phone_number = []
+    try:
+        client2 = User_Uploaded_Measurement.objects.get(phone_number=phone_number)
+        client_phone_number2 = client2.phone_number
+    except Exception as e:
+        pass
+    try:
+        clients = Clients.objects.get(phone_number=phone_number)
+        client_phone_number = clients.phone_number
+    except Exception as e:
+        pass
+    
+    context = {
+        'client_phone_number':client_phone_number,
+        'client_phone_number2':client_phone_number2
+    }
     return render(request, 'store/myprofile.html', context)
 
 
@@ -82,31 +106,93 @@ def product(request):
 
 @login_required
 @phone_number_required
-def clientdetails(request, phone_number):
-    
+def clientdetails(request, phone_number=None):
+  
     try:
         client = Clients.objects.get(phone_number=phone_number)
         client_phone_number = client.phone_number
-        if  not client_phone_number == request.user.phone_number:
+        print('start')
+        if not client_phone_number == request.user.phone_number:
             print(f' not equal oo {client_phone_number}')
             return redirect ('store_no_measurement')
         else:
             print(f'equal oo {client_phone_number}')
             context = {
-                'clients':client,
+                'client':client,
                 'client_phone_number':client_phone_number,
             }
             return render(request, 'store/clientdetails.html', context)
             
-    except Clients.DoesNotExist:
+    except Exception as e:
+        print(f'error: {e}')
         return redirect('store_no_measurement')
     
-    except Clients.MultipleObjectsReturned:
+    
+    
+@login_required
+@phone_number_required
+def user_entered_measurement(request, phone_number=None):
+    try:
+        client2 = User_Uploaded_Measurement.objects.get(phone_number=phone_number)
+        client_phone_number2 = client2.phone_number
+        print('start')
+        if not client_phone_number2 == request.user.phone_number:
+            print(f' not equal oo2 {client_phone_number2}')
+            return redirect ('store_no_measurement')
+        else:
+            print(f'equal oo {client_phone_number2}')
+            context = {
+                'client2':client2,
+                'client_phone_number2':client_phone_number2,
+            }
+            return render(request, 'store/clientdetails.html', context)
+            
+    except Exception as e:
+        print(f'error2: {e}')
         return redirect('store_no_measurement')
-
+    
+    
+   
 @login_required
 @phone_number_required 
 def no_measurement(request):
     context = {}
     return render(request, 'store/no_measurement.html', context)
+
+@login_required
+@phone_number_required
+def upload_measurement(request):
+    if request.method == "POST":
+        form = MeasurementForm(request.POST)
+        if form.is_valid():
+            phone_number = request.user.phone_number
+            username = request.user.username
+            top_lenght = form.cleaned_data['top_lenght']
+            shoulder = form.cleaned_data['shoulder']
+            cuff = form.cleaned_data['cuff']
+            neck = form.cleaned_data['neck']
+            
+            try:
+                if request.user.is_authenticated:
+                    User_Uploaded_Measurement.objects.update_or_create(
+                        user=request.user,
+                        defaults={
+                            'top_lenght': top_lenght,
+                            'neck': neck,
+                            'shoulder': shoulder,
+                            'cuff': cuff,
+                            'phone_number' : phone_number,
+                            'measurement_name': username,
+                            
+                        }
+                    )
+                    print('success')
+                else:
+                    pass
+            except Exception as e:
+                print(f'error: {e}')
+    else:
+        pass
+        form = MeasurementForm()
+    return render(request, 'store/upload_measurement.html', {'form': form})                
     

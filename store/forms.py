@@ -50,3 +50,23 @@ class ProductForm(forms.ModelForm):
                         raise ValidationError(f"The {field_name} is smaller than the desired dimensions. The image must be W700 and H800 or greater")
 
         return cleaned_data
+    
+    
+class MeasurementForm(forms.Form):
+    shoulder = forms.CharField(
+        label = 'Shoulder',
+        widget=forms.TextInput(attrs={'placeholder': 'Top Lenght'}),
+    )
+    neck = forms.CharField(
+        label = 'Neck',
+        widget=forms.TextInput(attrs={'placeholder': 'Neck'}),
+    )
+    cuff = forms.CharField(
+        label = 'Cuff',
+        widget=forms.TextInput(attrs={'placeholder': 'Top Lenght'}),
+    )
+    
+    top_lenght = forms.CharField(
+        label = 'Top lenght',
+        widget=forms.TextInput(attrs={'placeholder': 'Top Lenght'}),
+    )

@@ -8,7 +8,7 @@ from .models import CustomUserGroup
 class CustomUserAdmin(UserAdmin):
     fieldsets = (
         ('User Information', {
-            'fields': ('username', 'email', 'phone_number', 'password', 'verified', 'verify_code')
+            'fields': ('username', 'first_name', 'last_name', 'email', 'phone_number', 'password', 'verified', 'verified_worker')
         }),
         ('Permissions', {
             'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')

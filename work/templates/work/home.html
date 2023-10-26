@@ -1,29 +1,34 @@
-
 {% extends 'work/main.html' %}
-{% load static %}
+{% load static  %}
+{% load account %}
 {% block title %} Home {% endblock %}
 
-{% block page_title %} Jobs {% endblock%}
 
 {% block content %}
 
-
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-  <div class="container py-5 my-5 row bootstrap snippets bootdeys "> 
-      
-    <div class="member-entry bg-secondary col-12">
-      {% for job in jobs %}
-        <a href="{% url 'work_jobdetails' job.job_name %}">
-          <div class=" bg-light row d-flex align-items-center my-2 ">
-            <img src="{{ job.fabric_image_1_image_url }}"  class="img-rounded col-4 d-flex justify-content-center ">
-            <div class="h4 mx-1 col-6 ">{{ job.job_name }}</div>
-            <span class="h7 em mx-2 d-flex justify-content-end"> Job done: {{ x.job_done }</span>     
-          </div>
-        </a> 
-      {% endfor %}
+<div class="container mx-auto col-sm-8 mb-4 col-lg-6  " ></div>
+  <div class="row my-auto ">
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Check current Jobs</h5>
+          <p class="card-text">The available jobs to do are here.</p>
+          <a href="{% url 'work_jobs'%}" class="btn btn-light">Go to current jobs</a>
+        </div>
+      </div>
     </div>
+
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">My Profile</h5>
+          <p class="card-text">edit your profile here, check finished jobs and check your payment.</p>
+          <a href="{% url 'work_myprofile'%}" class="btn btn-light">Check my profile</a>
+        </div>
+      </div>
+    </div>
+
+
   </div>
-
-  
-
+</div>
 {% endblock content %}

@@ -1,0 +1,124 @@
+
+{% extends 'store/main.html' %}
+{% load static %}
+{% load account %}
+
+{% block title %} Profile {% endblock %}
+
+{% block navbar %} {% endblock navbar %}
+
+{% block content %}
+
+
+<nav class="navbar navbar-expand-lg navbar-light mb-4 bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'store_home'%}">
+      <img src="{% static 'work/media/blue_neeyee_logo.png' %}" alt="neeyee logo" width="40" height="40">
+    </a>
+    <h6>Welcome, {% user_display user %} with {{user.phone_number}}</h6>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mx-lg-5 mb-2 text-end-lg mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'store_home'%}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'store_product'%}">My Wadrobe</a>
+        </li>
+        
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'store_no_measurement'%}">MyMeasurementsss</a>
+          </li>
+          
+        
+          
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'store_home'%}">Submit fabric for sewing</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'store_home'%}">My Wishlist</a>
+        </li>
+        <li>
+            <form action="{%url 'account_logout' %}"><button>
+                Logout
+            </button></form>
+        </li>
+      </ul>
+      <!--
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      -->
+    </div>
+  </div>
+</nav>
+
+
+
+
+<div class="container mx-auto mb-4 col-lg-6 col-sm-8 " >
+
+  <div class="row my-auto ">
+    <div class="col-6 mb-3  ">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Submit fabric for sewing</h5>
+          <p class="card-text">
+            <li>take a picture of your fabric</li>
+            <li>input your measurement</li>
+            <li>upload your design</li>
+            <li>submit</li>
+            as simple as it should be
+          </p>
+          <a href="#" class="btn btn-light">Submit fabric</a>
+        </div>
+      </div>
+    </div>
+
+
+    
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">My measurement</h5>
+          <p class="card-text">Please update your phone number to see your measurement.</p>
+          <a href="{% url 'store_no_measurement'%}" class="btn btn-light">Check my measurement</a>
+        </div>
+      </div>
+    </div>
+  
+
+    <div class="card" style="width: 18rem;">
+      <img src="{%static 'store/media/header.png'%}" width="200" height="100" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">My wadrobe</h5>
+        <p class="card-text">See some suggested designs for your size and color preference.</p>
+        <a href="#" class="btn btn-light">Check some recomended designs</a>
+      </div>
+    </div>
+
+
+  </div>
+  
+
+  
+
+  
+
+
+  
+  
+
+
+</div>
+
+
+
+
+
+{% endblock content %}

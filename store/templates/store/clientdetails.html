@@ -6,7 +6,7 @@
 
 {% block content %}
 
-
+{% if request.user.phone_number == client.phone_number %}
 <div class="card text-center my-5 py-3">
   <div class="card-header">
     <span class="h2">{{clients.title}} {{ clients.measurement_name}}</span>
@@ -38,7 +38,7 @@
 
   <div class="container overflow-hidden mb-5 text-center">
     <div class="row gy-3">
-      {% if measurement.name_id == clients.name_id %}
+      
       <div class="col-6 "><span>Top lenght</span>
         <div class="p-2 h3 bg-light">{{ clients.top_lenght}}</div>
       </div>
@@ -118,9 +118,126 @@
       <div class="col-6 border ">Cap
         <div class="p-2 h3 bg-light">{{ clients.cap}}</div>
       </div>
-    {% endif %}
+    </div>
+  </div>
+</div>
+{% elif request.user.phone_number == client2.phone_number %}
+
+<div class="card text-center my-5 py-3">
+  <div class="card-header">
+    <span class="h2">{{clients.title}} {{ client2.measurement_name}}</span>
+    
+  </div>
+  <div class="card-body">
+    <div class="card col">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Size: {{ client2.size}}</li>
+        <li class="list-group-item">Phone no: {{ client2.phone_number}}</li>
+        <li class="list-group-item">Sex: {{ client2.sex}}</li>
+        <li class="list-group-item">Email: {{ client2.email}}</li>
+        <li class="list-group-item">Birthday: {{ client2.birthday}}</li>
+        <li class="list-group-item">Address: {{ client2.address}}</li>
+        <li class="list-group-item">Notes: {{ client2.client_note}}</li>
+      </ul>
+    </div>
+    <a href="{% url 'store_home' %}" target="_blank" class="btn btn-secondary mt-3">Get some unique styles</a>
+  </div>
+  <div class="card-footer text-body-secondary">
+    <span>last seen</span>   <span>2 days ago</span>
+  </div>
+</div>
+
+<div class="border bg-light  border  text-center py-2 mb-5 ">
+  <p class="text-center em"> size:  <span class="em">{{ client2.size }} </span></p>
+  <h2 class="text-center ">Measurements</h2>  
+  </div>
+
+  <div class="container overflow-hidden mb-5 text-center">
+    <div class="row gy-3">
+      
+      <div class="col-6 "><span>Top lenght</span>
+        <div class="p-2 h3 bg-light">{{ client2.top_lenght}}</div>
+      </div>
+      <div class="col-6 ">Trouser Lenght
+        <div class="p-2  h3 bg-light">{{ client2.trouser_lenght}}</div>
+      </div>
+      <div class="col-6 ">Shoulder
+        <div class="p-2 h3 bg-light ">{{ client2.trouser_lenght}}</div>
+      </div>
+      <div class="col-6 ">Waist
+        <div class="p-2 h3  bg-light">{{ client2.waist}}</div>
+      </div>
+      <div class="col-6 ">Sleeve
+        <div class="p-2 h3  bg-light">{{ client2.sleeve_lenght}}</div>
+      </div>
+      <div class="col-6 ">Lap
+        <div class="p-2 h3  bg-light">{{ client2.lap}}</div>
+      </div>
+      <div class="col-6 ">Round Chest
+        <div class="p-2 h3  bg-light">{{ client2.Round_chest}}</div>
+      </div>
+      <div class="col-6 ">Knee
+        <div class="p-2 h3  bg-light">{{ client2.knee}}</div>
+      </div>
+      <div class="col-6 ">Neck
+        <div class="p-2 h3  bg-light">{{client2.neck}}</div>
+      </div>
+      <div class="col-6 ">Calf
+        <div class="p-2 h3  bg-light">{{ client2.calf}}</div>
+      </div>
+      <div class="col-6 ">Round Arm
+        <div class="p-2 h3  bg-light">{{ client2.round_arm}}</div>
+      </div>
+      <div class="col-6 ">Ankle
+        <div class="p-2 h3 bg-light">{{ client2.ankle}}</div>
+      </div>
+      <div class="col-6 ">Front Chest
+        <div class="p-2 h3  bg-light">{{ client2.front_chest}}</div>
+      </div>
+      <div class="col-6 ">Body Rise(BR)
+        <div class="p-2 h3  bg-light">{{ client2.BR}}</div>
+      </div>
+      <div class="col-6 ">Back Chest
+        <div class="p-2 h3  bg-light">{{ client2.back_chest}}</div>
+      </div>
+      <div class="col-6  ">Round Body Rise(RBR)
+        <div class="p-2 h3  bg-light">{{ client2.RBR}}</div>
+      </div>
+      <div class="col-6 ">Cuff
+        <div class="p-2 h3  bg-light">{{ client2.cuff}}</div>
+      </div>
+      <div class="col-6 ">Waist
+        <div class="p-2 h3  bg-light">{{ client2.waist}}</div>
+      </div>
+      <div class="col-6 ">Arm Hole
+        <div class="p-2 h3 bg-light">{{ client2.arm_hole}}</div>
+      </div>
+      <div class="col-6 border ">Agbada Lenght
+        <div class="p-2 h3  bg-light">{{ client2.agbada_lenght}}</div>
+      </div>
+      <div class="col-6 ">Short Sleeve Width
+        <div class="p-2 h3  bg-light">{{ client2.arm_hole}}</div>
+      </div>
+      <div class="col-6 border ">Agbada Shoulder
+        <div class="p-2 h3  bg-light">{{ client2.agbada_shoulder}}</div>
+      </div>
+      <div class="col-6 ">3quarter Sleeve Width
+        <div class="p-2 h3  bg-light">{{ client2.arm_hole}}</div>
+      </div>
+      <div class="col-6 border ">Agbada Sleeve
+        <div class="p-2 h3  bg-light">{{ client2.arm_hole}}</div>
+      </div>
+      
+      <div class="col-6 ">Long Sleeve Width
+        <div class="p-2 h3  bg-light">{{ client2.arm_hole}}</div>
+      </div>
+      <div class="col-6 border ">Cap
+        <div class="p-2 h3 bg-light">{{ client2.cap}}</div>
+      </div>
     </div>
   </div>
 </div>
 
+
+{% endif %}
 {% endblock content %}

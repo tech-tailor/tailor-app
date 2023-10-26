@@ -128,10 +128,13 @@
 
         <a class="btn  col-4  btn-light btn" href="{% url 'store_product'%}"><span class="text-start">Products</span>
         </a>
-        
-        <a class="btn col-4  btn btn-light btn" href="{% url 'store_myprofile' %}">Profile
+        {% if request.user.is_authenticated and request.user.phone_number %}
+        <a class="btn col-4  btn btn-light btn" href="{% url 'store_myprofile' request.user.phone_number %}">Profile
         </a>
-        
+        {% else %}
+        <a class="btn col-4  btn btn-light btn" href="{% url 'store_myprofile2'  %}">Profile
+        </a>
+        {% endif %}
         
 
     

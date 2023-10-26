@@ -11,7 +11,7 @@ class JobAdmin(admin.ModelAdmin):
     orderin = ['-id']
 
 class WorkersAdmin(admin.ModelAdmin):
-    list_display = ['name', 'user' ]
+    list_display = ['user' ]
 
 
 
@@ -24,7 +24,7 @@ class ClientAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Clients, ClientAdmin)
-admin.site.register(Workers, WorkersAdmin)
+admin.site.register(Worker_Profile, WorkersAdmin)
 admin.site.register(Jobs, JobAdmin)
 admin.site.register(Job_operation)
 admin.site.register(Job_payment)

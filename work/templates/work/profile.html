@@ -1,33 +1,34 @@
 {% extends 'work/main.html' %}
 {% load static  %}
+{% load account %}
 {% block title %} Home {% endblock %}
 
 
 {% block content %}
 
-<div class="card text-center my-5 py-3">
-    <div class="card-header">
-      <span class="h2">{{ profile.name}}</span>
-      
-    </div>
-    <div class="card-body">
-      <div class="card col">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Size: {{ clients.size}}</li>
-          <li class="list-group-item">Phone no: {{ clients.phone_number}}</li>
-          <li class="list-group-item">Sex: {{ clients.sex}}</li>
-          <li class="list-group-item">Email: {{ clients.email}}</li>
-          <li class="list-group-item">Birthday: {{ clients.birthday}}</li>
-          <li class="list-group-item">Address: {{ clients.address}}</li>
-          <li class="list-group-item">Notes: {{ clients.client_note}}</li>
-        </ul>
-      </div>
-      <a href="{% url 'work_home'%}" class="btn btn-secondary mt-3">Get some unique styles</a>
-    </div>
-    <div class="card-footer text-body-secondary">
-      <span>last seen</span>   <span>2 days ago</span>
-    </div>
-  </div>
-  
 
+
+<div class="container mx-auto col-sm-8 mb-4 col-lg-6  " ></div>
+<div class="card text-center my-5 py-3">
+  <div class="card-header">
+    <span class="h2">{{clients.title}} {{ clients.measurement_name}}</span>
+    
+  </div>
+  <div class="card-body">
+    <div class="card col">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Name: {{ user.first_name}}, {{ user.last_name }} </li>
+        <li class="list-group-item">Phone no: {{user.phone_number}}</li>
+        <li class="list-group-item">Sex:   {{worker.sex}}</li>
+        <li class="list-group-item">Email: {{ user.email}}</li>
+        <li class="list-group-item">Birthday: {{ worker.birthday}}</li>
+        <li class="list-group-item">Address: {{ worker.address}}</li>
+       
+      </ul>
+    </div>
+    <a href="{% url 'work_home' %}" target="_blank" class="btn btn-secondary mt-3">Get some unique styles</a>
+  </div>
+</div>
+    
+</div>
 {% endblock content %}
