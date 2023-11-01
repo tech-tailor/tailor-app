@@ -54,7 +54,7 @@ class Clients(models.Model):
     arm_hole = models.CharField(max_length=15, null=True, blank=True)
     front_chest = models.CharField(max_length=15, null=True, blank=True)
     back_chest = models.CharField(max_length=15, null=True, blank=True)
-    cuff = models.CharField(max_length=15, null=True, blank=True)
+    cuff = models.CharField(max_length=15, null=False, default='')
     short_sleeve_width = models.CharField(max_length=15, null=True, blank=True)
     three_quarter_width = models.CharField(max_length=15, null=True, blank=True)
     long_sleeve_width = models.CharField(max_length=15, null=True, blank=True)
