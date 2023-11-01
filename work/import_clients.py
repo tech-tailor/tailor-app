@@ -68,7 +68,5 @@ try:
         client.save()
         print('client data imported successfully')
 except Exception as e:
-    print(f'validation error at row {index}: {phone_number} {e}')
+    print(f'validation error at index:{index}, row:{row}, phone_number{phone_number}, error:{e}')
     #continue
-        
-    
