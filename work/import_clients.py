@@ -9,7 +9,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "tailorApp.settings") #Replace '
 
 
 print(sys.path)
-project_directory = '/home/tech-tailor/python-work/tailor-app'
+project_directory = '/home/tech-tailor/tailorapp/tailorapp-test'
 sys.path.append(os.path.abspath(project_directory))
 django.setup()
 
