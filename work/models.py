@@ -34,7 +34,7 @@ class ClientSize(models.TextChoices):
     
 
 class Clients(models.Model):
-    measurement_name = models.CharField(max_length=100, null=True, blank=True)
+    measurement_name = models.CharField(max_length=100, unique=True, null=True, blank=True)
     title = models.CharField(max_length=10, choices=Mr_mrs.choices, default=Mr_mrs.MR)
     phone_number = PhoneNumberField(default='+234',
         blank=True,
