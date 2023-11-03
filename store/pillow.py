@@ -44,6 +44,7 @@ def resize(image, max_width, max_height):
             image_bytes = img.tobytes()
             new_img_size = len(image_bytes) / 1000
 
+            # Save the image
             img.save(image)
             print('Successfully resized {}x{} to {}x{} (Size: {} KB -> {} KB)'.format(original_width, original_height, new_width, new_height, img_size, new_img_size))
         else:
