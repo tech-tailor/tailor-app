@@ -55,7 +55,7 @@ try:
             waist = row['Waist'],
             lap = row['Lap'],
             knee = row['Knee'],
-            calf = row['Calf'],
+            #calf = row['Calf'],
             ankle = row['Ankle'],
             BR = row['BR'],
             RBR = row['RRB'],
